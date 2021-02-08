@@ -99,9 +99,9 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
         case 7:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             SJSwiftSideMenuController.pushViewController(vc, animated: true)
-//        case 8:
-//            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "UpcomingAppoinmentsVC") as! UpcomingAppoinmentsVC
-//            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+        case 9:
+            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
+            SJSwiftSideMenuController.pushViewController(vc, animated: true)
 
         default:
             self.dismiss(animated: true, completion: nil)
