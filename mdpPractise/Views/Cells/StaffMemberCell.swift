@@ -9,7 +9,16 @@ import UIKit
 
 class StaffMemberCell: UITableViewCell {
 
-    @IBOutlet weak var imgContainerView : UIView!
+    @IBOutlet weak var imgContainerView : UIView!{
+        didSet{
+            imgContainerView.layer.shadowColor = UIColor.black.withAlphaComponent(0.1).cgColor
+            imgContainerView.layer.shadowOpacity = 1
+            imgContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+            imgContainerView.layer.shadowRadius = 10
+            imgContainerView.layer.cornerRadius = 5
+           // imgContainerView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var memberTypeView : UIView!
     @IBOutlet weak var img : UIImageView!
     @IBOutlet weak var name : UILabel!

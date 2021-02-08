@@ -14,6 +14,9 @@ class TreatmentVC: UIViewController {
     let entries = [(doctorName: "Mr. Siddu Singh", treatmentNo: "TRP1081400160426"),
                    (doctorName: "Mr. ABC Sharma", treatmentNo: "TRP1081400160426"),
                    (doctorName: "Mr. GDT God", treatmentNo: "TRP1081400160426"),
+                   (doctorName: "Mr. BHG Gahlot", treatmentNo: "TRP1081400160426"),(doctorName: "Mr. Siddu Singh", treatmentNo: "TRP1081400160426"),
+                   (doctorName: "Mr. ABC Sharma", treatmentNo: "TRP1081400160426"),
+                   (doctorName: "Mr. GDT God", treatmentNo: "TRP1081400160426"),
                    (doctorName: "Mr. BHG Gahlot", treatmentNo: "TRP1081400160426")]
        var searchResults : [(doctorName: String, treatmentNo: String)] = []
     

@@ -52,21 +52,16 @@ extension StaffMemberVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StaffMemberCell", for: indexPath) as! StaffMemberCell
-        cell.imgContainerView.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.imgContainerView.layer.shadowOpacity = 1
-        cell.imgContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cell.imgContainerView.layer.shadowRadius = 10
-        cell.imgContainerView.layer.masksToBounds = true
         cell.img.image = UIImage.init(named: "female")
         cell.name.text = "Amir khan"
         cell.patientNo.text = "P1678SH"
-        cell.subTitle.text = "Walk-in-Patient"
+        cell.subTitle.text = "Assistant"
         cell.memberTypeView.layer.cornerRadius = 5
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 93
+        return 110
     }
 
 }

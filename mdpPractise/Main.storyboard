@@ -410,7 +410,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-8C-U5r">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-8C-U5r">
                                 <rect key="frame" x="0.0" y="82" width="414" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -503,7 +503,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="img" destination="bDp-8Y-MDm" id="xRa-4L-fWt"/>
-                                            <outlet property="imgContainerView" destination="bDp-8Y-MDm" id="jaG-tE-Q2w"/>
+                                            <outlet property="imgContainerView" destination="8Dn-gw-fsx" id="aSs-eL-jxc"/>
                                             <outlet property="memberTypeView" destination="Hsk-wf-Gse" id="lAQ-rB-dsq"/>
                                             <outlet property="menuBtn" destination="JM7-tA-6WH" id="MCF-mx-AT6"/>
                                             <outlet property="name" destination="Bjy-qv-qef" id="6mI-Q8-4Fp"/>
