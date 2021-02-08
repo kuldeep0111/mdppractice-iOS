@@ -7,8 +7,8 @@ target 'mdpPractise' do
 
   # Pods for mdpPractise
    pod "TTGSnackbar"
-   pod "SJSwiftSideMenuController"
    pod 'VACalendar'
+   pod ‘SideMenu’
 
   target 'mdpPractiseTests' do
     inherit! :search_paths

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SJSwiftSideMenuController
 class AppointmentDetailsVC: UIViewController {
     
     //@IBOutlet weak var containerViewHeight: NSLayoutConstraint!

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SJSwiftSideMenuController
 
 class TabbarControllerVC: UITabBarController, UITabBarControllerDelegate {
 

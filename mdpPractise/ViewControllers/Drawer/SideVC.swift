@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SJSwiftSideMenuController
+import SideMenu
 
 class SideVC: UIViewController {
     
@@ -46,7 +46,7 @@ class SideVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SJSwiftSideMenuController.enableDimbackground = true
+        //.SJSwiftSideMenuController.enableDimbackground = true
     }
     
 }
@@ -74,34 +74,34 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SJSwiftSideMenuController.hideLeftMenu()
+        
         switch indexPath.row {
         case 1:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 2:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "ConsentVC") as! ConsentVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 3:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 4:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "ClinicVC") as! ClinicVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 5:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "HolidayVC") as! HolidayVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
-            
+            self.navigationController!.pushViewController(vc, animated: true)
+
         case 6:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             vc.isMDPMember = true
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 7:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
         case 9:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+            self.navigationController!.pushViewController(vc, animated: true)
 
         default:
             self.dismiss(animated: true, completion: nil)

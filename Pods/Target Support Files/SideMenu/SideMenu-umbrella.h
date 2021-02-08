@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double SJSwiftSideMenuControllerVersionNumber;
-FOUNDATION_EXPORT const unsigned char SJSwiftSideMenuControllerVersionString[];
+FOUNDATION_EXPORT double SideMenuVersionNumber;
+FOUNDATION_EXPORT const unsigned char SideMenuVersionString[];
 

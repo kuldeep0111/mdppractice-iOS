@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SJSwiftSideMenuController
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

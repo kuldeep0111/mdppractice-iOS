@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SJSwiftSideMenuController
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,21 +13,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let sideVC_L : SideVC = (storyBoard.instantiateViewController(withIdentifier: "SideVC") as? SideVC)!
-
-        let mainVC = SJSwiftSideMenuController()
-
-        let rootVC = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-
-        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: nil, leftMenuType: .SlideOver, rightMenuType: .SlideView)
-        SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .LEFT)
-
-        SJSwiftSideMenuController.enableDimbackground = true
-        SJSwiftSideMenuController.leftMenuWidth = screenWidth - 50
-
-        self.window?.rootViewController = mainVC
-        self.window?.makeKeyAndVisible()
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let sideVC_L : SideVC = (storyBoard.instantiateViewController(withIdentifier: "SideVC") as? SideVC)!
+//
+//        let mainVC = SJSwiftSideMenuController()
+//
+//        let rootVC = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+//
+//        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: nil, leftMenuType: .SlideOver, rightMenuType: .SlideView)
+//        SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .LEFT)
+//
+//        SJSwiftSideMenuController.enableDimbackground = true
+//        SJSwiftSideMenuController.leftMenuWidth = screenWidth - 50
+//
+//        self.window?.rootViewController = mainVC
+//        self.window?.makeKeyAndVisible()
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 import VACalendar
-import SJSwiftSideMenuController
+import SideMenu
 
 class HomeVC: UIViewController {
 
@@ -95,7 +95,15 @@ extension HomeVC {
 extension HomeVC {
     
     @IBAction func didTapOnMenuBtn(_ sender: UIButton){
-        SJSwiftSideMenuController.toggleLeftSideMenu()
+       // SJSwiftSideMenuController.toggleLeftSideMenu()
+        let menu = storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! SideMenuNavigationController
+        
+        menu.settings.blurEffectStyle = .dark
+        menu.settings.menuWidth = screenWidth - 50
+        menu.settings.presentationStyle = .viewSlideOutMenuIn
+        //menu.settings.presentationStyle = .l
+        
+        present(menu, animated: true, completion: nil)
     }
     
 }
