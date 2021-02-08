@@ -18,7 +18,11 @@ class SetupClinicVC: UIViewController {
     @IBOutlet weak var stateTextField : MDPTextField!
     @IBOutlet weak var councelNoTextField : MDPTextField!
     @IBOutlet weak var councelNoError : UILabel!
-    @IBOutlet weak var checkBtn : UIButton!
+    @IBOutlet weak var checkBtn : UIButton!{
+        didSet{
+            checkBtn.isSelected = true
+        }
+    }
     @IBOutlet weak var checkText : UILabel!
     @IBOutlet weak var frontFacadeBtn : UIButton!
     @IBOutlet weak var clinicInteriorBtn : UIButton!
@@ -125,8 +129,8 @@ extension SetupClinicVC {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = true
-        self.stateTextField.isUserInteractionEnabled = true
+        self.cityTextField.isUserInteractionEnabled = false
+        self.stateTextField.isUserInteractionEnabled = false
         self.councelNoTextField.isUserInteractionEnabled = true
         self.checkBtn.isUserInteractionEnabled = true
         self.frontFacadeBtn.isUserInteractionEnabled = true
@@ -189,8 +193,8 @@ extension SetupClinicVC {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = true
-        self.stateTextField.isUserInteractionEnabled = true
+        self.cityTextField.isUserInteractionEnabled = false
+        self.stateTextField.isUserInteractionEnabled = false
         self.councelNoTextField.isUserInteractionEnabled = true
         self.checkBtn.isUserInteractionEnabled = true
         self.frontFacadeBtn.isUserInteractionEnabled = true
