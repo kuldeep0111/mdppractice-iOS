@@ -48,7 +48,8 @@ class ConsentVC: UIViewController, CAPSPageMenuDelegate {
                 .menuItemWidth(CGFloat((self.view.frame.width - 44)/2)),
                 .centerMenuItems(true),
                 .menuItemSeparatorRoundEdges(true),
-                .menuItemSeparatorColor(UIColor.blue)
+                .menuItemSeparatorColor(UIColor.blue),
+                .enableHorizontalBounce(false)
             ]
             
             // Initialize scroll menu
