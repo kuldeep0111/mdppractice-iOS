@@ -1,0 +1,6 @@
+framework module Pods_mdpPractiseTests {
+  umbrella header "Pods-mdpPractiseTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

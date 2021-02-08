@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-mdpPractise-mdpPractiseUITests/Pods-mdpPractise-mdpPractiseUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/SJSwiftSideMenuController/SJSwiftSideMenuController.framework
+${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework
+${BUILT_PRODUCTS_DIR}/VACalendar/VACalendar.framework

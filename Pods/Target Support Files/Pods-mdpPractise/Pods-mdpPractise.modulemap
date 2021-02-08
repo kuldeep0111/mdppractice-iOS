@@ -1,0 +1,6 @@
+framework module Pods_mdpPractise {
+  umbrella header "Pods-mdpPractise-umbrella.h"
+
+  export *
+  module * { export * }
+}
