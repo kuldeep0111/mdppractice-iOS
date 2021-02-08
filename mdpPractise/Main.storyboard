@@ -2925,8 +2925,8 @@
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treating Doctor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-Nq-WHJ">
-                                                            <rect key="frame" x="23.999999999999993" y="44" width="82.333333333333314" height="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-Nq-WHJ">
+                                                            <rect key="frame" x="24" y="44" width="71" height="13"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -4901,7 +4901,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Of-Uw-iVz">
-                                <rect key="frame" x="20" y="232.33333333333337" width="374" height="50"/>
+                                <rect key="frame" x="20" y="273.66666666666669" width="374" height="50"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mre-vE-34l"/>
@@ -4914,6 +4914,26 @@
                                     <action selector="didTapOnSave:" destination="UwE-6S-KuZ" eventType="touchUpInside" id="kQQ-dN-0jT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhm-ij-Fe9">
+                                <rect key="frame" x="22" y="225.33333333333334" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="Gcv-Ld-5zp"/>
+                                    <constraint firstAttribute="height" constant="16" id="N9L-yC-nv2"/>
+                                </constraints>
+                                <state key="normal" image="unCheck"/>
+                                <state key="selected" image="selectCheck"/>
+                                <connections>
+                                    <action selector="didTapOnCheck:" destination="tB8-15-UbN" eventType="touchUpInside" id="DZl-8A-XuR"/>
+                                    <action selector="didTapOnCheck:" destination="UwE-6S-KuZ" eventType="touchUpInside" id="QPy-MB-cjO"/>
+                                    <action selector="didTapOnCheck:" destination="uyM-Ru-tMe" eventType="touchUpInside" id="bUN-Ho-Ei0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply to all clinics" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym1-HH-BTz">
+                                <rect key="frame" x="50" y="223.33333333333334" width="136.33333333333334" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cdb-P5-x4w"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4921,7 +4941,7 @@
                             <constraint firstItem="Cdb-P5-x4w" firstAttribute="trailing" secondItem="8tT-3J-IRo" secondAttribute="trailing" constant="20" id="2A7-gZ-mWE"/>
                             <constraint firstItem="Cdb-P5-x4w" firstAttribute="trailing" secondItem="5Of-Uw-iVz" secondAttribute="trailing" constant="20" id="417-qg-ZmN"/>
                             <constraint firstItem="8tT-3J-IRo" firstAttribute="top" secondItem="bBM-6j-B7I" secondAttribute="bottom" constant="6" id="4ff-op-sLS"/>
-                            <constraint firstItem="5Of-Uw-iVz" firstAttribute="top" secondItem="8tT-3J-IRo" secondAttribute="bottom" constant="30" id="Eca-iV-1Dg"/>
+                            <constraint firstItem="mhm-ij-Fe9" firstAttribute="top" secondItem="8tT-3J-IRo" secondAttribute="bottom" constant="23" id="996-na-z3k"/>
                             <constraint firstItem="EUe-yF-uHh" firstAttribute="top" secondItem="Han-3d-VAH" secondAttribute="bottom" constant="6" id="FCm-lh-dLF"/>
                             <constraint firstItem="PEH-97-h8f" firstAttribute="centerY" secondItem="8tT-3J-IRo" secondAttribute="centerY" id="IWM-ji-ZMq"/>
                             <constraint firstItem="bBM-6j-B7I" firstAttribute="top" secondItem="EUe-yF-uHh" secondAttribute="bottom" constant="23" id="MlM-58-eoT"/>
@@ -4929,8 +4949,12 @@
                             <constraint firstItem="Han-3d-VAH" firstAttribute="leading" secondItem="Cdb-P5-x4w" secondAttribute="leading" constant="22" id="PQK-co-XoB"/>
                             <constraint firstItem="5Of-Uw-iVz" firstAttribute="leading" secondItem="Cdb-P5-x4w" secondAttribute="leading" constant="20" id="QIE-xv-IYi"/>
                             <constraint firstItem="Han-3d-VAH" firstAttribute="top" secondItem="Cdb-P5-x4w" secondAttribute="top" constant="30" id="SWC-T1-gZg"/>
+                            <constraint firstItem="ym1-HH-BTz" firstAttribute="leading" secondItem="mhm-ij-Fe9" secondAttribute="trailing" constant="12" id="aSh-kr-6an"/>
+                            <constraint firstItem="5Of-Uw-iVz" firstAttribute="top" secondItem="ym1-HH-BTz" secondAttribute="bottom" constant="30" id="cmZ-ob-kQ0"/>
                             <constraint firstItem="Cdb-P5-x4w" firstAttribute="trailing" secondItem="s6y-vp-yO1" secondAttribute="trailing" constant="32" id="hgd-EA-MHk"/>
+                            <constraint firstItem="mhm-ij-Fe9" firstAttribute="leading" secondItem="Cdb-P5-x4w" secondAttribute="leading" constant="22" id="mSP-S4-B06"/>
                             <constraint firstItem="Cdb-P5-x4w" firstAttribute="trailing" secondItem="EUe-yF-uHh" secondAttribute="trailing" constant="20" id="mh6-bQ-FWT"/>
+                            <constraint firstItem="ym1-HH-BTz" firstAttribute="centerY" secondItem="mhm-ij-Fe9" secondAttribute="centerY" id="pYC-4M-e7G"/>
                             <constraint firstItem="s6y-vp-yO1" firstAttribute="centerY" secondItem="EUe-yF-uHh" secondAttribute="centerY" id="ps3-vh-czb"/>
                             <constraint firstItem="bBM-6j-B7I" firstAttribute="leading" secondItem="Cdb-P5-x4w" secondAttribute="leading" constant="22" id="qgC-NR-TTf"/>
                             <constraint firstItem="Cdb-P5-x4w" firstAttribute="trailing" secondItem="PEH-97-h8f" secondAttribute="trailing" constant="32" id="yL3-uj-QpC"/>
@@ -4938,6 +4962,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkBtn" destination="mhm-ij-Fe9" id="4dS-z7-NVC"/>
                         <outlet property="endDateTFD" destination="8tT-3J-IRo" id="ba1-JT-dQP"/>
                         <outlet property="saveBtn" destination="5Of-Uw-iVz" id="vYd-Sh-iVa"/>
                         <outlet property="startDateTFD" destination="EUe-yF-uHh" id="NPj-qS-XdU"/>

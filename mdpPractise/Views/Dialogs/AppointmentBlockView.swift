@@ -35,7 +35,11 @@ class AppointmentBlockView: UIViewController {
             blockView.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1).cgColor
         }
     }
-        
+    @IBOutlet weak var blockImgView : UIImageView!{
+        didSet{
+            blockImgView.tintColor = UIColor.red
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMe))

@@ -33,7 +33,7 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentCell", for: indexPath) as! TreatmentCell
         cell.treatmentNo.text = "TRP1081400160426"
-        cell.doctorName.text = "Dr. Siddu Singh"
+        cell.doctorName.text = "Mr. Siddu Singh"
         cell.date.text = "07/08/2020"
         cell.statusView.layer.cornerRadius = 5
         return cell

@@ -34,7 +34,7 @@ class SideVC: UIViewController {
         ("home1","Holiday"),
         ("male1","MDP Members"),
         ("male1","Walk-in-Patients"),
-        ("male1","Patient Plan"),
+        //("male1","Patient Plan"),
         ("home1","Treaments"),
         ("payment","Payments"),
         ("home1","Tutorials"),
@@ -99,9 +99,9 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
         case 7:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             SJSwiftSideMenuController.pushViewController(vc, animated: true)
-        case 8:
-            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "UpcomingAppoinmentsVC") as! UpcomingAppoinmentsVC
-            SJSwiftSideMenuController.pushViewController(vc, animated: true)
+//        case 8:
+//            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "UpcomingAppoinmentsVC") as! UpcomingAppoinmentsVC
+//            SJSwiftSideMenuController.pushViewController(vc, animated: true)
 
         default:
             self.dismiss(animated: true, completion: nil)
