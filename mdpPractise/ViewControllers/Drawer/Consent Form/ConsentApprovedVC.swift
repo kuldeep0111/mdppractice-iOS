@@ -26,7 +26,7 @@ class ConsentApprovedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         // Do any additional setup after loading the view.
     }
     

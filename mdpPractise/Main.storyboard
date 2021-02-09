@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfB-Pd-kLc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0e7-F3-MOL">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -298,11 +298,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="JxD-UF-xun" secondAttribute="trailing" id="0Tq-tH-S1B"/>
                                     <constraint firstAttribute="bottom" secondItem="JxD-UF-xun" secondAttribute="bottom" id="9sV-59-5VI"/>
-                                    <constraint firstItem="OXR-0m-pDO" firstAttribute="top" secondItem="U8I-kk-s9u" secondAttribute="top" id="UIB-B5-Qbx"/>
                                     <constraint firstItem="JxD-UF-xun" firstAttribute="top" secondItem="OXR-0m-pDO" secondAttribute="bottom" id="aia-tn-l2i"/>
                                     <constraint firstAttribute="trailing" secondItem="OXR-0m-pDO" secondAttribute="trailing" id="amD-q7-p6z"/>
                                     <constraint firstItem="JxD-UF-xun" firstAttribute="leading" secondItem="U8I-kk-s9u" secondAttribute="leading" constant="10" id="dUL-DJ-7tt"/>
                                     <constraint firstItem="OXR-0m-pDO" firstAttribute="leading" secondItem="U8I-kk-s9u" secondAttribute="leading" id="iX7-ky-QNb"/>
+                                    <constraint firstItem="OXR-0m-pDO" firstAttribute="top" secondItem="U8I-kk-s9u" secondAttribute="top" id="rea-Dj-U9E"/>
                                 </constraints>
                             </view>
                         </subviews>

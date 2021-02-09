@@ -29,7 +29,7 @@ class TreatmentVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = "Treatments"
-        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 45, right: 0)
         //addSearchBar()
         
         

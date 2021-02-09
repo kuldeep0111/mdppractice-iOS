@@ -46,9 +46,13 @@ class SideVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //.SJSwiftSideMenuController.enableDimbackground = true
+        //self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
 }
 
 extension SideVC : UITableViewDelegate, UITableViewDataSource {

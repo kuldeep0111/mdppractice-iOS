@@ -32,6 +32,7 @@ class ClinicVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addNewClinic))
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
