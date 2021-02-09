@@ -73,6 +73,7 @@ extension SetupClinicVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Setup Clinic"
+        self.navigationController?.navigationBar.isHidden = false
         clinicName.delegate = self
         address1TextField.delegate = self
         address2TextField.delegate = self
@@ -91,6 +92,7 @@ extension SetupClinicVC{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        self.navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -228,7 +230,7 @@ extension SetupClinicVC {
     
     @IBAction func didTapOnApprovalBtn(_ sender: UIButton){
         
-        if(validateName() && validateAddress1() && validatePin() && validateCity() && validateState() && validateCouncilNo()){
+        if(validateName() && validateAddress1() && validatePin() && validateCouncilNo()){
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")

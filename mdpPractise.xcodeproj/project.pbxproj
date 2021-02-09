@@ -63,6 +63,7 @@
 		2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */; };
 		2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */; };
 		2C6E1B1C25D26624001010AB /* AppointmentAcceptRejectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */; };
+		2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */; };
 		2C6F205325CD045700CD0E8E /* ConsentPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */; };
 		2C6F205B25CD046E00CD0E8E /* ConsentApprovedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */; };
 		2C6F206025CD048300CD0E8E /* ConsentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205F25CD048300CD0E8E /* ConsentVC.swift */; };
@@ -176,6 +177,7 @@
 		2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalChartVC.swift; sourceTree = "<group>"; };
 		2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestCell.swift; sourceTree = "<group>"; };
 		2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentAcceptRejectView.swift; sourceTree = "<group>"; };
+		2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicDetails.swift; sourceTree = "<group>"; };
 		2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentPendingVC.swift; sourceTree = "<group>"; };
 		2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentApprovedVC.swift; sourceTree = "<group>"; };
 		2C6F205F25CD048300CD0E8E /* ConsentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentVC.swift; sourceTree = "<group>"; };
@@ -369,7 +371,6 @@
 				2C3E670A25CA6076000DDA32 /* Drawer */,
 				1822288025C849B60032BE30 /* Home */,
 				1822288425C849B60032BE30 /* Onboard */,
-				2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */,
 				2C3E672225CA833A000DDA32 /* ProcedureVC.swift */,
 				2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */,
 				2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */,
@@ -381,11 +382,11 @@
 		1822288025C849B60032BE30 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2C6E1B3525D28CD4001010AB /* Clinic Details */,
+				2C6E1B3425D28CB0001010AB /* Treatment */,
 				2C4CBD6225CC01F00060CAE1 /* Appointment */,
 				1822288325C849B60032BE30 /* TabbarController.swift */,
 				2CCA33CB25C985E100330274 /* HomeVC.swift */,
-				2C3E671325CA6770000DDA32 /* TreatmentVC.swift */,
-				2C4CBD4C25CBDCB50060CAE1 /* ClinicVC.swift */,
 				2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */,
 			);
 			path = Home;
@@ -397,7 +398,6 @@
 				1822288625C849B60032BE30 /* GenrateOTPVC.swift */,
 				1822288525C849B60032BE30 /* OTPVerifyVC.swift */,
 				1822288725C849B60032BE30 /* SignUpVC.swift */,
-				1822288825C849B60032BE30 /* SetupClinicVC.swift */,
 				1822288925C849B60032BE30 /* ThanksPageVC.swift */,
 			);
 			path = Onboard;
@@ -467,6 +467,25 @@
 				2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */,
 			);
 			path = Appointment;
+			sourceTree = "<group>";
+		};
+		2C6E1B3425D28CB0001010AB /* Treatment */ = {
+			isa = PBXGroup;
+			children = (
+				2C3E671325CA6770000DDA32 /* TreatmentVC.swift */,
+				2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */,
+			);
+			path = Treatment;
+			sourceTree = "<group>";
+		};
+		2C6E1B3525D28CD4001010AB /* Clinic Details */ = {
+			isa = PBXGroup;
+			children = (
+				2C4CBD4C25CBDCB50060CAE1 /* ClinicVC.swift */,
+				1822288825C849B60032BE30 /* SetupClinicVC.swift */,
+				2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */,
+			);
+			path = "Clinic Details";
 			sourceTree = "<group>";
 		};
 		2C6F205125CD043200CD0E8E /* Consent Form */ = {
@@ -825,6 +844,7 @@
 				2C6F207625CD12D600CD0E8E /* UpcomingAppoinmentsVC.swift in Sources */,
 				1822287025C849780032BE30 /* TextField.swift in Sources */,
 				2C3E672325CA833A000DDA32 /* ProcedureVC.swift in Sources */,
+				2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */,
 				2CC7AA0025D14B5E00FB6769 /* UpcomingApointmentList.swift in Sources */,
 				1822289925C849B60032BE30 /* NewAppointmentVC.swift in Sources */,
 				2CC7A9EE25D141F300FB6769 /* CAPSPageMenuConfiguration.swift in Sources */,

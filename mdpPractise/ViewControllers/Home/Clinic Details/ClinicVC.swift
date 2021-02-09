@@ -52,7 +52,7 @@ extension ClinicVC : UITextFieldDelegate {
 //MARK: Action
 extension ClinicVC {
     @objc func addNewClinic(){
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "ClinicDetails") as ClinicDetails
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -77,7 +77,7 @@ extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "ClinicDetails") as ClinicDetails
         vc.isAlreadyFeel = true
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -13,6 +13,7 @@ class NotificaitonVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Notificaiton"
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         self.navigationController?.navigationBar.isHidden = false
