@@ -8,9 +8,11 @@
 import UIKit
 import TTGSnackbar
 
-class NewAppointmentVC: UIViewController {
+class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var appointmentDate : MDPTextField!
+    @IBOutlet weak var nameTextField : MDPTextField!
+    @IBOutlet weak var GenderTextField : MDPTextField!
+    @IBOutlet weak var ageTextField : MDPTextField!
     @IBOutlet weak var patientID : MDPTextField!
     @IBOutlet weak var clinicName : MDPTextField!
     @IBOutlet weak var doctorName : MDPTextField!
@@ -33,20 +35,12 @@ class NewAppointmentVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var addPatientview : UIView!{
-        didSet{
-            addPatientview.layer.cornerRadius = 8
-            addPatientview.layer.borderColor = UIColor(red: 0.908, green: 0.908, blue: 0.908, alpha: 1).cgColor
-            addPatientview.backgroundColor = UIColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 1)
-            addPatientview.layer.borderWidth = 1
-        }
-    }
-    
     @IBOutlet weak var reasonOfAppointmentError : UILabel!
     
     var clinicPickerView = UIPickerView()
     var doctorPickerView = UIPickerView()
     var timingPickerView = UIPickerView()
+    var genderPicker =  UIPickerView()
     
     var datePicker = UIDatePicker()
     var pickerToolbar: UIToolbar?
@@ -55,15 +49,12 @@ class NewAppointmentVC: UIViewController {
     var drNameList = ["Dr 1","DR 2","DR 3"]
     var timingList = ["10.00 - 10.30","10.30 - 11.00","11.00 - 11.30"]
     
+    var genderList = ["Male","Female","Other"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabBarController?.tabBar.isHidden = true
         self.title = "New Appointment"
-        createUIToolBar()
-        datePicker.datePickerMode = .date
-        appointmentDate?.inputAccessoryView = pickerToolbar
-        appointmentDate?.inputView = datePicker
-        
         clinicPickerView = UIPickerView()
         clinicPickerView.dataSource = self
         clinicPickerView.delegate = self
@@ -88,6 +79,15 @@ class NewAppointmentVC: UIViewController {
         timing.inputAccessoryView = pickerToolbar
         timing.inputView = timingPickerView
         self.navigationController?.navigationBar.isHidden = false
+        
+        genderPicker = UIPickerView()
+        genderPicker.dataSource = self
+        genderPicker.delegate = self
+        genderPicker.backgroundColor = .white
+        
+        GenderTextField.inputAccessoryView = pickerToolbar
+        GenderTextField.inputView = genderPicker
+       // GenderTextField.delegate = self
     }
 }
 
@@ -112,7 +112,7 @@ extension NewAppointmentVC : UITextViewDelegate {
 extension NewAppointmentVC {
     
     @IBAction func didTapOnCreate(_ sender: UIButton){
-        if(validateAppointmentDate() && validatePatientID() && validateClinic() && validateDr() && validateTiming()){
+        if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming()){
             print("Validate")
         }else{
             
@@ -126,17 +126,7 @@ extension NewAppointmentVC {
 
 //MARK: Validate
 extension NewAppointmentVC {
-    
-    func validateAppointmentDate() -> Bool{
-        if(appointmentDate.text?.count != 0){
-            return true
-        }else{
-            let snackbar = TTGSnackbar(message: "Please enter appointment Date", duration: .short)
-            snackbar.show()
-            return false
-        }
-    }
-    
+        
     func validatePatientID() -> Bool{
         if(patientID.text?.count != 0){
             return true
@@ -147,6 +137,37 @@ extension NewAppointmentVC {
         }
     }
     
+    func validateName() -> Bool{
+        if(nameTextField.text?.count != 0){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter name", duration: .short)
+            snackbar.show()
+            return false
+        }
+    }
+
+    func validateGender() -> Bool{
+        if(GenderTextField.text?.count != 0){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter gender", duration: .short)
+            snackbar.show()
+            return false
+        }
+    }
+    
+    func validateAge() -> Bool{
+        if(ageTextField.text?.count != 0){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter age", duration: .short)
+            snackbar.show()
+            return false
+        }
+    }
+
+
     
     
     func validateClinic() -> Bool{
@@ -183,46 +204,6 @@ extension NewAppointmentVC {
     
 }
 
-//MARK: UIDatePicker
-extension NewAppointmentVC {
-    func createUIToolBar() {
-        
-        pickerToolbar = UIToolbar()
-        pickerToolbar?.autoresizingMask = .flexibleHeight
-        
-        //customize the toolbar
-        pickerToolbar?.barStyle = .default
-        pickerToolbar?.barTintColor = UIColor.white
-        pickerToolbar?.backgroundColor = UIColor.black
-        pickerToolbar?.isTranslucent = false
-        
-        //add buttons
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action:
-                                            #selector(cancelBtnClicked(_:)))
-        cancelButton.tintColor = UIColor.white
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action:
-                                            #selector(doneBtnClicked(_:)))
-        doneButton.tintColor = UIColor.white
-        
-        //add the items to the toolbar
-        pickerToolbar?.items = [cancelButton, flexSpace, doneButton]
-        
-    }
-    
-    @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
-        appointmentDate?.resignFirstResponder()
-    }
-    
-    @objc func doneBtnClicked(_ button: UIBarButtonItem?) {
-        appointmentDate?.resignFirstResponder()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        appointmentDate?.text = formatter.string(from: datePicker.date)
-    }
-}
-
-
 //MARK: UIPickerView
 extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -231,6 +212,8 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         switch pickerView {
+        case genderPicker:
+            return genderList.count
         case clinicPickerView:
             return clinicNameList.count
         case doctorPickerView:
@@ -246,6 +229,8 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
+        case genderPicker:
+            return genderList[row]
         case clinicPickerView:
             return clinicNameList[row]
         case doctorPickerView:
@@ -261,6 +246,8 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         switch pickerView {
+        case genderPicker:
+            GenderTextField.text = genderList[row]
         case clinicPickerView:
             clinicName.text = clinicNameList[row]
         case doctorPickerView:
