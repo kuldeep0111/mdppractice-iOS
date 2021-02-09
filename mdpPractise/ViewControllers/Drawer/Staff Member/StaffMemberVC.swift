@@ -6,9 +6,11 @@
 //
 
 import UIKit
-
+import DropDown
 class StaffMemberVC: UIViewController {
 
+    var dropDown = DropDown()
+    
     @IBOutlet weak var searchTextFiels : UITextField!{
         didSet{
             searchTextFiels.setLeftPaddingPoints(50)
@@ -64,4 +66,39 @@ extension StaffMemberVC : UITableViewDelegate, UITableViewDataSource{
         return 110
     }
 
+}
+
+
+//MARK: HelpingMethod
+extension StaffMemberVC {
+    
+    @objc func didTapOnMenuButton(_ sender: UIButton){
+        
+        dropDown.dataSource = ["Details", "Delete"]//4
+        dropDown.backgroundColor = .white
+        dropDown.textColor = UIColor(rgb: 0x666666)
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+//            switch index {
+//            case 0:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
+//                self?.navigationController!.pushViewController(vc, animated: true)
+//                break
+//            case 1:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//               break
+//
+//            default:
+//                break
+//            }
+            
+        }
+        
+    }
 }

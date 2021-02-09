@@ -6,10 +6,10 @@
 //
 
 import UIKit
-
+import DropDown
 class ClinicVC: UIViewController {
     
-    
+    let dropDown = DropDown()
     @IBOutlet weak var searchTextFiels : UITextField!{
         didSet{
             searchTextFiels.setLeftPaddingPoints(50)
@@ -68,6 +68,7 @@ extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
         cell.name.text = "Amir khan"
         cell.patientNo.text = "P1678SH"
         cell.subTitle.text = "Walk-in-Patient"
+        cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -82,3 +83,41 @@ extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+//MARK : HelpingMethod
+
+extension ClinicVC {
+    
+    @objc func didTapOnMenuButton(_ sender: UIButton){
+        
+        dropDown.dataSource = ["Staff", "Photos"]//4
+        dropDown.backgroundColor = .white
+        dropDown.textColor = UIColor(rgb: 0x666666)
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+            //sender.setTitle(item, for: .normal) //9
+            
+            switch index {
+            case 0:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
+                self?.navigationController!.pushViewController(vc, animated: true)
+                break
+            case 1:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+                self?.navigationController?.pushViewController(vc, animated: true)
+               break
+                
+            default:
+                break
+            }
+            
+        }
+        
+    }
+    
+}

@@ -6,9 +6,11 @@
 //
 
 import UIKit
-
+import DropDown
 class PatientListVC: UIViewController {
 
+     var dropDown = DropDown()
+    
     @IBOutlet weak var searchTextFiels : MDPTextField!{
         didSet{
             searchTextFiels.setLeftPaddingPoints(50)
@@ -59,6 +61,7 @@ extension PatientListVC : UITableViewDelegate, UITableViewDataSource {
         cell.patientNo.text = "P1678SH"
         cell.subTitle.text = "Walk-in-Patient"
         cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall), for: .touchUpInside)
+        cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -80,4 +83,31 @@ extension PatientListVC {
                 UIApplication.shared.openURL(url)
             }
         }    }
-}
+    
+        
+        @objc func didTapOnMenuButton(_ sender: UIButton){
+            
+            dropDown.dataSource = ["Treatment", "Medical History","Patient Log","Dental Images"]//4
+            dropDown.backgroundColor = .white
+            dropDown.textColor = UIColor(rgb: 0x666666)
+            dropDown.separatorColor = UIColor(rgb: 0x666666)
+            dropDown.width = 150
+            dropDown.anchorView = sender //5
+            dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+            dropDown.show() //7
+            dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+                guard let _ = self else { return }
+                switch index {
+                case 3:
+                    let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                   break
+    
+                default:
+                    break
+                }
+                
+            }
+            
+        }
+    }
