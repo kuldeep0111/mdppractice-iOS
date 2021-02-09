@@ -508,6 +508,106 @@
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="-26.116071428571427"/>
         </scene>
+        <!--Appointment Accept Reject View-->
+        <scene sceneID="6yb-ZM-EpK">
+            <objects>
+                <viewController storyboardIdentifier="AppointmentAcceptRejectView" id="dJg-bO-ov5" customClass="AppointmentAcceptRejectView" customModule="mdpPractise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kIj-03-Yqc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPI-PZ-Bdg">
+                                <rect key="frame" x="25" y="349" width="364" height="208.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqz-lc-hpt">
+                                        <rect key="frame" x="147.5" y="30" width="69" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have an appoinment scheduled on the selected dates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFT-gG-Ss1">
+                                        <rect key="frame" x="16" y="82" width="332" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NZA-H6-nfZ">
+                                        <rect key="frame" x="25" y="138.5" width="314" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Y8-uj-jWw">
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="50"/>
+                                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="17"/>
+                                                <state key="normal" title="CANCEL">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapOnCancel:" destination="Dii-oC-cGW" eventType="touchUpInside" id="G7j-Yg-SsB"/>
+                                                    <action selector="didTapOnCancel:" destination="dJg-bO-ov5" eventType="touchUpInside" id="ZHU-en-Xn3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-LZ-OWX">
+                                                <rect key="frame" x="163" y="0.0" width="151" height="50"/>
+                                                <color key="backgroundColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="17"/>
+                                                <state key="normal" title="CONFIRM">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapOnAcceptReject:" destination="dJg-bO-ov5" eventType="touchUpInside" id="cNt-q5-NL9"/>
+                                                    <action selector="didTapOnSave:" destination="Dii-oC-cGW" eventType="touchUpInside" id="ey1-X6-bcN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2Y8-uj-jWw" firstAttribute="leading" secondItem="NZA-H6-nfZ" secondAttribute="leading" id="0Tf-tj-sNj"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Y8-uj-jWw" secondAttribute="bottom" id="4GV-hq-wOD"/>
+                                            <constraint firstAttribute="height" constant="50" id="5fk-qi-TNt"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Yh-LZ-OWX" secondAttribute="bottom" id="9SB-uP-Xy6"/>
+                                            <constraint firstItem="6Yh-LZ-OWX" firstAttribute="width" secondItem="2Y8-uj-jWw" secondAttribute="width" id="CmW-QZ-vZi"/>
+                                            <constraint firstItem="6Yh-LZ-OWX" firstAttribute="height" secondItem="2Y8-uj-jWw" secondAttribute="height" id="I3B-3x-vWt"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Yh-LZ-OWX" secondAttribute="trailing" id="bzD-qH-QL9"/>
+                                            <constraint firstItem="6Yh-LZ-OWX" firstAttribute="leading" secondItem="2Y8-uj-jWw" secondAttribute="trailing" constant="12" id="qgg-Td-qx9"/>
+                                            <constraint firstItem="6Yh-LZ-OWX" firstAttribute="top" secondItem="NZA-H6-nfZ" secondAttribute="top" id="rff-pR-c9r"/>
+                                            <constraint firstItem="2Y8-uj-jWw" firstAttribute="top" secondItem="NZA-H6-nfZ" secondAttribute="top" id="sfh-sI-mEq"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fFT-gG-Ss1" firstAttribute="leading" secondItem="iPI-PZ-Bdg" secondAttribute="leading" constant="16" id="646-ps-msO"/>
+                                    <constraint firstItem="oqz-lc-hpt" firstAttribute="top" secondItem="iPI-PZ-Bdg" secondAttribute="top" constant="30" id="CF6-jq-LkO"/>
+                                    <constraint firstAttribute="trailing" secondItem="fFT-gG-Ss1" secondAttribute="trailing" constant="16" id="V0J-dP-1np"/>
+                                    <constraint firstItem="NZA-H6-nfZ" firstAttribute="top" secondItem="fFT-gG-Ss1" secondAttribute="bottom" constant="23" id="VDy-kl-WUd"/>
+                                    <constraint firstAttribute="trailing" secondItem="NZA-H6-nfZ" secondAttribute="trailing" constant="25" id="WbT-n6-I8J"/>
+                                    <constraint firstItem="oqz-lc-hpt" firstAttribute="centerX" secondItem="iPI-PZ-Bdg" secondAttribute="centerX" id="bOc-uW-yWR"/>
+                                    <constraint firstItem="fFT-gG-Ss1" firstAttribute="top" secondItem="oqz-lc-hpt" secondAttribute="bottom" constant="23" id="etW-Uo-zKu"/>
+                                    <constraint firstItem="NZA-H6-nfZ" firstAttribute="leading" secondItem="iPI-PZ-Bdg" secondAttribute="leading" constant="25" id="nuG-lY-0mH"/>
+                                    <constraint firstAttribute="bottom" secondItem="NZA-H6-nfZ" secondAttribute="bottom" constant="20" id="qno-io-aDb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kna-Ff-GVo"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.6523960658482143" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iPI-PZ-Bdg" firstAttribute="leading" secondItem="kna-Ff-GVo" secondAttribute="leading" constant="25" id="NU5-WC-qbv"/>
+                            <constraint firstItem="iPI-PZ-Bdg" firstAttribute="centerY" secondItem="kna-Ff-GVo" secondAttribute="centerY" id="YJ0-bf-JKu"/>
+                            <constraint firstItem="iPI-PZ-Bdg" firstAttribute="centerX" secondItem="kna-Ff-GVo" secondAttribute="centerX" id="g75-wc-QTk"/>
+                            <constraint firstItem="kna-Ff-GVo" firstAttribute="trailing" secondItem="iPI-PZ-Bdg" secondAttribute="trailing" constant="25" id="mNd-78-YNb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="2Y8-uj-jWw" id="b6p-5N-LuK"/>
+                        <outlet property="confirmButton" destination="6Yh-LZ-OWX" id="mu7-IW-A5W"/>
+                        <outlet property="containerView" destination="iPI-PZ-Bdg" id="uH1-8w-5d6"/>
+                        <outlet property="dialogTitle" destination="oqz-lc-hpt" id="WAH-YQ-wWn"/>
+                        <outlet property="subTitle" destination="fFT-gG-Ss1" id="2Kq-5D-Xb7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sCa-xt-he5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1742" y="-26"/>
+        </scene>
         <!--New Consent Form View-->
         <scene sceneID="uJj-ng-jIF">
             <objects>

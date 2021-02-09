@@ -3153,7 +3153,7 @@
                                                                 <constraint firstAttribute="width" constant="40" id="HpO-GD-DFU"/>
                                                                 <constraint firstAttribute="height" constant="40" id="zWu-b6-Izp"/>
                                                             </constraints>
-                                                            <state key="normal" image="tik"/>
+                                                            <state key="normal" image="crossRed"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-8u-DXF">
                                                             <rect key="frame" x="326" y="15.666666666666671" width="40" height="40"/>
@@ -3161,7 +3161,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="WxA-eY-cd9"/>
                                                                 <constraint firstAttribute="width" constant="40" id="rcN-D8-gww"/>
                                                             </constraints>
-                                                            <state key="normal" image="crossRed"/>
+                                                            <state key="normal" image="tik"/>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-X7-PkQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="5" height="71"/>

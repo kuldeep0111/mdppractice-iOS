@@ -62,6 +62,7 @@
 		2C4CBD6C25CC0F350060CAE1 /* NotificaitonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */; };
 		2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */; };
 		2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */; };
+		2C6E1B1C25D26624001010AB /* AppointmentAcceptRejectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */; };
 		2C6F205325CD045700CD0E8E /* ConsentPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */; };
 		2C6F205B25CD046E00CD0E8E /* ConsentApprovedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */; };
 		2C6F206025CD048300CD0E8E /* ConsentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205F25CD048300CD0E8E /* ConsentVC.swift */; };
@@ -174,6 +175,7 @@
 		2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificaitonVC.swift; sourceTree = "<group>"; };
 		2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalChartVC.swift; sourceTree = "<group>"; };
 		2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestCell.swift; sourceTree = "<group>"; };
+		2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentAcceptRejectView.swift; sourceTree = "<group>"; };
 		2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentPendingVC.swift; sourceTree = "<group>"; };
 		2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentApprovedVC.swift; sourceTree = "<group>"; };
 		2C6F205F25CD048300CD0E8E /* ConsentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentVC.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */,
 				2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */,
 				2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */,
+				2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */,
 			);
 			path = Dialogs;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				1822286125C849570032BE30 /* AppointmentBlockView.swift in Sources */,
 				2C6F205B25CD046E00CD0E8E /* ConsentApprovedVC.swift in Sources */,
 				1822287125C849780032BE30 /* String + Extension.swift in Sources */,
+				2C6E1B1C25D26624001010AB /* AppointmentAcceptRejectView.swift in Sources */,
 				2C4CBD6725CC0E9C0060CAE1 /* NotificationCell.swift in Sources */,
 				1822285E25C849570032BE30 /* TimeSlotCell.swift in Sources */,
 				1822289725C849B60032BE30 /* SetupClinicVC.swift in Sources */,
