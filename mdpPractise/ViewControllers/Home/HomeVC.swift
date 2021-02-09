@@ -48,6 +48,8 @@ class HomeVC: UIViewController {
             image: UIImage(named: "menuLine")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(didTapOnMenuBtn(_:)))
         
+        self.navigationController?.navigationBar.isHidden = true
+        
         dateFormatterGet.dateFormat = "MMMM yyyy"
         let calendar = VACalendar(calendar: defaultCalendar)
         calendarView = VACalendarView(frame: .zero, calendar: calendar)
@@ -75,11 +77,16 @@ class HomeVC: UIViewController {
             }
         }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -105,6 +112,19 @@ extension HomeVC {
         present(menu, animated: true, completion: nil)
     }
     
+    @IBAction func didTapOnSelectClinicBtn(_ sender: UIButton){
+        
+    }
+
+    @IBAction func didTapOnNotificationBtn(_ sender: UIButton){
+        let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NotificaitonVC") as! NotificaitonVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @IBAction func didTapOnAddBtn(_ sender: UIButton){
+        let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewAppointmentVC") as! NewAppointmentVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeVC : AppointmentBlockViewDelegate {

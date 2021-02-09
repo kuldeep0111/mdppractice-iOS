@@ -15,7 +15,7 @@ class NotificaitonVC: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 

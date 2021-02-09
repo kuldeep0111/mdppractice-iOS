@@ -87,7 +87,7 @@ class NewAppointmentVC: UIViewController {
         timing.text = selectedTimeSlot
         timing.inputAccessoryView = pickerToolbar
         timing.inputView = timingPickerView
-
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
