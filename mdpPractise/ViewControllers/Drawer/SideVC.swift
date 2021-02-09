@@ -26,20 +26,20 @@ class SideVC: UIViewController {
     @IBOutlet weak var tableView : UITableView!
     
     var ItemList : [(img: String, title : String)] = [
-        ("home1","Profile"),
+        ("profile_icon","Profile"),
         ("home1","Photos"),
-        ("home1","Consent Form"),
-        ("home1","Staff Member"),
-        ("home1","Clinic"),
-        ("home1","Holiday"),
-        ("male1","MDP Members"),
+        ("consent","Consent Form"),
+        ("staff","Staff Member"),
+        ("holiday","Holiday"),
+        ("staff","MDP Members"),
         //("male1","Walk-in-Patients"),
         //("male1","Patient Plan"),
         ("home1","Treaments"),
         ("payment","Payments"),
-        ("home1","Tutorials"),
+        ("tutorial","Tutorials"),
         ("feedback","Feedback"),
-        ("home1","About Us"),
+        ("about","About Us"),
+        ("phonecall","Support"),
         ("logout","Sign Out"),
         ("logout","Sign Out")
     ]
@@ -51,7 +51,7 @@ class SideVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        //self.navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -90,20 +90,17 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
             self.navigationController!.pushViewController(vc, animated: true)
         case 4:
-            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "ClinicVC") as! ClinicVC
-            self.navigationController!.pushViewController(vc, animated: true)
-        case 5:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "HolidayVC") as! HolidayVC
             self.navigationController!.pushViewController(vc, animated: true)
 
-        case 6:
+        case 5:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             vc.isMDPMember = true
             self.navigationController!.pushViewController(vc, animated: true)
 //        case 7:
 //            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
 //            self.navigationController!.pushViewController(vc, animated: true)
-        case 8:
+        case 7:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
             self.navigationController!.pushViewController(vc, animated: true)
 
