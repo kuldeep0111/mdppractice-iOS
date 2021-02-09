@@ -29,7 +29,7 @@ extension BookingRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "BookingRequestCell", for: indexPath) as! BookingRequestCell
         //cell.img.image = UIImage.init(named: "")
         cell.patientName.text = "Patient: Test Deepak"
         cell.treatedBy.text = "Treating Doctor: Dr. Manjunath"

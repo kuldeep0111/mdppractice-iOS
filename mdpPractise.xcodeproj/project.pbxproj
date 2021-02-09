@@ -61,6 +61,7 @@
 		2C4CBD6725CC0E9C0060CAE1 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD6625CC0E9C0060CAE1 /* NotificationCell.swift */; };
 		2C4CBD6C25CC0F350060CAE1 /* NotificaitonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */; };
 		2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */; };
+		2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */; };
 		2C6F205325CD045700CD0E8E /* ConsentPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */; };
 		2C6F205B25CD046E00CD0E8E /* ConsentApprovedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */; };
 		2C6F206025CD048300CD0E8E /* ConsentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F205F25CD048300CD0E8E /* ConsentVC.swift */; };
@@ -172,6 +173,7 @@
 		2C4CBD6625CC0E9C0060CAE1 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificaitonVC.swift; sourceTree = "<group>"; };
 		2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalChartVC.swift; sourceTree = "<group>"; };
+		2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestCell.swift; sourceTree = "<group>"; };
 		2C6F205225CD045700CD0E8E /* ConsentPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentPendingVC.swift; sourceTree = "<group>"; };
 		2C6F205A25CD046E00CD0E8E /* ConsentApprovedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentApprovedVC.swift; sourceTree = "<group>"; };
 		2C6F205F25CD048300CD0E8E /* ConsentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentVC.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				2C4CBD6625CC0E9C0060CAE1 /* NotificationCell.swift */,
 				2C6F206725CD072E00CD0E8E /* ConsentCell.swift */,
 				2C42211225D13959000C41FB /* PaymentProcedureCell.swift */,
+				2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				1822289925C849B60032BE30 /* NewAppointmentVC.swift in Sources */,
 				2CC7A9EE25D141F300FB6769 /* CAPSPageMenuConfiguration.swift in Sources */,
 				1822289325C849B60032BE30 /* TabbarController.swift in Sources */,
+				2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */,
 				1822289125C849B60032BE30 /* AppointmentDetailsVC.swift in Sources */,
 				2C4CBD3525CBBBEF0060CAE1 /* StaffMemberCell.swift in Sources */,
 				1822289825C849B60032BE30 /* ThanksPageVC.swift in Sources */,

@@ -3119,7 +3119,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppointmentCell" rowHeight="93" id="bIs-E0-EXW" customClass="AppointmentCell" customModule="mdpPractise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingRequestCell" rowHeight="93" id="bIs-E0-EXW" customClass="BookingRequestCell" customModule="mdpPractise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bIs-E0-EXW" id="A5g-kB-2lC">
@@ -3148,20 +3148,20 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnr-GP-6Oz">
-                                                            <rect key="frame" x="326" y="-4" width="40" height="40"/>
+                                                            <rect key="frame" x="270" y="15.666666666666671" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="HpO-GD-DFU"/>
                                                                 <constraint firstAttribute="height" constant="40" id="zWu-b6-Izp"/>
                                                             </constraints>
-                                                            <state key="normal" image="phoneIcon"/>
+                                                            <state key="normal" image="tik"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-8u-DXF">
-                                                            <rect key="frame" x="326" y="35" width="40" height="40"/>
+                                                            <rect key="frame" x="326" y="15.666666666666671" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="WxA-eY-cd9"/>
                                                                 <constraint firstAttribute="width" constant="40" id="rcN-D8-gww"/>
                                                             </constraints>
-                                                            <state key="normal" image="dot3"/>
+                                                            <state key="normal" image="crossRed"/>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-X7-PkQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="5" height="71"/>
@@ -3175,17 +3175,17 @@
                                                     <constraints>
                                                         <constraint firstItem="mHf-lJ-FjJ" firstAttribute="top" secondItem="6YF-Cf-U9M" secondAttribute="bottom" constant="5" id="19Z-5p-dk5"/>
                                                         <constraint firstItem="JEN-74-uek" firstAttribute="leading" secondItem="VzR-Ke-Lpp" secondAttribute="leading" constant="16" id="3Va-vA-FOK"/>
+                                                        <constraint firstItem="Dnr-GP-6Oz" firstAttribute="centerY" secondItem="9ik-8u-DXF" secondAttribute="centerY" id="54d-vN-s2o"/>
                                                         <constraint firstAttribute="trailing" secondItem="9ik-8u-DXF" secondAttribute="trailing" constant="8" id="DCK-je-5qe"/>
                                                         <constraint firstItem="5hX-X7-PkQ" firstAttribute="top" secondItem="VzR-Ke-Lpp" secondAttribute="top" id="FnD-04-63T"/>
+                                                        <constraint firstItem="9ik-8u-DXF" firstAttribute="centerY" secondItem="mHf-lJ-FjJ" secondAttribute="centerY" id="G0w-A5-3Fn"/>
                                                         <constraint firstItem="mHf-lJ-FjJ" firstAttribute="centerY" secondItem="VzR-Ke-Lpp" secondAttribute="centerY" id="IeJ-xx-NCY"/>
                                                         <constraint firstItem="6YF-Cf-U9M" firstAttribute="leading" secondItem="VzR-Ke-Lpp" secondAttribute="leading" constant="16" id="JeO-Ow-WYH"/>
                                                         <constraint firstAttribute="bottom" secondItem="5hX-X7-PkQ" secondAttribute="bottom" id="NzY-0a-vqI"/>
                                                         <constraint firstItem="JEN-74-uek" firstAttribute="top" secondItem="mHf-lJ-FjJ" secondAttribute="bottom" constant="5" id="R6X-iH-Odc"/>
                                                         <constraint firstItem="mHf-lJ-FjJ" firstAttribute="top" secondItem="6YF-Cf-U9M" secondAttribute="bottom" constant="5" id="W8D-tX-9cS"/>
-                                                        <constraint firstItem="9ik-8u-DXF" firstAttribute="top" secondItem="mHf-lJ-FjJ" secondAttribute="top" constant="8" id="gTH-HD-zMr"/>
-                                                        <constraint firstItem="Dnr-GP-6Oz" firstAttribute="bottom" secondItem="mHf-lJ-FjJ" secondAttribute="bottom" constant="-8" id="gju-rV-g2K"/>
                                                         <constraint firstItem="5hX-X7-PkQ" firstAttribute="leading" secondItem="VzR-Ke-Lpp" secondAttribute="leading" id="izG-F7-Q2t"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Dnr-GP-6Oz" secondAttribute="trailing" constant="8" id="sqP-Ce-cZH"/>
+                                                        <constraint firstItem="9ik-8u-DXF" firstAttribute="leading" secondItem="Dnr-GP-6Oz" secondAttribute="trailing" constant="16" id="tNt-P4-3Cc"/>
                                                         <constraint firstItem="mHf-lJ-FjJ" firstAttribute="leading" secondItem="VzR-Ke-Lpp" secondAttribute="leading" constant="16" id="u8q-IP-LDV"/>
                                                     </constraints>
                                                 </view>
@@ -3230,7 +3230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQ1-gd-sd2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5032" y="1174"/>
+            <point key="canvasLocation" x="5031.884057971015" y="1173.913043478261"/>
         </scene>
         <!--New AppointmentVC-->
         <scene sceneID="VRx-zr-Qr6">
@@ -6034,6 +6034,7 @@
         <image name="arrowdown" width="14" height="8"/>
         <image name="cal" width="21" height="21"/>
         <image name="clinic" width="18" height="24"/>
+        <image name="crossRed" width="50" height="50"/>
         <image name="dental" width="301" height="111"/>
         <image name="dentalChart" width="22" height="22"/>
         <image name="dot3" width="50" height="50"/>
@@ -6051,6 +6052,7 @@
         <image name="search" width="20" height="20"/>
         <image name="selectCheck" width="42.666667938232422" height="42.666667938232422"/>
         <image name="thumb" width="118" height="118"/>
+        <image name="tik" width="33.333332061767578" height="33.333332061767578"/>
         <image name="timeIcon" width="50" height="50"/>
         <image name="treatments" width="24" height="24"/>
         <image name="unCheck" width="16" height="16"/>
