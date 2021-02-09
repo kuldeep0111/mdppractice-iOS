@@ -97,12 +97,11 @@ extension HomeVC {
     @IBAction func didTapOnMenuBtn(_ sender: UIButton){
        // SJSwiftSideMenuController.toggleLeftSideMenu()
         let menu = storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! SideMenuNavigationController
-        
         menu.settings.blurEffectStyle = .dark
         menu.settings.menuWidth = screenWidth - 50
-        menu.settings.presentationStyle = .viewSlideOutMenuIn
-        //menu.settings.presentationStyle = .l
-        
+        menu.settings.presentationStyle = .menuSlideIn
+        menu.settings.statusBarEndAlpha = 0
+        //SideMenuManager.default.lef = menu
         present(menu, animated: true, completion: nil)
     }
     

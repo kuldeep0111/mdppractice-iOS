@@ -64,7 +64,7 @@ public class SideMenuManager: NSObject {
     open var rightMenuNavigationController: SideMenuNavigationController? {
         get {
             if _rightMenu.value?.isHidden == true {
-                _rightMenu.value?.leftSide = false
+                _rightMenu.value?.leftSide = true
             }
             return _rightMenu.value
         }
