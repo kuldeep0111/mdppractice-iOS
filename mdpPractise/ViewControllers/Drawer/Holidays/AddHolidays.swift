@@ -11,11 +11,7 @@ class AddHolidays: UIViewController {
 
     @IBOutlet weak var startDateTFD : MDPTextField!
     @IBOutlet weak var endDateTFD : MDPTextField!
-    @IBOutlet weak var checkBtn : UIButton!{
-        didSet{
-            checkBtn.isSelected = true
-        }
-    }
+    @IBOutlet weak var checkBtn : UIButton!
     @IBOutlet weak var saveBtn : UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()

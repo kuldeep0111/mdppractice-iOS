@@ -87,6 +87,7 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
         cell.doctorName.text = entries[indexPath.row].doctorName
         cell.date.text = "07/08/2020"
         cell.statusView.layer.cornerRadius = 5
+        cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall), for: .touchUpInside)
         return cell
     }
     
@@ -127,4 +128,18 @@ extension TreatmentVC : UISearchResultsUpdating{
            tableView.reloadData()
        }
     
+}
+
+//MARK: Actions
+extension TreatmentVC {
+    
+    @objc func didTapOnCall(){
+        
+        if let url = URL(string: "tel://9886868688"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }    }
 }

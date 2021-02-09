@@ -34,22 +34,14 @@ class PatientListVC: UIViewController {
 //MARK: Actions
 extension PatientListVC {
     func setupNavigationBar(){
-        if(isMDPMember){
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "notification")!.withRenderingMode(.alwaysTemplate),
-            style: .plain, target: self, action: #selector(didTapOnNotificaitons))
-        }else{
+        self.navigationController?.navigationBar.isHidden = false
+        if(isMDPMember == false){
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(didTapOnAdd))
         }
     }
-    
-    @objc func didTapOnNotificaitons(){
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "NotificaitonVC") as NotificaitonVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+        
     @objc func didTapOnAdd(){
         
     }
@@ -66,10 +58,26 @@ extension PatientListVC : UITableViewDelegate, UITableViewDataSource {
         cell.name.text = "Amir khan"
         cell.patientNo.text = "P1678SH"
         cell.subTitle.text = "Walk-in-Patient"
+        cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
+}
+
+
+//MARK: Actions
+extension PatientListVC {
+    
+    @objc func didTapOnCall(){
+        
+        if let url = URL(string: "tel://9886868688"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }    }
 }
