@@ -6,9 +6,11 @@
 //
 
 import UIKit
-
+import DropDown
 class TreatmentVC: UIViewController {
-
+    
+    let dropDown = DropDown()
+    var parentVC : TreatmentVC?
     @IBOutlet weak var tableView : UITableView!
     
     let entries = [(doctorName: "Mr. Siddu Singh", treatmentNo: "TRP1081400160426"),
@@ -18,7 +20,7 @@ class TreatmentVC: UIViewController {
                    (doctorName: "Mr. ABC Sharma", treatmentNo: "TRP1081400160426"),
                    (doctorName: "Mr. GDT God", treatmentNo: "TRP1081400160426"),
                    (doctorName: "Mr. BHG Gahlot", treatmentNo: "TRP1081400160426")]
-       var searchResults : [(doctorName: String, treatmentNo: String)] = []
+    var searchResults : [(doctorName: String, treatmentNo: String)] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -61,12 +63,12 @@ extension TreatmentVC {
             searchController.searchResultsUpdater = self
             self.definesPresentationContext = true
             self.navigationItem.titleView = searchController.searchBar
-                searchController.hidesNavigationBarDuringPresentation = false
-                searchController.searchBar.showsCancelButton = false
-//            searchController.searchBar.barTintColor = UIColor.white
-//            searchController.searchBar.placeholder = ""
-//            searchController.searchBar.tintColor = UIColor.white
-
+            searchController.hidesNavigationBarDuringPresentation = false
+            searchController.searchBar.showsCancelButton = false
+            //            searchController.searchBar.barTintColor = UIColor.white
+            //            searchController.searchBar.placeholder = ""
+            //            searchController.searchBar.tintColor = UIColor.white
+            
         }else{
             isSearch = false
             searchController.isActive = false
@@ -87,7 +89,8 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
         cell.doctorName.text = entries[indexPath.row].doctorName
         cell.date.text = "07/08/2020"
         cell.statusView.layer.cornerRadius = 5
-        cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall), for: .touchUpInside)
+        cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall(_:)), for: .touchUpInside)
+        cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -103,37 +106,37 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
 
 extension TreatmentVC : UISearchResultsUpdating{
     func filterContent(for searchText: String) {
-           // Update the searchResults array with matches
-           // in our entries based on the title value.
-           searchResults = entries.filter({ (doctorName: String, treatmentNo: String) -> Bool in
-               let match = doctorName.range(of: searchText, options: .caseInsensitive)
-               // Return the tuple if the range contains a match.
-               return match != nil
-           })
-       }
-
-       // MARK: - UISearchResultsUpdating method
-       
-       func updateSearchResults(for searchController: UISearchController) {
-           // If the search bar contains text, filter our data with the string
-           if let searchText = searchController.searchBar.text {
-               filterContent(for: searchText)
-               // Reload the table view with the search result data.
-               tableView.reloadData()
-           }
-       }
+        // Update the searchResults array with matches
+        // in our entries based on the title value.
+        searchResults = entries.filter({ (doctorName: String, treatmentNo: String) -> Bool in
+            let match = doctorName.range(of: searchText, options: .caseInsensitive)
+            // Return the tuple if the range contains a match.
+            return match != nil
+        })
+    }
+    
+    // MARK: - UISearchResultsUpdating method
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        // If the search bar contains text, filter our data with the string
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            // Reload the table view with the search result data.
+            tableView.reloadData()
+        }
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-           tableView.reloadData()
-       }
+        tableView.reloadData()
+    }
     
 }
 
 //MARK: Actions
 extension TreatmentVC {
     
-    @objc func didTapOnCall(){
+    @objc func didTapOnCall(_ sender: UIButton){
         
         if let url = URL(string: "tel://9886868688"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
@@ -141,5 +144,43 @@ extension TreatmentVC {
             } else {
                 UIApplication.shared.openURL(url)
             }
-        }    }
+        }
+    }
+    
+    @objc func didTapOnMenuButton(_ sender: UIButton){
+        
+        dropDown.dataSource = ["Details", "Dental Images", "Prescription", "Payment"]//4
+        dropDown.backgroundColor = .white
+        dropDown.textColor = UIColor(rgb: 0x666666)
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+            //sender.setTitle(item, for: .normal) //9
+            
+            switch index {
+            case 0:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "TreatmentDetailVC") as! TreatmentDetailVC
+                self?.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 1:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+                self?.navigationController?.pushViewController(vc, animated: true)
+               break
+                
+            case 3:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
+                self?.navigationController?.pushViewController(vc, animated: true)
+               break
+
+            default:
+                break
+            }
+            
+        }
+        
+    }
 }

@@ -9,6 +9,7 @@ target 'mdpPractise' do
    pod "TTGSnackbar"
    pod 'VACalendar'
    pod ‘SideMenu’
+   pod 'DropDown'
 
   target 'mdpPractiseTests' do
     inherit! :search_paths
