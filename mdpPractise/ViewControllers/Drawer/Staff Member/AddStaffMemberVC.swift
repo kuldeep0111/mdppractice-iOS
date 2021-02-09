@@ -13,7 +13,7 @@ class AddStaffMemberVC: UIViewController {
     @IBOutlet weak var streamTextField : MDPTextField!
     @IBOutlet weak var madicalTextField : MDPTextField!
     @IBOutlet weak var phoneNumberTfd : MDPTextField!
-    @IBOutlet weak var endDateTfd : MDPTextField!
+    @IBOutlet weak var designationTfd : MDPTextField!
     
     @IBOutlet weak var MtoFView: UIView!{
         didSet{
@@ -184,7 +184,7 @@ extension AddStaffMemberVC{
         streamTextField.delegate = self
         madicalTextField.delegate = self
         phoneNumberTfd.delegate = self
-        endDateTfd.delegate = self
+        designationTfd.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -228,8 +228,11 @@ extension AddStaffMemberVC : UITextFieldDelegate {
         case madicalTextField:
             madicalTextField.resignFirstResponder()
             break
+        case designationTfd:
+            designationTfd.becomeFirstResponder()
+            break
         case phoneNumberTfd:
-            endDateTfd.becomeFirstResponder()
+            phoneNumberTfd.becomeFirstResponder()
             break
         default:
             textField.resignFirstResponder()

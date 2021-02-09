@@ -73,7 +73,7 @@
                                                     <action selector="didTapOnGenrateOTpVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0lh-Z4-Rt9"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+91" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5B7-tX-kZY" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+91" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5B7-tX-kZY" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="302.66666666666669" width="45" height="50"/>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -5005,8 +5005,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a2-VY-d0Y">
-                                                <rect key="frame" x="30" y="324" width="114" height="18.666666666666686"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a2-VY-d0Y">
+                                                <rect key="frame" x="29.999999999999993" y="324" width="91.333333333333314" height="18.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5020,8 +5020,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DD/MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgl-za-pz5" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="446.33333333333331" width="374" height="50"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="9999999999" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgl-za-pz5" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                                <rect key="frame" x="73" y="446.33333333333331" width="321" height="50"/>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="24q-f4-lkW"/>
@@ -5029,8 +5029,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnk-WO-7ZZ">
-                                                <rect key="frame" x="30" y="421.66666666666669" width="141" height="18.666666666666686"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnk-WO-7ZZ">
+                                                <rect key="frame" x="30" y="421.66666666666669" width="114" height="18.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5452,6 +5452,17 @@
                                                     <constraint firstItem="uab-uR-bws" firstAttribute="leading" secondItem="WFV-8T-gzC" secondAttribute="leading" constant="16" id="zbS-2W-bGB"/>
                                                 </constraints>
                                             </view>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+91" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKO-MN-uJR" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="446.33333333333331" width="45" height="50"/>
+                                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Mqr-vF-ki6"/>
+                                                    <constraint firstAttribute="width" constant="45" id="QDe-iX-neg"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -5459,7 +5470,6 @@
                                             <constraint firstItem="Pw3-Wx-Df3" firstAttribute="centerX" secondItem="Hc1-Tx-rmr" secondAttribute="centerX" id="2t7-ZH-fOB"/>
                                             <constraint firstItem="1a2-VY-d0Y" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="30" id="37o-AW-lot"/>
                                             <constraint firstItem="pP9-yg-QQz" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="30" id="3YG-rw-qIg"/>
-                                            <constraint firstItem="hgl-za-pz5" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" id="4AQ-aE-MCD"/>
                                             <constraint firstItem="pnk-WO-7ZZ" firstAttribute="top" secondItem="GBQ-xw-QvF" secondAttribute="bottom" constant="23" id="60s-xb-JoX"/>
                                             <constraint firstItem="pP9-yg-QQz" firstAttribute="top" secondItem="H4y-TB-qwq" secondAttribute="bottom" constant="23" id="61J-kf-2dA"/>
                                             <constraint firstItem="pnk-WO-7ZZ" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="30" id="7Bs-6G-OAb"/>
@@ -5468,10 +5478,12 @@
                                             <constraint firstItem="GBQ-xw-QvF" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" symbolic="YES" id="AEc-ly-qmF"/>
                                             <constraint firstAttribute="trailing" secondItem="7c7-4m-sBf" secondAttribute="trailing" constant="20" symbolic="YES" id="Aos-mB-QkE"/>
                                             <constraint firstItem="87G-pV-auu" firstAttribute="top" secondItem="d50-eZ-jrY" secondAttribute="top" constant="30" id="Auo-Dt-16x"/>
+                                            <constraint firstItem="fKO-MN-uJR" firstAttribute="centerY" secondItem="hgl-za-pz5" secondAttribute="centerY" id="Dmy-dm-OkT"/>
                                             <constraint firstItem="2nn-Bx-XTs" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" id="Gl7-lb-N9P"/>
                                             <constraint firstItem="DgU-g3-99i" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" symbolic="YES" id="LBa-GX-erA"/>
                                             <constraint firstItem="87G-pV-auu" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="30" id="M59-TN-VSY"/>
                                             <constraint firstAttribute="trailing" secondItem="2nn-Bx-XTs" secondAttribute="trailing" constant="20" id="Mr2-3A-Sux"/>
+                                            <constraint firstItem="hgl-za-pz5" firstAttribute="leading" secondItem="fKO-MN-uJR" secondAttribute="trailing" constant="8" id="NCH-ab-8eJ"/>
                                             <constraint firstItem="1T1-7K-EIp" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="30" id="NL7-W9-izC"/>
                                             <constraint firstItem="WFV-8T-gzC" firstAttribute="top" secondItem="2nn-Bx-XTs" secondAttribute="bottom" constant="16" id="NQb-am-cRU"/>
                                             <constraint firstItem="DgU-g3-99i" firstAttribute="top" secondItem="87G-pV-auu" secondAttribute="bottom" constant="6" id="Qpm-K4-NVD"/>
@@ -5484,6 +5496,7 @@
                                             <constraint firstItem="hgl-za-pz5" firstAttribute="top" secondItem="pnk-WO-7ZZ" secondAttribute="bottom" constant="6" id="cSd-Gj-YNN"/>
                                             <constraint firstItem="7c7-4m-sBf" firstAttribute="top" secondItem="pP9-yg-QQz" secondAttribute="bottom" constant="6" id="cma-JS-ki7"/>
                                             <constraint firstItem="GBQ-xw-QvF" firstAttribute="top" secondItem="1a2-VY-d0Y" secondAttribute="bottom" constant="6" id="d4y-51-j6w"/>
+                                            <constraint firstItem="fKO-MN-uJR" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" symbolic="YES" id="dgi-SI-bqZ"/>
                                             <constraint firstItem="SWL-Yw-2UF" firstAttribute="top" secondItem="9If-6n-iZZ" secondAttribute="bottom" constant="20" id="k37-aP-IrF"/>
                                             <constraint firstItem="2nn-Bx-XTs" firstAttribute="top" secondItem="SWL-Yw-2UF" secondAttribute="bottom" constant="16" id="kDI-K9-Irb"/>
                                             <constraint firstItem="SWL-Yw-2UF" firstAttribute="leading" secondItem="d50-eZ-jrY" secondAttribute="leading" constant="20" id="kHL-2X-8sv"/>
@@ -5524,10 +5537,10 @@
                     <connections>
                         <outlet property="MtoFView" destination="SWL-Yw-2UF" id="S30-jO-wdU"/>
                         <outlet property="bottomSpace" destination="r8D-K4-OWi" id="Rmx-6x-vO4"/>
-                        <outlet property="endDateTfd" destination="hgl-za-pz5" id="Ppf-gN-AMr"/>
+                        <outlet property="designationTfd" destination="GBQ-xw-QvF" id="TBW-Wh-vZV"/>
                         <outlet property="madicalTextField" destination="7c7-4m-sBf" id="eEE-1x-kbI"/>
                         <outlet property="nameTextField" destination="DgU-g3-99i" id="4KO-5w-7p3"/>
-                        <outlet property="phoneNumberTfd" destination="GBQ-xw-QvF" id="gC9-0T-OSu"/>
+                        <outlet property="phoneNumberTfd" destination="hgl-za-pz5" id="cd8-pS-dff"/>
                         <outlet property="saturdayView" destination="2nn-Bx-XTs" id="NHB-23-mTy"/>
                         <outlet property="streamTextField" destination="H4y-TB-qwq" id="HUj-Iy-HaF"/>
                         <outlet property="sundayView" destination="WFV-8T-gzC" id="mWd-NV-hne"/>
