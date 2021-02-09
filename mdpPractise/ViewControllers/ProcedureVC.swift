@@ -20,7 +20,12 @@ class ProcedureVC: UIViewController {
             searchTextFiels.font = UIFont.init(name: "Inter-Regular", size: 16)
         }
     }
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 600
+        }
+    }
 
     
     override func viewDidLoad() {
@@ -42,11 +47,7 @@ extension ProcedureVC : UITableViewDelegate, UITableViewDataSource {
         cell.aboutProcedure.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 113
-    }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DentalProcedureView.showPopup(parentVC: self)
     }
