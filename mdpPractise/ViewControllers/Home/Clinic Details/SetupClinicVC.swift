@@ -7,6 +7,7 @@
 
 import UIKit
 import TTGSnackbar
+import Photos
 
 class SetupClinicVC: UIViewController {
 
@@ -23,6 +24,9 @@ class SetupClinicVC: UIViewController {
             checkBtn.isSelected = true
         }
     }
+    @IBOutlet weak var frontImgName : UILabel!
+    @IBOutlet weak var interoirImgName : UILabel!
+    @IBOutlet weak var certificateImageName : UILabel!
     @IBOutlet weak var checkText : UILabel!
     @IBOutlet weak var frontFacadeBtn : UIButton!
     @IBOutlet weak var clinicInteriorBtn : UIButton!
@@ -64,6 +68,7 @@ class SetupClinicVC: UIViewController {
     var imagePicker = UIImagePickerController()
        
     var isAlreadyFeel = false
+    var id: Int?
     
 }
 
@@ -74,6 +79,9 @@ extension SetupClinicVC{
         super.viewDidLoad()
         self.title = "Clinic Setup"
         self.navigationController?.navigationBar.isHidden = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = true
         clinicName.delegate = self
         address1TextField.delegate = self
         address2TextField.delegate = self
@@ -221,10 +229,12 @@ extension SetupClinicVC {
     }
     
     @IBAction func didTapOnFrontFacade(_ sender: UIButton){
+        id = 0
         getImageFromGallery()
     }
     
     @IBAction func didTapOnClinicInteriorBtn(_ sender: UIButton){
+        id = 1
         getImageFromGallery()
     }
     
@@ -240,21 +250,38 @@ extension SetupClinicVC {
     }
     
     @IBAction func didTapOnresistrationCertificateBtn(_ sender: UIButton){
+        id = 2
         getImageFromGallery()
     }
 }
 
 //MARK: UIImagePickerControllerDelegate
 extension SetupClinicVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-            self.dismiss(animated: true, completion: { () -> Void in
+        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-            })
-            //imageView.image = image
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
         }
-    
-}
+        
+        guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
+        
+        switch id {
+        case 0:
+            frontImgName.text = fileUrl.lastPathComponent
+            break
+        case 1:
+            interoirImgName.text = fileUrl.lastPathComponent
+            break
+        case 2:
+            certificateImageName.text = fileUrl.lastPathComponent
+            break
+        default:
+            break
+        }
+           picker.dismiss(animated: true)
+    }}
 
 //MARK: Helping Method
 
@@ -264,9 +291,6 @@ extension SetupClinicVC {
         
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
                     print("Button capture")
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = .savedPhotosAlbum
-                    imagePicker.allowsEditing = false
                     present(imagePicker, animated: true, completion: nil)
                 }
 

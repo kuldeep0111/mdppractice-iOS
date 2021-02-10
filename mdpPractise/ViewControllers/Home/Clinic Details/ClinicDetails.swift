@@ -205,8 +205,6 @@ extension ClinicDetails {
     }
     
     @IBAction func didTapOnLocationBtn(_ sender: UIButton){
-        print("Locations")
-        
         UIApplication.shared.open(URL(string:"https://www.google.com/maps/@42.585444,13.007813,6z")!)
             }
     }
