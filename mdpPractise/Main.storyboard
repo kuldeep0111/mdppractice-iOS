@@ -6188,6 +6188,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellTitle" destination="3aN-br-8oR" id="rdb-Ll-pBA"/>
+                                            <outlet property="containerView" destination="WEL-4j-nHj" id="5aX-CP-KEU"/>
                                             <outlet property="subTitle" destination="jhm-Tf-OvB" id="Vhy-56-utr"/>
                                         </connections>
                                     </tableViewCell>

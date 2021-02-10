@@ -9,6 +9,13 @@ import UIKit
 
 class NotificationCell: UITableViewCell {
 
+    @IBOutlet weak var containerView : UIView!{
+        didSet{
+            containerView.layer.cornerRadius = 10
+            containerView.layer.borderColor = UIColor(rgb: 0xBDBDBD).cgColor
+            containerView.layer.borderWidth = 1
+        }
+    }
     @IBOutlet weak var cellTitle : UILabel!
     @IBOutlet weak var subTitle : UILabel!
     
