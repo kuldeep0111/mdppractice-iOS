@@ -31,7 +31,7 @@ class AppointmentDetailsVC: UIViewController {
             tableView.layoutIfNeeded()
             return tableView.contentSize.height
         }
-        tableViewHeight.constant = 10 * 106
+        tableViewHeight.constant = 10 * 111
         collectionView.reloadData()
         self.view.layoutIfNeeded()
     }
