@@ -20,6 +20,7 @@ class AddHolidays: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Create Holiday"
         saveBtn.layer.cornerRadius = 25
         createUIToolBar()
         startDatePicker.datePickerMode = .date

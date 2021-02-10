@@ -57,8 +57,10 @@ class PatientIDView: UIViewController {
         else{
             containerViewHeight.constant = CGFloat(82 + (filterList.count * 57))
         }
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMe))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
 
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -121,6 +123,9 @@ extension PatientIDView : UITableViewDelegate, UITableViewDataSource {
 
 extension PatientIDView {
     
+    @objc func dismissMe(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func didTapOnAddButton(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)

@@ -28,6 +28,7 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
             reasonOfAppointment.delegate = self
         }
     }
+    @IBOutlet weak var bottomSpace : NSLayoutConstraint!
     
     @IBOutlet weak var createBtn : UIButton!{
         didSet{
@@ -50,6 +51,10 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     var timingList = ["10.00 - 10.30","10.30 - 11.00","11.00 - 11.30"]
     
     var genderList = ["Male","Female","Other"]
+}
+
+//MARK: LifeCycle
+extension NewAppointmentVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +94,32 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
         GenderTextField.inputView = genderPicker
        // GenderTextField.delegate = self
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
 }
+
+//MARK: Keyboard Events
+extension NewAppointmentVC {
+    
+    @objc func keyboardWillAppear() {
+        bottomSpace.constant = 280
+    }
+
+    @objc func keyboardWillDisappear() {
+        bottomSpace.constant = 20
+    }
+}
+
+
 
 extension NewAppointmentVC : UITextViewDelegate {
     
