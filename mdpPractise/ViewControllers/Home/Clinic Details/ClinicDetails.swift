@@ -206,13 +206,9 @@ extension ClinicDetails {
     
     @IBAction func didTapOnLocationBtn(_ sender: UIButton){
         print("Locations")
-        if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
-            UIApplication.shared.open(NSURL(string:
-                                                            "comgooglemaps://?saddr=&daddr=26.9124, 75.7873&directionsmode=driving")! as URL)
-            } else {
-                NSLog("Can't use comgooglemaps://");
+        
+        UIApplication.shared.open(URL(string:"https://www.google.com/maps/@42.585444,13.007813,6z")!)
             }
-        }
     }
 
 extension ClinicDetails : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
