@@ -232,7 +232,7 @@ extension SetupClinicVC {
         
         if(validateName() && validateAddress1() && validatePin() && validateCouncilNo()){
             
-            let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") AnalyseVC
+            let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as! AnalyseVC
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             

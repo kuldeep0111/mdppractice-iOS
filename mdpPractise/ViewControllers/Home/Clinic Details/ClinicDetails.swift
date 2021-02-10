@@ -180,6 +180,7 @@ extension ClinicDetails {
         self.ownerName.isUserInteractionEnabled = true
         self.noOfChairs.isUserInteractionEnabled = true
         self.approvalBtn.isHidden = false
+        self.locationButton.isUserInteractionEnabled = true
     }
     
     @objc func didTapOnDelete(){
@@ -202,8 +203,17 @@ extension ClinicDetails {
     @IBAction func didTapOnresistrationCertificateBtn(_ sender: UIButton){
         getImageFromGallery()
     }
-}
-
+    
+    @IBAction func didTapOnLocationBtn(_ sender: UIButton){
+        print("Locations")
+        if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
+            UIApplication.shared.open(NSURL(string:
+                                                            "comgooglemaps://?saddr=&daddr=26.9124, 75.7873&directionsmode=driving")! as URL)
+            } else {
+                NSLog("Can't use comgooglemaps://");
+            }
+        }
+    }
 
 extension ClinicDetails : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
