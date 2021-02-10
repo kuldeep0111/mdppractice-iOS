@@ -44,6 +44,7 @@ class HolidayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Holidays"
+        self.navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addHoliDay))

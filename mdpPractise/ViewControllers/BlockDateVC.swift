@@ -28,6 +28,12 @@ class BlockDateVC: UIViewController {
     var pickerToolbar: UIToolbar?
     
     var clinicList = ["Raghav Clinic","Rajiv Clinic"]
+    
+    var startDatePicker = UIDatePicker()
+    var endDatePicker = UIDatePicker()
+    var startTimePicker = UIDatePicker()
+    var endTimePicker = UIDatePicker()
+
 }
 
 //MARK: LifeCycle
@@ -45,6 +51,27 @@ extension BlockDateVC {
         endDateTFD.delegate = self
         startDateTFD.delegate = self
         endTimeTFD.delegate = self
+        
+        createUIToolBar()
+        startDatePicker.datePickerMode = .date
+        startDatePicker.preferredDatePickerStyle = .wheels
+        startDateTFD?.inputAccessoryView = pickerToolbar
+        startDateTFD?.inputView = startDatePicker
+        
+        endDatePicker.datePickerMode = .date
+        endDatePicker.preferredDatePickerStyle = .wheels
+        endDateTFD?.inputAccessoryView = pickerToolbar
+        endDateTFD?.inputView = endDatePicker
+        
+        startTimePicker.datePickerMode = .time
+        startTimePicker.preferredDatePickerStyle = .wheels
+        startTimeTFD?.inputAccessoryView = pickerToolbar
+        startTimeTFD?.inputView = startTimePicker
+        
+        endTimePicker.datePickerMode = .date
+        endTimePicker.preferredDatePickerStyle = .wheels
+        endTimeTFD?.inputAccessoryView = pickerToolbar
+        endTimeTFD?.inputView = endTimePicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -194,3 +221,54 @@ extension BlockDateVC : UIPickerViewDelegate , UIPickerViewDataSource {
     }
 }
 
+//MARK: UIDatePicker
+extension BlockDateVC {
+    func createUIToolBar() {
+            pickerToolbar = UIToolbar()
+            pickerToolbar?.autoresizingMask = .flexibleHeight
+
+            //customize the toolbar
+            pickerToolbar?.barStyle = .default
+            pickerToolbar?.barTintColor = UIColor.white
+            pickerToolbar?.backgroundColor = UIColor.white
+            pickerToolbar?.isTranslucent = false
+
+            //add buttons
+            let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action:
+                #selector(cancelBtnClicked(_:)))
+        cancelButton.tintColor = UIColor.black
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action:
+                #selector(doneBtnClicked(_:)))
+            doneButton.tintColor = UIColor.black
+
+            //add the items to the toolbar
+            pickerToolbar?.items = [cancelButton, flexSpace, doneButton]
+            
+        }
+        
+        @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
+            startDateTFD?.resignFirstResponder()
+        }
+        
+        @objc func doneBtnClicked(_ button: UIBarButtonItem?) {
+            if(startDateTFD.canResignFirstResponder){
+                startDateTFD?.resignFirstResponder()
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                startDateTFD?.text = formatter.string(from: startDatePicker.date)
+            }else if(endDateTFD.canResignFirstResponder){
+                endDateTFD?.resignFirstResponder()
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                endDateTFD?.text = formatter.string(from: endDatePicker.date)
+            }else if(startTimeTFD.canResignFirstResponder){
+                startTimeTFD?.resignFirstResponder()
+//                let formatter = DateFormatter()
+//                formatter.dateStyle = .medium
+//                endDateTFD?.text = startTimePicker.dateStyle.text
+            }else{
+                
+            }
+        }
+    }

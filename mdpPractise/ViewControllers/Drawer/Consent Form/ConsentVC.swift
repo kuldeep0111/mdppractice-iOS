@@ -17,6 +17,7 @@ class ConsentVC: UIViewController, CAPSPageMenuDelegate {
          navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addForm))
+        self.navigationController?.navigationBar.isHidden = false
         PageMenu()
     }
     

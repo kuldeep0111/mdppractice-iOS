@@ -81,6 +81,7 @@ extension SignUpVC {
         GenderTextfield.text = genderList[0]
         createUIToolBar()
         datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
         DOBTextfield?.inputAccessoryView = pickerToolbar
         DOBTextfield?.inputView = datePicker
 
@@ -140,22 +141,22 @@ extension SignUpVC {
             
             pickerToolbar = UIToolbar()
             pickerToolbar?.autoresizingMask = .flexibleHeight
-            
+
             //customize the toolbar
             pickerToolbar?.barStyle = .default
-            pickerToolbar?.barTintColor = UIColor.black
+            pickerToolbar?.barTintColor = UIColor.white
             pickerToolbar?.backgroundColor = UIColor.white
             pickerToolbar?.isTranslucent = false
-            
+
             //add buttons
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action:
                 #selector(cancelBtnClicked(_:)))
-            cancelButton.tintColor = UIColor.white
+        cancelButton.tintColor = UIColor.black
             let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action:
                 #selector(doneBtnClicked(_:)))
-            doneButton.tintColor = UIColor.white
-            
+            doneButton.tintColor = UIColor.black
+
             //add the items to the toolbar
             pickerToolbar?.items = [cancelButton, flexSpace, doneButton]
             

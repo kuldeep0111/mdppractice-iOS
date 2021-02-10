@@ -14,6 +14,7 @@ class DentalImagesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Photos"
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

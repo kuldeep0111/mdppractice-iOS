@@ -32,6 +32,7 @@ class StaffMemberVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Staff Member"
+        self.navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addNewStaffMember))

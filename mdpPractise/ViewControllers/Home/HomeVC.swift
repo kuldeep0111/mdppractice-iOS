@@ -8,11 +8,12 @@
 import UIKit
 import VACalendar
 import SideMenu
+import DropDown
 
 class HomeVC: UIViewController {
 
     let dateFormatterGet = DateFormatter()
-    
+    var dropDown = DropDown()
     @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
            didSet {
                let appereance = VAMonthHeaderViewAppearance(
@@ -31,6 +32,9 @@ class HomeVC: UIViewController {
                weekDaysView.appearance = appereance
            }
        }
+    
+    @IBOutlet weak var clinicName : UILabel!
+    @IBOutlet weak var clinicLocation : UILabel!
     
     var calendarView: VACalendarView!
     
@@ -114,6 +118,18 @@ extension HomeVC {
     
     @IBAction func didTapOnSelectClinicBtn(_ sender: UIButton){
         
+        dropDown.dataSource = ["Siddhu Clinic", "Madhu Clinic","Bhamashah Clinic"]//4
+        dropDown.backgroundColor = UIColor(rgb: 0x0173b7)
+        dropDown.textColor = UIColor.white
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+            self!.clinicName.text = item
+        }
     }
 
     @IBAction func didTapOnNotificationBtn(_ sender: UIButton){

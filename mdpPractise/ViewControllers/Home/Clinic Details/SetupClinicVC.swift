@@ -72,7 +72,7 @@ extension SetupClinicVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Setup Clinic"
+        self.title = "Clinic Setup"
         self.navigationController?.navigationBar.isHidden = false
         clinicName.delegate = self
         address1TextField.delegate = self
