@@ -59,7 +59,7 @@ extension PatientListVC : UITableViewDelegate, UITableViewDataSource {
         cell.img.image = UIImage.init(named: "female")
         cell.name.text = "Amir khan"
         cell.patientNo.text = "P1678SH"
-        cell.subTitle.text = "Walk-in-Patient"
+        cell.subTitle.text = "Member"
         cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall), for: .touchUpInside)
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell

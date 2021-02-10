@@ -33,7 +33,8 @@ class BlockDateVC: UIViewController {
     var endDatePicker = UIDatePicker()
     var startTimePicker = UIDatePicker()
     var endTimePicker = UIDatePicker()
-
+    
+    var key : Int?
 }
 
 //MARK: LifeCycle
@@ -42,6 +43,7 @@ extension BlockDateVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Block Date"
+        self.navigationController?.navigationBar.isHidden = false
         clinicNamePickerView.dataSource = self
         clinicNamePickerView.delegate = self
         clinicNameTFD.inputAccessoryView = pickerToolbar
@@ -57,21 +59,25 @@ extension BlockDateVC {
         startDatePicker.preferredDatePickerStyle = .wheels
         startDateTFD?.inputAccessoryView = pickerToolbar
         startDateTFD?.inputView = startDatePicker
+        startDateTFD.delegate = self
         
         endDatePicker.datePickerMode = .date
         endDatePicker.preferredDatePickerStyle = .wheels
         endDateTFD?.inputAccessoryView = pickerToolbar
         endDateTFD?.inputView = endDatePicker
+        endDateTFD.delegate = self
         
         startTimePicker.datePickerMode = .time
         startTimePicker.preferredDatePickerStyle = .wheels
         startTimeTFD?.inputAccessoryView = pickerToolbar
         startTimeTFD?.inputView = startTimePicker
+        startTimeTFD.delegate = self
         
-        endTimePicker.datePickerMode = .date
+        endTimePicker.datePickerMode = .time
         endTimePicker.preferredDatePickerStyle = .wheels
         endTimeTFD?.inputAccessoryView = pickerToolbar
         endTimeTFD?.inputView = endTimePicker
+        endTimeTFD.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -249,26 +255,33 @@ extension BlockDateVC {
         
         @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
             startDateTFD?.resignFirstResponder()
+            endDateTFD.resignFirstResponder()
+            startTimeTFD.resignFirstResponder()
+            endTimeTFD.resignFirstResponder()
         }
         
         @objc func doneBtnClicked(_ button: UIBarButtonItem?) {
-            if(startDateTFD.canResignFirstResponder){
+            if(startDateTFD.isFirstResponder){
                 startDateTFD?.resignFirstResponder()
                 let formatter = DateFormatter()
-                formatter.dateStyle = .medium
+                formatter.dateStyle = .short
                 startDateTFD?.text = formatter.string(from: startDatePicker.date)
-            }else if(endDateTFD.canResignFirstResponder){
+            }else if(endDateTFD.isFirstResponder){
                 endDateTFD?.resignFirstResponder()
                 let formatter = DateFormatter()
-                formatter.dateStyle = .medium
+                formatter.dateStyle = .short
                 endDateTFD?.text = formatter.string(from: endDatePicker.date)
-            }else if(startTimeTFD.canResignFirstResponder){
+            }else if(startTimeTFD.isFirstResponder){
                 startTimeTFD?.resignFirstResponder()
-//                let formatter = DateFormatter()
-//                formatter.dateStyle = .medium
-//                endDateTFD?.text = startTimePicker.dateStyle.text
-            }else{
-                
+                let formatter = DateFormatter()
+                formatter.timeStyle = .short
+                startTimeTFD?.text = formatter.string(from: startTimePicker.date)
+            }else if(endTimeTFD.isFirstResponder){
+                endTimeTFD.resignFirstResponder()
+                let formatter = DateFormatter()
+                formatter.timeStyle = .short
+                endTimeTFD?.text = formatter.string(from: endTimePicker.date)
+
             }
         }
     }
