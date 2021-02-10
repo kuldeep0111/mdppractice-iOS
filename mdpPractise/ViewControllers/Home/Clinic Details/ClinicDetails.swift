@@ -32,7 +32,7 @@ class ClinicDetails: UIViewController {
             checkButton.isSelected  = true
         }
     }
-    
+    @IBOutlet weak var certificateImgName: UILabel!
     @IBOutlet weak var checkTitle : UILabel!
     
     @IBOutlet weak var bottomSpace : NSLayoutConstraint!
@@ -209,16 +209,20 @@ extension ClinicDetails {
             }
     }
 
+//MARK: UIImagePickerControllerDelegate
 extension ClinicDetails : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-            self.dismiss(animated: true, completion: { () -> Void in
+            
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-            })
-            //imageView.image = image
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
         }
-    
-}
+        
+        guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
+            certificateImgName.text = fileUrl.lastPathComponent
+           picker.dismiss(animated: true)
+    }}
 
 //MARK: Helping Method
 

@@ -1614,8 +1614,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVF-kl-6ZI" customClass="MDPView" customModule="mdpPractise" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="844.33333333333337" width="374" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ASDE!@#SD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLe-L5-NSo">
-                                                        <rect key="frame" x="8" y="15.333333333333256" width="92.666666666666671" height="19.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLe-L5-NSo">
+                                                        <rect key="frame" x="8" y="25" width="334" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1630,7 +1630,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xea-f4-cWw">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <connections>
-                                                            <action selector="didTapOnresistrationCertificateBtn:" destination="tB8-15-UbN" eventType="touchUpInside" id="K1N-x2-oy9"/>
                                                             <action selector="didTapOnresistrationCertificateBtn:" destination="NSN-Kz-5Ok" eventType="touchUpInside" id="N1p-CC-QQp"/>
                                                         </connections>
                                                     </button>
@@ -1642,6 +1641,7 @@
                                                     <constraint firstItem="Xea-f4-cWw" firstAttribute="leading" secondItem="LVF-kl-6ZI" secondAttribute="leading" id="9hW-OD-QOb"/>
                                                     <constraint firstAttribute="trailing" secondItem="Xea-f4-cWw" secondAttribute="trailing" id="Qs5-NG-z2e"/>
                                                     <constraint firstItem="Xea-f4-cWw" firstAttribute="top" secondItem="LVF-kl-6ZI" secondAttribute="top" id="amE-Is-CTl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MLe-L5-NSo" secondAttribute="trailing" constant="32" id="be8-Z2-a51"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kgj-6n-c6z" secondAttribute="trailing" constant="8" id="f4p-as-Z6Z"/>
                                                     <constraint firstAttribute="bottom" secondItem="Xea-f4-cWw" secondAttribute="bottom" id="kKv-JP-W8K"/>
                                                     <constraint firstItem="MLe-L5-NSo" firstAttribute="centerY" secondItem="LVF-kl-6ZI" secondAttribute="centerY" id="vk5-5J-75U"/>
@@ -1880,6 +1880,7 @@
                         <outlet property="address2TextField" destination="DkP-Nu-JYt" id="oDj-KC-BCV"/>
                         <outlet property="approvalBtn" destination="JbU-7V-mjV" id="8WV-sn-geg"/>
                         <outlet property="bottomSpace" destination="aS8-Ha-CrC" id="gid-Gt-4Dq"/>
+                        <outlet property="certificateImgName" destination="MLe-L5-NSo" id="u8P-bg-uBq"/>
                         <outlet property="checkButton" destination="6r2-9C-ulw" id="bNy-FJ-jzt"/>
                         <outlet property="checkTitle" destination="v4C-nC-QTo" id="uqo-mk-hlI"/>
                         <outlet property="cityTextField" destination="uV3-Qt-Vr1" id="LZs-02-1GN"/>
@@ -3215,7 +3216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSf-vH-ezb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OST-vo-Vnl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="692.33333333333337"/>
@@ -3227,7 +3228,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b8g-Af-Pa4">
-                                                <rect key="frame" x="0.0" y="61.666666666666686" width="414" height="258"/>
+                                                <rect key="frame" x="0.0" y="61.666666666666657" width="414" height="258"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="258" id="Aje-Am-MpY"/>
@@ -4074,12 +4075,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="b3P-al-J5F" kind="relationship" relationship="rootViewController" id="Q7d-0l-IcM"/>
+                        <segue destination="Zep-LZ-6O2" kind="relationship" relationship="rootViewController" id="ZOw-Wz-BCB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJz-jh-9TZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734.7826086956525" y="1173.913043478261"/>
+            <point key="canvasLocation" x="2958" y="1174"/>
         </scene>
         <!--Treatments-->
         <scene sceneID="Wa1-ed-YUK">
@@ -4098,7 +4099,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtz-Mm-enB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734.7826086956525" y="1849.7282608695652"/>
+            <point key="canvasLocation" x="2958" y="1850"/>
         </scene>
         <!--Treatments-->
         <scene sceneID="Y6M-ee-Osi">
@@ -4840,7 +4841,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6h-jj-S50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734.7826086956525" y="2536.9565217391305"/>
+            <point key="canvasLocation" x="2958" y="2537"/>
         </scene>
         <!--Dental Chart-->
         <scene sceneID="99E-ui-1Q4">
@@ -4859,7 +4860,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqa-dm-PUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734.7826086956525" y="3227.4456521739135"/>
+            <point key="canvasLocation" x="2958" y="3227"/>
         </scene>
         <!--Clinic-->
         <scene sceneID="rOb-L1-VYk">
@@ -4878,7 +4879,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3u-n7-x0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2731.8840579710145" y="3941.576086956522"/>
+            <point key="canvasLocation" x="2958" y="3942"/>
         </scene>
         <!--Patient PlanVC-->
         <scene sceneID="3YL-ym-KBm">
@@ -6577,7 +6578,7 @@
         <image name="menuLine" width="25" height="20"/>
         <image name="notification" width="22" height="22"/>
         <image name="otpMobile" width="120" height="120"/>
-        <image name="payment" width="29.333333969116211" height="24"/>
+        <image name="payment" width="32" height="32"/>
         <image name="phone" width="120" height="120"/>
         <image name="phoneIcon" width="50" height="50"/>
         <image name="search" width="20" height="20"/>

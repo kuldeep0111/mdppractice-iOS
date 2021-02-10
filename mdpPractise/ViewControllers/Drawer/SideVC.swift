@@ -27,20 +27,19 @@ class SideVC: UIViewController {
     
     var ItemList : [(img: String, title : String)] = [
         ("profile_icon","Profile"),
-        ("home1","Photos"),
+        ("pics","Photos"),
         ("consent","Consent Form"),
         ("staff","Staff Member"),
         ("holiday","Holiday"),
         ("staff","MDP Members"),
         //("male1","Walk-in-Patients"),
         //("male1","Patient Plan"),
-        ("home1","Treaments"),
         ("payment","Payments"),
         ("tutorial","Tutorials"),
         ("feedback","Feedback"),
         ("about","About Us"),
         ("phonecall","Support"),
-        ("logout","Sign Out"),
+        ("SignOut","Sign Out"),
         ("logout","Sign Out")
     ]
     
@@ -97,10 +96,7 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             vc.isMDPMember = true
             self.navigationController!.pushViewController(vc, animated: true)
-//        case 7:
-//            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
-//            self.navigationController!.pushViewController(vc, animated: true)
-        case 7:
+        case 6:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
             self.navigationController!.pushViewController(vc, animated: true)
 

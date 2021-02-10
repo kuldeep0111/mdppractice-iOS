@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "payment.png",
+      "filename" : "pics.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "payment@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
