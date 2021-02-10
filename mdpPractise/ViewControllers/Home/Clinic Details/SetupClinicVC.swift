@@ -246,7 +246,7 @@ extension SetupClinicVC {
     }
 }
 
-
+//MARK: UIImagePickerControllerDelegate
 extension SetupClinicVC : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){

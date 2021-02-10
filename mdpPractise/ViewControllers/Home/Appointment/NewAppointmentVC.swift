@@ -122,6 +122,18 @@ extension NewAppointmentVC {
     @IBAction func didTapOnAddPatientButton(_ sender: UIButton){
         
     }
+    
+    @IBAction func didTapOnAddPatientIDButton(_ sender: UIButton){
+        PatientIDView.showPopup(parentVC: self)
+    }
+
+}
+
+extension NewAppointmentVC : PatientIDViewDelegate {
+    func pickPatientID(id: String) {
+        patientID.textColor = UIColor(rgb: 0x0173b7)
+        patientID.text = id
+    }
 }
 
 //MARK: Validate

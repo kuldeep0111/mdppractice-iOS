@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0e7-F3-MOL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="exo-oz-TbX">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -3663,7 +3663,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="955.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeI-Em-U0d">
-                                                <rect key="frame" x="30" y="30" width="70" height="18.666666666666671"/>
+                                                <rect key="frame" x="29.999999999999993" y="30" width="74.333333333333314" height="18.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3678,7 +3678,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pid-D4-ijE">
-                                                <rect key="frame" x="29.999999999999996" y="127.66666666666667" width="42.666666666666657" height="18.666666666666671"/>
+                                                <rect key="frame" x="29.999999999999996" y="127.66666666666667" width="44.666666666666657" height="18.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3693,7 +3693,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWJ-t3-VYe">
-                                                <rect key="frame" x="30.000000000000004" y="225.33333333333334" width="53.333333333333343" height="19.666666666666657"/>
+                                                <rect key="frame" x="29.999999999999996" y="225.33333333333334" width="56.666666666666657" height="19.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3708,7 +3708,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQr-cD-gZX">
-                                                <rect key="frame" x="30" y="324" width="28.333333333333329" height="18.666666666666686"/>
+                                                <rect key="frame" x="30" y="324" width="30.666666666666671" height="18.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3723,7 +3723,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clinic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phk-Zs-8GF">
-                                                <rect key="frame" x="30" y="421.66666666666669" width="40" height="18.666666666666686"/>
+                                                <rect key="frame" x="29.999999999999996" y="421.66666666666669" width="42.666666666666657" height="18.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3738,7 +3738,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gW3-xL-7zf">
-                                                <rect key="frame" x="29.999999999999996" y="519.33333333333337" width="48.666666666666657" height="19.666666666666629"/>
+                                                <rect key="frame" x="30" y="519.33333333333337" width="52" height="19.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3762,13 +3762,13 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjK-Da-rAd">
-                                                <rect key="frame" x="30.000000000000004" y="618" width="48.333333333333343" height="19.666666666666629"/>
+                                                <rect key="frame" x="30" y="618" width="52" height="19.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason for Appointment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlR-Fp-BTt">
-                                                <rect key="frame" x="30" y="716.66666666666663" width="174.66666666666666" height="19.666666666666629"/>
+                                                <rect key="frame" x="30" y="716.66666666666663" width="185.66666666666666" height="19.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3835,6 +3835,15 @@
                                                     <constraint firstAttribute="height" constant="10" id="GQj-3Z-T8R"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMa-Eo-bHv">
+                                                <rect key="frame" x="20" y="54.666666666666657" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="7Kr-Py-pO9"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="didTapOnAddPatientIDButton:" destination="exo-oz-TbX" eventType="touchUpInside" id="hmv-yl-HSu"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -3853,9 +3862,11 @@
                                             <constraint firstItem="jd7-HD-4Rx" firstAttribute="leading" secondItem="jnf-yb-C2a" secondAttribute="leading" constant="22" id="8O1-YF-zsw"/>
                                             <constraint firstItem="cut-yL-cJn" firstAttribute="leading" secondItem="jnf-yb-C2a" secondAttribute="leading" constant="20" symbolic="YES" id="8Q5-zl-idZ"/>
                                             <constraint firstAttribute="trailing" secondItem="d9r-oU-UKn" secondAttribute="trailing" constant="20" symbolic="YES" id="9XJ-2V-oZS"/>
+                                            <constraint firstItem="QMa-Eo-bHv" firstAttribute="top" secondItem="QeI-Em-U0d" secondAttribute="bottom" constant="6" id="Abh-e7-DsT"/>
                                             <constraint firstItem="Sfn-cB-xCK" firstAttribute="top" secondItem="UjK-Da-rAd" secondAttribute="bottom" constant="6" id="BMp-7f-laQ"/>
                                             <constraint firstItem="lrC-mr-hJW" firstAttribute="centerX" secondItem="pQa-AD-9TP" secondAttribute="centerX" id="CPL-f1-fQF"/>
                                             <constraint firstItem="WTu-QI-6FX" firstAttribute="top" secondItem="FlR-Fp-BTt" secondAttribute="bottom" constant="6" id="CX5-c2-faS"/>
+                                            <constraint firstAttribute="trailing" secondItem="QMa-Eo-bHv" secondAttribute="trailing" constant="20" symbolic="YES" id="EI2-Wc-Fs7"/>
                                             <constraint firstItem="jd7-HD-4Rx" firstAttribute="top" secondItem="WTu-QI-6FX" secondAttribute="bottom" constant="2" id="EPL-N4-0Bq"/>
                                             <constraint firstItem="cut-yL-cJn" firstAttribute="top" secondItem="phk-Zs-8GF" secondAttribute="bottom" constant="6" id="Ebj-Kh-hqA"/>
                                             <constraint firstItem="CQr-cD-gZX" firstAttribute="top" secondItem="d9r-oU-UKn" secondAttribute="bottom" constant="23" id="FIA-4Y-UuZ"/>
@@ -3878,6 +3889,7 @@
                                             <constraint firstItem="d9r-oU-UKn" firstAttribute="top" secondItem="AWJ-t3-VYe" secondAttribute="bottom" constant="6" id="Z8q-Pc-gNn"/>
                                             <constraint firstItem="Uzh-la-ziZ" firstAttribute="centerY" secondItem="tg2-0n-5t5" secondAttribute="centerY" id="cDk-Go-5Fe"/>
                                             <constraint firstItem="pid-D4-ijE" firstAttribute="top" secondItem="tg2-0n-5t5" secondAttribute="bottom" constant="23" id="eRP-Az-A4Y"/>
+                                            <constraint firstItem="QMa-Eo-bHv" firstAttribute="leading" secondItem="jnf-yb-C2a" secondAttribute="leading" constant="20" id="gEB-3a-vUc"/>
                                             <constraint firstItem="QeI-Em-U0d" firstAttribute="leading" secondItem="jnf-yb-C2a" secondAttribute="leading" constant="30" id="gWD-A2-Wsv"/>
                                             <constraint firstItem="MJg-f5-Fcn" firstAttribute="leading" secondItem="jnf-yb-C2a" secondAttribute="leading" constant="20" symbolic="YES" id="h2u-2R-4Ah"/>
                                             <constraint firstItem="phk-Zs-8GF" firstAttribute="top" secondItem="8f3-Pb-0dV" secondAttribute="bottom" constant="23" id="i4P-qY-10N"/>
@@ -3934,7 +3946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I08-aR-RqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="5901"/>
+            <point key="canvasLocation" x="1724.6376811594205" y="5900.54347826087"/>
         </scene>
         <!--Tabbar ControllerVC-->
         <scene sceneID="6xd-Lr-VaD">
