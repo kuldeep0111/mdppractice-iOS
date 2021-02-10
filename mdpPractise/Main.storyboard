@@ -3148,19 +3148,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSf-vH-ezb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OST-vo-Vnl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="692.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Slots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkx-JT-LHo">
-                                                <rect key="frame" x="155" y="20" width="104" height="25.666666666666671"/>
+                                                <rect key="frame" x="151" y="20" width="112.33333333333331" height="25.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="22"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b8g-Af-Pa4">
-                                                <rect key="frame" x="0.0" y="61.666666666666657" width="414" height="258"/>
+                                                <rect key="frame" x="0.0" y="61.666666666666686" width="414" height="258"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="258" id="Aje-Am-MpY"/>
@@ -3183,7 +3183,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="143" height="57"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9.00 - 10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDA-Zw-JHv">
-                                                                            <rect key="frame" x="31" y="19.333333333333336" width="81" height="18.333333333333336"/>
+                                                                            <rect key="frame" x="28" y="19.333333333333336" width="87" height="18.333333333333336"/>
                                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="15"/>
                                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3233,19 +3233,19 @@
                                                                     <rect key="frame" x="20" y="11" width="374" height="71"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label fd " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-K0-i5e">
-                                                                            <rect key="frame" x="15.999999999999996" y="5" width="54.666666666666657" height="17"/>
+                                                                            <rect key="frame" x="15.999999999999996" y="5" width="57.666666666666657" height="17"/>
                                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWf-EH-J5r">
-                                                                            <rect key="frame" x="16.000000000000004" y="27" width="34.333333333333343" height="17"/>
+                                                                            <rect key="frame" x="16" y="27" width="36" height="17"/>
                                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-tG-NhM">
-                                                                            <rect key="frame" x="16.000000000000004" y="49" width="34.333333333333343" height="17"/>
+                                                                            <rect key="frame" x="16" y="49" width="36" height="17"/>
                                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3325,7 +3325,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appointment for : 01/02/2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipt-0E-ga5">
-                                                <rect key="frame" x="101.33333333333333" y="359.66666666666669" width="211.33333333333337" height="18.666666666666686"/>
+                                                <rect key="frame" x="92.666666666666671" y="359.66666666666669" width="228.66666666666663" height="18.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3998,7 +3998,7 @@
         <scene sceneID="eRT-0v-QZT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uit-0O-INy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Appointments" image="appointment" id="qUm-36-t8L"/>
+                    <tabBarItem key="tabBarItem" title="Appointments" image="appointment" selectedImage="selectedAppointment" id="qUm-36-t8L"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jpb-lH-WLS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4006,7 +4006,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Zep-LZ-6O2" kind="relationship" relationship="rootViewController" id="Scd-Gq-ECx"/>
+                        <segue destination="b3P-al-J5F" kind="relationship" relationship="rootViewController" id="Q7d-0l-IcM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJz-jh-9TZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4017,7 +4017,7 @@
         <scene sceneID="Wa1-ed-YUK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vDL-m5-yVP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Treatments" image="treatments" id="Ecr-Bf-aaP"/>
+                    <tabBarItem key="tabBarItem" title="Treatments" image="treatments" selectedImage="selectedTreat" id="Ecr-Bf-aaP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vyW-8p-O12">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4778,7 +4778,7 @@
         <scene sceneID="99E-ui-1Q4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ejm-UA-8Xf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dental Chart" image="dentalChart" id="u47-Kb-8b2"/>
+                    <tabBarItem key="tabBarItem" title="Dental Chart" image="dentalChart" selectedImage="selectedDental" id="u47-Kb-8b2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T0r-lm-D4X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4793,11 +4793,11 @@
             </objects>
             <point key="canvasLocation" x="2734.7826086956525" y="3227.4456521739135"/>
         </scene>
-        <!--Your Clinic-->
+        <!--Clinic-->
         <scene sceneID="rOb-L1-VYk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JF8-da-ghu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Your Clinic" image="clinic" id="qTc-EW-oJq"/>
+                    <tabBarItem key="tabBarItem" title="Clinic" image="hospital" selectedImage="Shospital" id="qTc-EW-oJq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HeR-Dq-WL4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -6489,12 +6489,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Shospital" width="21.333333969116211" height="21.333333969116211"/>
         <image name="addAppointment" width="22" height="22"/>
         <image name="ambrella" width="50" height="50"/>
         <image name="appointment" width="25" height="23.5"/>
         <image name="arrowdown" width="14" height="8"/>
         <image name="cal" width="21" height="21"/>
-        <image name="clinic" width="18" height="24"/>
         <image name="crossRed" width="50" height="50"/>
         <image name="dental" width="301" height="111"/>
         <image name="dentalChart" width="22" height="22"/>
@@ -6503,6 +6503,7 @@
         <image name="female" width="75" height="75"/>
         <image name="home" width="24" height="24"/>
         <image name="homeUnSelected" width="24" height="24"/>
+        <image name="hospital" width="21.333333969116211" height="21.333333969116211"/>
         <image name="male" width="57" height="57"/>
         <image name="menuLine" width="25" height="20"/>
         <image name="notification" width="22" height="22"/>
@@ -6512,6 +6513,9 @@
         <image name="phoneIcon" width="50" height="50"/>
         <image name="search" width="20" height="20"/>
         <image name="selectCheck" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="selectedAppointment" width="24.666666030883789" height="23.333333969116211"/>
+        <image name="selectedDental" width="21.666666030883789" height="21.666666030883789"/>
+        <image name="selectedTreat" width="24" height="24"/>
         <image name="thumb" width="118" height="118"/>
         <image name="tik" width="33.333332061767578" height="33.333332061767578"/>
         <image name="timeIcon" width="50" height="50"/>
