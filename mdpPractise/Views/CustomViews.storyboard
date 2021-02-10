@@ -301,7 +301,7 @@
                                             <constraint firstAttribute="width" constant="150" id="SfE-kh-wkr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <state key="normal" title="Confirm">
+                                        <state key="normal" title="OK">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -331,8 +331,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="boxTitle" destination="Z78-Z0-Jrz" id="jSG-U2-p0T"/>
                         <outlet property="confirmBtn" destination="E66-vd-WW8" id="jsz-xo-KdX"/>
                         <outlet property="containerView" destination="f4Z-gH-6hd" id="9vL-cK-qTP"/>
+                        <outlet property="subTitle" destination="rAG-ly-4jf" id="z71-9c-h5e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pw-mA-E34" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -841,7 +843,7 @@
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zj-Hc-WhI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="5" height="35"/>
-                                                                    <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="5" id="i7S-d8-bj1"/>
                                                                     </constraints>

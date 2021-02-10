@@ -11,8 +11,7 @@ class NotificationCell: UITableViewCell {
 
     @IBOutlet weak var containerView : UIView!{
         didSet{
-            containerView.layer.cornerRadius = 10
-            containerView.layer.borderColor = UIColor(rgb: 0xBDBDBD).cgColor
+            containerView.layer.borderColor = UIColor(rgb: 0xE8E8E8).cgColor
             containerView.layer.borderWidth = 1
         }
     }

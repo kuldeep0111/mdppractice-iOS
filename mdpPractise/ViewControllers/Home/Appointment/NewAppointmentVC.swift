@@ -108,14 +108,18 @@ extension NewAppointmentVC : UITextViewDelegate {
     }
 }
 
+extension NewAppointmentVC : SorryViewDelegate {
+    func didTapOnOK() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
 //MARK: Actions
 extension NewAppointmentVC {
     
     @IBAction func didTapOnCreate(_ sender: UIButton){
         if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming()){
-            print("Validate")
-        }else{
-            
+            SorryView.showPopup(parentVC: self, subText: "Appointment")
         }
     }
     
