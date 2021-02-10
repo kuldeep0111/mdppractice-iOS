@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import DropDown
+
 class AppointmentDetailsVC: UIViewController {
     
     //@IBOutlet weak var containerViewHeight: NSLayoutConstraint!
@@ -13,17 +15,16 @@ class AppointmentDetailsVC: UIViewController {
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var collectionViewHeight : NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight : NSLayoutConstraint!
+    
+    var dropDown = DropDown()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainCollectionViewLayout()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addNewAppointmet))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-        //setMainCollectionViewLayout()
         let height = collectionView.collectionViewLayout.collectionViewContentSize.height
         collectionViewHeight.constant = height
         var tableviewHeight: CGFloat {
@@ -64,6 +65,37 @@ extension AppointmentDetailsVC {
         let vc = story.instantiateViewController(withIdentifier: "NewAppointmentVC") as! NewAppointmentVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func didTapOnMenuButton(_ sender: UIButton){
+        
+        dropDown.dataSource = ["Check In", "Reschedule","Cancel Appt","Patient Log"]//4
+        dropDown.backgroundColor = .white
+        dropDown.textColor = UIColor(rgb: 0x666666)
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+//            switch index {
+//            case 0:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
+//                self?.navigationController!.pushViewController(vc, animated: true)
+//                break
+//            case 1:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//               break
+//
+//            default:
+//                break
+//            }
+            
+        }
+        
+    }
+    
 }
 
 extension AppointmentDetailsVC : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -91,6 +123,7 @@ extension AppointmentDetailsVC : UICollectionViewDelegate, UICollectionViewDataS
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+   
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TimeSlotCell else {
             return
@@ -117,7 +150,7 @@ extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
         cell.appointmentTime.text = "Appointment time: 07:50 PM"
         cell.containerView.layer.borderWidth = 2
         cell.containerView.layer.borderColor = UIColor(rgb: 0xE8E8E8).cgColor
-        
+        cell.menuButton.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
 }
