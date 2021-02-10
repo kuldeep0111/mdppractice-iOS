@@ -74,6 +74,7 @@
 		2C6F208025CD130300CD0E8E /* DependentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F207F25CD130300CD0E8E /* DependentsVC.swift */; };
 		2C8BE24E25D3B4AE005CBF01 /* PatientIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BE24D25D3B4AE005CBF01 /* PatientIDView.swift */; };
 		2C8BE25325D3B4CC005CBF01 /* PatientIDCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BE25225D3B4CC005CBF01 /* PatientIDCell.swift */; };
+		2C8BE26225D3F5D5005CBF01 /* AnalyseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BE26125D3F5D5005CBF01 /* AnalyseVC.swift */; };
 		2CB239DC25C92E7600D5EF23 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB239DB25C92E7600D5EF23 /* UIView + Extension.swift */; };
 		2CB239F925C9588100D5EF23 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB239F825C9588100D5EF23 /* Color + Extension.swift */; };
 		2CB23AE525C9752300D5EF23 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23ADC25C9752200D5EF23 /* Inter-Medium.ttf */; };
@@ -190,6 +191,7 @@
 		2C6F207F25CD130300CD0E8E /* DependentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependentsVC.swift; sourceTree = "<group>"; };
 		2C8BE24D25D3B4AE005CBF01 /* PatientIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientIDView.swift; sourceTree = "<group>"; };
 		2C8BE25225D3B4CC005CBF01 /* PatientIDCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientIDCell.swift; sourceTree = "<group>"; };
+		2C8BE26125D3F5D5005CBF01 /* AnalyseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseVC.swift; sourceTree = "<group>"; };
 		2CB239DB25C92E7600D5EF23 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		2CB239F825C9588100D5EF23 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		2CB23ADC25C9752200D5EF23 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				1822288525C849B60032BE30 /* OTPVerifyVC.swift */,
 				1822288725C849B60032BE30 /* SignUpVC.swift */,
 				1822288925C849B60032BE30 /* ThanksPageVC.swift */,
+				2C8BE26125D3F5D5005CBF01 /* AnalyseVC.swift */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */,
 				2CC7A9E925D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
 				2C6F207625CD12D600CD0E8E /* UpcomingAppoinmentsVC.swift in Sources */,
+				2C8BE26225D3F5D5005CBF01 /* AnalyseVC.swift in Sources */,
 				1822287025C849780032BE30 /* TextField.swift in Sources */,
 				2C3E672325CA833A000DDA32 /* ProcedureVC.swift in Sources */,
 				2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */,

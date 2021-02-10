@@ -232,10 +232,8 @@ extension SetupClinicVC {
         
         if(validateName() && validateAddress1() && validatePin() && validateCouncilNo()){
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-            mainTabBarController.modalPresentationStyle = .fullScreen
-            self.present(mainTabBarController, animated: true, completion: nil)
+            let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") AnalyseVC
+            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             
         }

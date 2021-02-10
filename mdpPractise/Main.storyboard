@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-384" y="95"/>
+            <point key="canvasLocation" x="-310" y="-990"/>
         </scene>
         <!--SideVC-->
         <scene sceneID="E5j-yz-m5f">
@@ -720,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSA-8Y-Vkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307.5" y="94.014084507042256"/>
+            <point key="canvasLocation" x="349" y="-990"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="xdA-SH-fo1">
@@ -948,7 +948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uio-K7-ry7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965.21739130434787" y="93.750000000000014"/>
+            <point key="canvasLocation" x="997" y="-990"/>
         </scene>
         <!--Thanks PageVC-->
         <scene sceneID="Nr2-E7-RbL">
@@ -1035,7 +1035,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbo-pF-5Pt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632" y="94"/>
+            <point key="canvasLocation" x="1664" y="-990"/>
         </scene>
         <!--Setup ClinicVC-->
         <scene sceneID="Nxc-Az-ayA">
@@ -1472,7 +1472,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEP-DD-O5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2292.753623188406" y="94.565217391304358"/>
+            <point key="canvasLocation" x="-310" y="-57"/>
         </scene>
         <!--Clinic Details-->
         <scene sceneID="A75-xy-LWn">
@@ -1886,7 +1886,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1D-7C-xAE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2959" y="135"/>
+            <point key="canvasLocation" x="348" y="24"/>
+        </scene>
+        <!--AnalyseVC-->
+        <scene sceneID="ABz-Hz-FZd">
+            <objects>
+                <viewController storyboardIdentifier="AnalyseVC" id="8Y2-Ua-YLr" customClass="AnalyseVC" customModule="mdpPractise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n0k-vs-Hya">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fa-PO-Ax2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will analyse the details &amp; you will able to login within 48hrs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8q-hq-d8k">
+                                        <rect key="frame" x="20" y="228" width="374" height="109"/>
+                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="30"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb" translatesAutoresizingMaskIntoConstraints="NO" id="Skl-ze-klm">
+                                        <rect key="frame" x="148" y="80" width="118" height="118"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGU-36-ySC">
+                                        <rect key="frame" x="148" y="80" width="118" height="118"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="118" id="MI9-Ru-DMT"/>
+                                            <constraint firstAttribute="height" constant="118" id="VMt-TI-LJd"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="didTapOnWatch:" destination="8Y2-Ua-YLr" eventType="touchUpInside" id="3Hl-sO-h7v"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="L8q-hq-d8k" firstAttribute="leading" secondItem="4Fa-PO-Ax2" secondAttribute="leading" constant="20" id="EAh-gr-l09"/>
+                                    <constraint firstItem="L8q-hq-d8k" firstAttribute="centerX" secondItem="4Fa-PO-Ax2" secondAttribute="centerX" id="O8p-KY-dqu"/>
+                                    <constraint firstItem="Skl-ze-klm" firstAttribute="centerX" secondItem="4Fa-PO-Ax2" secondAttribute="centerX" id="Q58-bR-kiU"/>
+                                    <constraint firstAttribute="trailing" secondItem="L8q-hq-d8k" secondAttribute="trailing" constant="20" id="QgM-gX-xet"/>
+                                    <constraint firstItem="OGU-36-ySC" firstAttribute="centerX" secondItem="4Fa-PO-Ax2" secondAttribute="centerX" id="WzS-mA-IpQ"/>
+                                    <constraint firstItem="Skl-ze-klm" firstAttribute="top" secondItem="4Fa-PO-Ax2" secondAttribute="top" constant="80" id="Z4X-Zs-3W0"/>
+                                    <constraint firstItem="OGU-36-ySC" firstAttribute="top" secondItem="4Fa-PO-Ax2" secondAttribute="top" constant="80" id="c90-fK-83l"/>
+                                    <constraint firstItem="L8q-hq-d8k" firstAttribute="top" secondItem="Skl-ze-klm" secondAttribute="bottom" constant="30" id="dpt-sP-a1I"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ULq-b4-1hq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Fa-PO-Ax2" firstAttribute="top" secondItem="ULq-b4-1hq" secondAttribute="top" id="NZs-Rv-ToY"/>
+                            <constraint firstItem="ULq-b4-1hq" firstAttribute="trailing" secondItem="4Fa-PO-Ax2" secondAttribute="trailing" id="hvi-jw-b5C"/>
+                            <constraint firstItem="4Fa-PO-Ax2" firstAttribute="leading" secondItem="n0k-vs-Hya" secondAttribute="leading" id="sQY-uF-5YU"/>
+                            <constraint firstItem="ULq-b4-1hq" firstAttribute="bottom" secondItem="4Fa-PO-Ax2" secondAttribute="bottom" id="vsn-8g-f4i"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HY-SU-wZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.65217391304361" y="-170.38043478260872"/>
         </scene>
         <!--Patient List-->
         <scene sceneID="Vc7-r7-WOf">
@@ -3993,7 +4051,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xah-Mw-2oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1134" y="95"/>
+            <point key="canvasLocation" x="-962" y="-990"/>
         </scene>
         <!--Appointments-->
         <scene sceneID="eRT-0v-QZT">
