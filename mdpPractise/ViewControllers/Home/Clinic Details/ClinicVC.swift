@@ -66,9 +66,9 @@ extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClinicCell", for: indexPath) as! ClinicCell
         cell.img.image = UIImage.init(named: "dentaldemo")
-        cell.name.text = "Amir khan"
+        cell.name.text = "Madhu Clinic"
         cell.patientNo.text = "P1678SH"
-        cell.subTitle.text = "Walk-in-Patient"
+        cell.subTitle.text = "Shayam Nagar"
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }

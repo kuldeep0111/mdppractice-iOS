@@ -64,6 +64,7 @@ class HomeVC: UIViewController {
         calendarView.monthViewAppearanceDelegate = self
         calendarView.calendarDelegate = self
         calendarView.scrollDirection = .horizontal
+        calendarView.setSupplementaries([(Date(), [VADaySupplementary.bottomDots([.red])])])
         view.addSubview(calendarView)
     }
     

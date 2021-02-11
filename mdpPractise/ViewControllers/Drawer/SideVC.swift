@@ -30,10 +30,10 @@ class SideVC: UIViewController {
         ("pics","Photos"),
         ("consent","Consent Form"),
         ("staff","Staff Member"),
-        ("holiday","Holiday"),
+        ("holiday","Holidays"),
         ("staff","MDP Members"),
         //("male1","Walk-in-Patients"),
-        //("male1","Patient Plan"),
+        ("male1","Patient Plan"),
         ("payment","Payments"),
         ("tutorial","Tutorials"),
         ("feedback","Feedback"),
@@ -96,7 +96,13 @@ extension SideVC : UITableViewDelegate, UITableViewDataSource {
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientListVC") as! PatientListVC
             vc.isMDPMember = true
             self.navigationController!.pushViewController(vc, animated: true)
+            
         case 6:
+            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PatientPlanVC") as! PatientPlanVC
+            self.navigationController!.pushViewController(vc, animated: true)
+
+            
+        case 7:
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
             self.navigationController!.pushViewController(vc, animated: true)
 

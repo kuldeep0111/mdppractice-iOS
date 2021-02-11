@@ -24,12 +24,12 @@ class ConsentVC: UIViewController, CAPSPageMenuDelegate {
     func PageMenu() {
             
             let profile = self.storyboard?.instantiateViewController(withIdentifier: "ConsentPendingVC") as! ConsentPendingVC
-            profile.title = "Pending"
+        profile.title = "Pending".capitalized
             
             
             
             let reviws = self.storyboard?.instantiateViewController(withIdentifier: "ConsentApprovedVC") as! ConsentApprovedVC
-            reviws.title = "Approved"
+        reviws.title = "Approved".capitalized
             
             
             self.controllerArray.append(profile)

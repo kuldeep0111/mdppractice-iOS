@@ -31,12 +31,12 @@ class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
     func PageMenu() {
             
             let profile = self.storyboard?.instantiateViewController(withIdentifier: "UpcomingApointmentList") as! UpcomingApointmentList
-            profile.title = "Apcoming Appointments"
+        profile.title = "UPCOMING Appointments".capitalized
             
             
             
             let reviws = self.storyboard?.instantiateViewController(withIdentifier: "BookingRequestVC") as! BookingRequestVC
-            reviws.title = "Booking Request"
+        reviws.title = "Booking Request".capitalized
             
             
             self.controllerArray.append(profile)

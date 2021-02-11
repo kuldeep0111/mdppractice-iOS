@@ -181,6 +181,7 @@ extension ClinicDetails {
         self.noOfChairs.isUserInteractionEnabled = true
         self.approvalBtn.isHidden = false
         self.locationButton.isUserInteractionEnabled = true
+        self.title = "Edit Clinic Details"
     }
     
     @objc func didTapOnDelete(){

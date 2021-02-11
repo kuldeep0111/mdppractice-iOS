@@ -6,16 +6,17 @@
 //
 
 import UIKit
-
+import DropDown
 class TreatmentDetailVC: UIViewController {
 
+    var dropDown = DropDown()
     @IBOutlet weak var treatmentNumber : UILabel!
     @IBOutlet weak var treatmentDate : UILabel!
     @IBOutlet weak var treatingBy : UILabel!
     @IBOutlet weak var clinicName : UILabel!
     @IBOutlet weak var addNewBtn : UIButton!
     @IBOutlet weak var tableView : UITableView!
-    
+    @IBOutlet weak var bottomSpace : NSLayoutConstraint!
     @IBOutlet weak var treatmentNumView : UIView!{
         didSet{
             treatmentNumView.layer.cornerRadius = 8.0
@@ -85,7 +86,33 @@ class TreatmentDetailVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+
+    
 }
+
+//MARK: Keyboard Events
+extension TreatmentDetailVC {
+    
+    @objc func keyboardWillAppear() {
+        bottomSpace.constant = 280
+    }
+
+    @objc func keyboardWillDisappear() {
+        bottomSpace.constant = 20
+    }
+}
+
 
 
 extension TreatmentDetailVC : UITableViewDelegate, UITableViewDataSource {
@@ -106,10 +133,47 @@ extension TreatmentDetailVC : UITableViewDelegate, UITableViewDataSource {
         cell.cointainerView.layer.cornerRadius = 10
         cell.cointainerView.layer.borderWidth = 1
         cell.cointainerView.layer.borderColor = UIColor(rgb: 0x0173B7).cgColor
+        cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 184
     }
+}
+
+
+extension TreatmentDetailVC {
+    
+    @objc func didTapOnMenuButton(_ sender: UIButton){
+        
+        dropDown.dataSource = ["Edit", "Complete","Consent Form","Delete"]//4
+        dropDown.backgroundColor = .white
+        dropDown.textColor = UIColor(rgb: 0x666666)
+        dropDown.separatorColor = UIColor(rgb: 0x666666)
+        dropDown.width = 150
+        dropDown.anchorView = sender //5
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
+        dropDown.show() //7
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+            guard let _ = self else { return }
+//            switch index {
+//            case 0:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "StaffMemberVC") as! StaffMemberVC
+//                self?.navigationController!.pushViewController(vc, animated: true)
+//                break
+//            case 1:
+//                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//               break
+//
+//            default:
+//                break
+//            }
+            
+        }
+        
+    }
+
+    
 }

@@ -23,7 +23,6 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
             reasonOfAppointment.layer.borderColor = UIColor(red: 0.908, green: 0.908, blue: 0.908, alpha: 1).cgColor
             reasonOfAppointment.backgroundColor = UIColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 1)
             reasonOfAppointment.layer.borderWidth = 1
-            reasonOfAppointment.text = "Max 50 words"
             reasonOfAppointment.textColor = UIColor.lightGray
             reasonOfAppointment.delegate = self
         }
@@ -132,7 +131,6 @@ extension NewAppointmentVC : UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Max 50 words"
             textView.textColor = UIColor.lightGray
         }
     }

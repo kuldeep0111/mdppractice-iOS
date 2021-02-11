@@ -40,12 +40,10 @@ extension BookingRequestVC : UITableViewDelegate, UITableViewDataSource {
         cell.appointmentTime.text = "Appointment time: 07:50 PM"
         cell.containerView.layer.borderWidth = 2
         cell.containerView.layer.borderColor = UIColor(rgb: 0xE8E8E8).cgColor
-        cell.phoneBtn.setImage(UIImage.init(named: "tikGreen"), for: .normal)
-        cell.menuButton.setImage(UIImage.init(named: "crossRed"), for: .normal)
         cell.phoneBtn.tag = indexPath.row
         cell.menuButton.tag = indexPath.row
-        cell.phoneBtn.addTarget(self, action: #selector(didTapOnAccept(_:)), for: .touchUpInside)
-        cell.menuButton.addTarget(self, action: #selector(didTapOnReject(_:)), for: .touchUpInside)
+        cell.phoneBtn.addTarget(self, action: #selector(didTapOnReject(_:)), for: .touchUpInside)
+        cell.menuButton.addTarget(self, action: #selector(didTapOnAccept(_:)), for: .touchUpInside)
         return cell
     }
 }
