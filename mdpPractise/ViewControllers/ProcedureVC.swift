@@ -55,6 +55,12 @@ extension ProcedureVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ProcedureVC : DentalProcedureViewDelegate {
     func didTapOnSave() {
+        SorryView.showPopup(parentVC: self, subText: "Dental Procedure")
+    }
+}
+
+extension ProcedureVC : SorryViewDelegate {
+    func didTapOnOK() {
         
     }
 }

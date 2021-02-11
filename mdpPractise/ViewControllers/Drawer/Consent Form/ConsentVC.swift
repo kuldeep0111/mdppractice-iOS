@@ -87,6 +87,12 @@ extension ConsentVC : ConsentFormViewDelegate {
 
 extension ConsentVC : NewConsentFormViewDelegate {
     func didTapOnSave() {
+        SorryView.showPopup(parentVC: self, subText: "New Form")
+    }
+}
+
+extension ConsentVC : SorryViewDelegate {
+    func didTapOnOK() {
         
     }
 }
