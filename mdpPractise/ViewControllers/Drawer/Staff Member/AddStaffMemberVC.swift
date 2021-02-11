@@ -148,6 +148,13 @@ class AddStaffMemberVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var saveButton : UIButton!{
+        didSet{
+            saveButton.layer.cornerRadius = 25
+        }
+    }
+    
+    
     @IBOutlet weak var bottomSpace : NSLayoutConstraint!
     
     

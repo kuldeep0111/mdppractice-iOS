@@ -16,7 +16,6 @@ class TreatmentDetailVC: UIViewController {
     @IBOutlet weak var clinicName : UILabel!
     @IBOutlet weak var addNewBtn : UIButton!
     @IBOutlet weak var tableView : UITableView!
-    @IBOutlet weak var bottomSpace : NSLayoutConstraint!
     @IBOutlet weak var treatmentNumView : UIView!{
         didSet{
             treatmentNumView.layer.cornerRadius = 8.0
@@ -63,6 +62,14 @@ class TreatmentDetailVC: UIViewController {
 
     var attributedString = NSMutableAttributedString(string:"")
 
+    @IBOutlet weak var paymentDetailView : UIView!{
+        didSet{
+            paymentDetailView.layer.cornerRadius = 10
+            paymentDetailView.layer.borderWidth = 1
+            paymentDetailView.layer.borderColor = UIColor(rgb: 0xBDBDBD).cgColor
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,34 +92,7 @@ class TreatmentDetailVC: UIViewController {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "ProcedureVC") as! ProcedureVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-
-    
 }
-
-//MARK: Keyboard Events
-extension TreatmentDetailVC {
-    
-    @objc func keyboardWillAppear() {
-        bottomSpace.constant = 280
-    }
-
-    @objc func keyboardWillDisappear() {
-        bottomSpace.constant = 20
-    }
-}
-
 
 
 extension TreatmentDetailVC : UITableViewDelegate, UITableViewDataSource {

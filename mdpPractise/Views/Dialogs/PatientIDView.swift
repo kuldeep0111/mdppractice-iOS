@@ -57,9 +57,9 @@ class PatientIDView: UIViewController {
         else{
             containerViewHeight.constant = CGFloat(82 + (filterList.count * 57))
         }
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMe))
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+//        
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMe))
+//        self.view.addGestureRecognizer(tapGestureRecognizer)
 
     }
 }
@@ -110,6 +110,7 @@ extension PatientIDView : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dismiss(animated: true, completion: nil)
+        print(filterList[indexPath.row])
         self.delegate?.pickPatientID(id: filterList[indexPath.row])
     }
     
