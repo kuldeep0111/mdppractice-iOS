@@ -46,6 +46,14 @@ class AddHolidays: UIViewController {
     
     @IBAction func didTapOnSave(_ sender: UIButton){
         
+        SorryView.showPopup(parentVC: self, subText: "Holidays")
+        
+    }
+}
+
+extension AddHolidays : SorryViewDelegate {
+    func didTapOnOK() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

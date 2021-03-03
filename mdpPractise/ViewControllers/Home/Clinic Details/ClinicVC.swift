@@ -35,6 +35,10 @@ class ClinicVC: UIViewController {
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 45, right: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -53,7 +57,7 @@ extension ClinicVC : UITextFieldDelegate {
 //MARK: Action
 extension ClinicVC {
     @objc func addNewClinic(){
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "ClinicDetails") as ClinicDetails
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

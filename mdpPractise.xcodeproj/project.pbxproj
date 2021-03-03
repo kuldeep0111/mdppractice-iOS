@@ -61,6 +61,13 @@
 		2C4CBD6725CC0E9C0060CAE1 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD6625CC0E9C0060CAE1 /* NotificationCell.swift */; };
 		2C4CBD6C25CC0F350060CAE1 /* NotificaitonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */; };
 		2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CBD7925CC181A0060CAE1 /* DentalChartVC.swift */; };
+		2C59F72E25EF52210006DAFF /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E425D141F300FB6769 /* MenuItemView.swift */; };
+		2C59F72F25EF52210006DAFF /* CAPSPageMenu+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E625D141F300FB6769 /* CAPSPageMenu+UIConfiguration.swift */; };
+		2C59F73025EF52210006DAFF /* CAPSPageMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E325D141F300FB6769 /* CAPSPageMenu+Options.swift */; };
+		2C59F73125EF52210006DAFF /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E225D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */; };
+		2C59F73225EF52210006DAFF /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E825D141F300FB6769 /* CAPSPageMenu.swift */; };
+		2C59F73325EF52210006DAFF /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E525D141F300FB6769 /* CAPSPageMenu+UIScrollViewDelegate.swift */; };
+		2C59F73425EF52210006DAFF /* CAPSPageMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E725D141F300FB6769 /* CAPSPageMenuConfiguration.swift */; };
 		2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */; };
 		2C6E1B1C25D26624001010AB /* AppointmentAcceptRejectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */; };
 		2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */; };
@@ -86,13 +93,6 @@
 		2CB23AEB25C9752300D5EF23 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE225C9752200D5EF23 /* Inter-ExtraLight.ttf */; };
 		2CB23AEC25C9752300D5EF23 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE325C9752200D5EF23 /* Inter-Black.ttf */; };
 		2CB23AED25C9752300D5EF23 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE425C9752200D5EF23 /* Inter-SemiBold.ttf */; };
-		2CC7A9E925D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E225D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */; };
-		2CC7A9EA25D141F300FB6769 /* CAPSPageMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E325D141F300FB6769 /* CAPSPageMenu+Options.swift */; };
-		2CC7A9EB25D141F300FB6769 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E425D141F300FB6769 /* MenuItemView.swift */; };
-		2CC7A9EC25D141F300FB6769 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E525D141F300FB6769 /* CAPSPageMenu+UIScrollViewDelegate.swift */; };
-		2CC7A9ED25D141F300FB6769 /* CAPSPageMenu+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E625D141F300FB6769 /* CAPSPageMenu+UIConfiguration.swift */; };
-		2CC7A9EE25D141F300FB6769 /* CAPSPageMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E725D141F300FB6769 /* CAPSPageMenuConfiguration.swift */; };
-		2CC7A9EF25D141F300FB6769 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9E825D141F300FB6769 /* CAPSPageMenu.swift */; };
 		2CC7AA0025D14B5E00FB6769 /* UpcomingApointmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9FF25D14B5E00FB6769 /* UpcomingApointmentList.swift */; };
 		2CC7AA0525D14C6A00FB6769 /* BookingRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0425D14C6A00FB6769 /* BookingRequestVC.swift */; };
 		2CC7AA0D25D14D9600FB6769 /* AppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */; };
@@ -286,6 +286,7 @@
 		1822281F25C849360032BE30 /* mdpPractise */ = {
 			isa = PBXGroup;
 			children = (
+				2C59F73825EF524D0006DAFF /* Managers */,
 				2CC7A9F325D145A000FB6769 /* Resources */,
 				1822286D25C849780032BE30 /* Extensions */,
 				2CB23ADB25C9752200D5EF23 /* InterFont */,
@@ -476,6 +477,13 @@
 				2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */,
 			);
 			path = Appointment;
+			sourceTree = "<group>";
+		};
+		2C59F73825EF524D0006DAFF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		2C6E1B3425D28CB0001010AB /* Treatment */ = {
@@ -850,7 +858,7 @@
 				2C3E671925CA6CB2000DDA32 /* TreatmentDetailVC.swift in Sources */,
 				2C3E671425CA6770000DDA32 /* TreatmentVC.swift in Sources */,
 				2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */,
-				2CC7A9E925D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
+				2C59F73325EF52210006DAFF /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
 				2C6F207625CD12D600CD0E8E /* UpcomingAppoinmentsVC.swift in Sources */,
 				2C8BE26225D3F5D5005CBF01 /* AnalyseVC.swift in Sources */,
 				1822287025C849780032BE30 /* TextField.swift in Sources */,
@@ -858,7 +866,6 @@
 				2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */,
 				2CC7AA0025D14B5E00FB6769 /* UpcomingApointmentList.swift in Sources */,
 				1822289925C849B60032BE30 /* NewAppointmentVC.swift in Sources */,
-				2CC7A9EE25D141F300FB6769 /* CAPSPageMenuConfiguration.swift in Sources */,
 				1822289325C849B60032BE30 /* TabbarController.swift in Sources */,
 				2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */,
 				1822289125C849B60032BE30 /* AppointmentDetailsVC.swift in Sources */,
@@ -866,16 +873,16 @@
 				1822289825C849B60032BE30 /* ThanksPageVC.swift in Sources */,
 				2C4CBD2625CBB3790060CAE1 /* DentalImageCell.swift in Sources */,
 				1822289B25C849B60032BE30 /* SceneDelegate.swift in Sources */,
-				2CC7A9EA25D141F300FB6769 /* CAPSPageMenu+Options.swift in Sources */,
 				2C42211325D13959000C41FB /* PaymentProcedureCell.swift in Sources */,
-				2CC7A9ED25D141F300FB6769 /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				2C0FED4A25CD3BA000E94B8A /* ConsentFormView.swift in Sources */,
+				2C59F72E25EF52210006DAFF /* MenuItemView.swift in Sources */,
 				2C4CBD5225CBE1BF0060CAE1 /* UIButton + Extension.swift in Sources */,
 				2C8BE24E25D3B4AE005CBF01 /* PatientIDView.swift in Sources */,
-				2CC7A9EC25D141F300FB6769 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
+				2C59F73025EF52210006DAFF /* CAPSPageMenu+Options.swift in Sources */,
 				2CB239F925C9588100D5EF23 /* Color + Extension.swift in Sources */,
 				2C4CBD4825CBDC140060CAE1 /* ClinicCell.swift in Sources */,
 				2C4CBD3A25CBC0BB0060CAE1 /* AddStaffMemberVC.swift in Sources */,
+				2C59F73125EF52210006DAFF /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
 				2C3E674725CA8FAB000DDA32 /* SideVC.swift in Sources */,
 				2C6F206025CD048300CD0E8E /* ConsentVC.swift in Sources */,
 				2CB239DC25C92E7600D5EF23 /* UIView + Extension.swift in Sources */,
@@ -894,9 +901,7 @@
 				2C4CBD5C25CC001A0060CAE1 /* AddHolidays.swift in Sources */,
 				2C4CBD3025CBBAAD0060CAE1 /* StaffMemberVC.swift in Sources */,
 				2C0FED4125CD2AEF00E94B8A /* BlockDateVC.swift in Sources */,
-				2CC7A9EB25D141F300FB6769 /* MenuItemView.swift in Sources */,
 				2C3E674C25CA94BC000DDA32 /* DrawerCell.swift in Sources */,
-				2CC7A9EF25D141F300FB6769 /* CAPSPageMenu.swift in Sources */,
 				2C4CBD4D25CBDCB60060CAE1 /* ClinicVC.swift in Sources */,
 				1822286125C849570032BE30 /* AppointmentBlockView.swift in Sources */,
 				2C6F205B25CD046E00CD0E8E /* ConsentApprovedVC.swift in Sources */,
@@ -908,8 +913,11 @@
 				2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */,
 				2C3E671E25CA756B000DDA32 /* TreatmentDetailCell.swift in Sources */,
 				2C0FED5425CD640400E94B8A /* DentalProcedureView.swift in Sources */,
+				2C59F73225EF52210006DAFF /* CAPSPageMenu.swift in Sources */,
 				1822286925C8496B0032BE30 /* Constants.swift in Sources */,
+				2C59F72F25EF52210006DAFF /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				1822289425C849B60032BE30 /* OTPVerifyVC.swift in Sources */,
+				2C59F73425EF52210006DAFF /* CAPSPageMenuConfiguration.swift in Sources */,
 				2C3E672825CA84B0000DDA32 /* ProcedureCell.swift in Sources */,
 				2CC7AA0525D14C6A00FB6769 /* BookingRequestVC.swift in Sources */,
 				2C6F208025CD130300CD0E8E /* DependentsVC.swift in Sources */,

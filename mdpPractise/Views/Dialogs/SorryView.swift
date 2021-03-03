@@ -43,7 +43,7 @@ class SorryView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subTitle.text = "You have successfully added a \(subText)"
+        subTitle.text = "You have successfully added \(subText)"
     }
     
     @IBAction func didTapOnConfirm(_ sender: UIButton!){
