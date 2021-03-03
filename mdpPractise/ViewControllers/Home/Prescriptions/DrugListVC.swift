@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 protocol DrugListVCDelegate {
     func passDrugs(drugName: String)
@@ -14,6 +15,7 @@ protocol DrugListVCDelegate {
 
 class DrugListVC: UIViewController {
 
+    let dropDown = DropDown()
     var delegate : DrugListVCDelegate?
     @IBOutlet weak var tableView : UITableView!
     
