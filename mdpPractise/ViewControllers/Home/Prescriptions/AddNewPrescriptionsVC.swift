@@ -192,6 +192,19 @@ extension AddNewPrescriptionsVC {
             SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a New Prescription.", buttonText: "OK")
         }
     }
+    
+    @IBAction func didTapOnAddDrugName(_ sender : UIButton){
+        
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "DrugListVC") as! DrugListVC
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension AddNewPrescriptionsVC : DrugListVCDelegate {
+    func passDrugs(drugName: String) {
+        self.drugName.text = drugName
+    }
 }
 
 extension AddNewPrescriptionsVC : SorryViewDelegate {

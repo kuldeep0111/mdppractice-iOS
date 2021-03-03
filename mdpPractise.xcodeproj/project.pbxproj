@@ -37,6 +37,7 @@
 		2C0FED4A25CD3BA000E94B8A /* ConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */; };
 		2C0FED4F25CD50B600E94B8A /* NewConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */; };
 		2C0FED5425CD640400E94B8A /* DentalProcedureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */; };
+		2C20BC9625EF990E00EFDD7B /* AddNewDrugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BC9525EF990E00EFDD7B /* AddNewDrugView.swift */; };
 		2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */; };
 		2C3E671425CA6770000DDA32 /* TreatmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E671325CA6770000DDA32 /* TreatmentVC.swift */; };
 		2C3E671925CA6CB2000DDA32 /* TreatmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */; };
@@ -71,6 +72,8 @@
 		2C59F73E25EF5EF80006DAFF /* PrescriptionListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F73D25EF5EF80006DAFF /* PrescriptionListVC.swift */; };
 		2C59F74625EF5F1B0006DAFF /* AddNewPrescriptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F74525EF5F1B0006DAFF /* AddNewPrescriptionsVC.swift */; };
 		2C59F74B25EF61D60006DAFF /* PrescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F74A25EF61D60006DAFF /* PrescriptionCell.swift */; };
+		2C59F75025EF81310006DAFF /* DrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F74F25EF81300006DAFF /* DrugCell.swift */; };
+		2C59F75525EF820C0006DAFF /* DrugListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F75425EF820C0006DAFF /* DrugListVC.swift */; };
 		2C6E1B1725D252DE001010AB /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */; };
 		2C6E1B1C25D26624001010AB /* AppointmentAcceptRejectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */; };
 		2C6E1B3725D28CFD001010AB /* ClinicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */; };
@@ -157,6 +160,7 @@
 		2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentFormView.swift; sourceTree = "<group>"; };
 		2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsentFormView.swift; sourceTree = "<group>"; };
 		2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalProcedureView.swift; sourceTree = "<group>"; };
+		2C20BC9525EF990E00EFDD7B /* AddNewDrugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDrugView.swift; sourceTree = "<group>"; };
 		2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentCell.swift; sourceTree = "<group>"; };
 		2C3E671325CA6770000DDA32 /* TreatmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentVC.swift; sourceTree = "<group>"; };
 		2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentDetailVC.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		2C59F73D25EF5EF80006DAFF /* PrescriptionListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionListVC.swift; sourceTree = "<group>"; };
 		2C59F74525EF5F1B0006DAFF /* AddNewPrescriptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPrescriptionsVC.swift; sourceTree = "<group>"; };
 		2C59F74A25EF61D60006DAFF /* PrescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionCell.swift; sourceTree = "<group>"; };
+		2C59F74F25EF81300006DAFF /* DrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugCell.swift; sourceTree = "<group>"; };
+		2C59F75425EF820C0006DAFF /* DrugListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugListVC.swift; sourceTree = "<group>"; };
 		2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestCell.swift; sourceTree = "<group>"; };
 		2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentAcceptRejectView.swift; sourceTree = "<group>"; };
 		2C6E1B3625D28CFD001010AB /* ClinicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicDetails.swift; sourceTree = "<group>"; };
@@ -356,6 +362,7 @@
 				2C6E1B1625D252DE001010AB /* BookingRequestCell.swift */,
 				2C8BE25225D3B4CC005CBF01 /* PatientIDCell.swift */,
 				2C59F74A25EF61D60006DAFF /* PrescriptionCell.swift */,
+				2C59F74F25EF81300006DAFF /* DrugCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -439,6 +446,7 @@
 				2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */,
 				2C6E1B1B25D26624001010AB /* AppointmentAcceptRejectView.swift */,
 				2C8BE24D25D3B4AE005CBF01 /* PatientIDView.swift */,
+				2C20BC9525EF990E00EFDD7B /* AddNewDrugView.swift */,
 			);
 			path = Dialogs;
 			sourceTree = "<group>";
@@ -499,6 +507,7 @@
 			children = (
 				2C59F73D25EF5EF80006DAFF /* PrescriptionListVC.swift */,
 				2C59F74525EF5F1B0006DAFF /* AddNewPrescriptionsVC.swift */,
+				2C59F75425EF820C0006DAFF /* DrugListVC.swift */,
 			);
 			path = Prescriptions;
 			sourceTree = "<group>";
@@ -872,6 +881,7 @@
 				2C8BE25325D3B4CC005CBF01 /* PatientIDCell.swift in Sources */,
 				2CC7AA0D25D14D9600FB6769 /* AppointmentVC.swift in Sources */,
 				2C42210925D13620000C41FB /* PaymentDetailVC.swift in Sources */,
+				2C59F75025EF81310006DAFF /* DrugCell.swift in Sources */,
 				2C3E671925CA6CB2000DDA32 /* TreatmentDetailVC.swift in Sources */,
 				2C3E671425CA6770000DDA32 /* TreatmentVC.swift in Sources */,
 				2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */,
@@ -897,6 +907,7 @@
 				2C4CBD5225CBE1BF0060CAE1 /* UIButton + Extension.swift in Sources */,
 				2C8BE24E25D3B4AE005CBF01 /* PatientIDView.swift in Sources */,
 				2C59F73025EF52210006DAFF /* CAPSPageMenu+Options.swift in Sources */,
+				2C20BC9625EF990E00EFDD7B /* AddNewDrugView.swift in Sources */,
 				2CB239F925C9588100D5EF23 /* Color + Extension.swift in Sources */,
 				2C4CBD4825CBDC140060CAE1 /* ClinicCell.swift in Sources */,
 				2C4CBD3A25CBC0BB0060CAE1 /* AddStaffMemberVC.swift in Sources */,
@@ -906,6 +917,7 @@
 				2CB239DC25C92E7600D5EF23 /* UIView + Extension.swift in Sources */,
 				1822289A25C849B60032BE30 /* AppDelegate.swift in Sources */,
 				2C6F206825CD072E00CD0E8E /* ConsentCell.swift in Sources */,
+				2C59F75525EF820C0006DAFF /* DrugListVC.swift in Sources */,
 				2C4CBD5725CBFDB00060CAE1 /* HolidayVC.swift in Sources */,
 				1822285F25C849570032BE30 /* PatientCell.swift in Sources */,
 				2C6F206E25CD12B600CD0E8E /* PatientPlanVC.swift in Sources */,

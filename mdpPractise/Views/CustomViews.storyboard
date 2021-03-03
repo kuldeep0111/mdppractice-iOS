@@ -619,7 +619,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QxT-pH-2sT">
-                                <rect key="frame" x="25" y="225.5" width="364" height="455"/>
+                                <rect key="frame" x="25" y="226.5" width="364" height="453.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dE3-JP-ymU">
                                         <rect key="frame" x="102" y="28" width="0.0" height="0.0"/>
@@ -635,7 +635,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dy6-ff-bm4" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="108" width="332" height="50"/>
+                                        <rect key="frame" x="16" y="107.5" width="332" height="50"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TWk-wp-KRv"/>
@@ -644,13 +644,13 @@
                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq0-m3-9Vy">
-                                        <rect key="frame" x="22" y="82.5" width="103" height="19.5"/>
+                                        <rect key="frame" x="22" y="82.5" width="97" height="19"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nRb-aq-lnu" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="206.5" width="332" height="50"/>
+                                        <rect key="frame" x="16" y="205.5" width="332" height="50"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Djl-Nr-AE1"/>
@@ -659,13 +659,13 @@
                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJf-VG-1Rd">
-                                        <rect key="frame" x="22" y="181" width="79" height="19.5"/>
+                                        <rect key="frame" x="22" y="180.5" width="74" height="19"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWH-XL-GhZ" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="305" width="332" height="50"/>
+                                        <rect key="frame" x="16" y="303.5" width="332" height="50"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wbZ-z9-PRW"/>
@@ -674,13 +674,13 @@
                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Consent Form" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lty-D6-sZA">
-                                        <rect key="frame" x="22" y="279.5" width="169.5" height="19.5"/>
+                                        <rect key="frame" x="22" y="278.5" width="158.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-ku-d1B">
-                                        <rect key="frame" x="20" y="385" width="324" height="50"/>
+                                        <rect key="frame" x="20" y="383.5" width="324" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBl-Wg-klA">
                                                 <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
@@ -921,7 +921,149 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2G0-dM-V1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166.6666666666667" y="672.99107142857144"/>
+            <point key="canvasLocation" x="1074" y="678"/>
+        </scene>
+        <!--Add New Drug View-->
+        <scene sceneID="c7F-pU-S1o">
+            <objects>
+                <viewController storyboardIdentifier="AddNewDrugView" id="vGw-eb-6WO" customClass="AddNewDrugView" customModule="mdpPractise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Ye-gG-GhR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ay2-Rw-FDf">
+                                <rect key="frame" x="25" y="275" width="364" height="356"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mto-tO-Wxo">
+                                        <rect key="frame" x="17" y="180.5" width="330" height="19.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strength" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-q9-f9u">
+                                                <rect key="frame" x="0.0" y="0.0" width="159" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Measure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-nN-bu5">
+                                                <rect key="frame" x="171" y="0.0" width="159" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="MGi-nN-bu5" secondAttribute="bottom" id="Ddq-TC-OSh"/>
+                                            <constraint firstAttribute="bottom" secondItem="AFd-q9-f9u" secondAttribute="bottom" id="n5q-y5-akX"/>
+                                            <constraint firstItem="MGi-nN-bu5" firstAttribute="height" secondItem="AFd-q9-f9u" secondAttribute="height" id="uNl-I2-Dyw"/>
+                                            <constraint firstItem="MGi-nN-bu5" firstAttribute="width" secondItem="AFd-q9-f9u" secondAttribute="width" id="uOe-8r-ham"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="i7Q-ZX-2Hh">
+                                        <rect key="frame" x="12" y="206" width="340" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SFb-I4-l7I" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
+                                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bvf-ek-UZr" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                                <rect key="frame" x="176" y="0.0" width="164" height="50"/>
+                                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="bvf-ek-UZr" firstAttribute="width" secondItem="SFb-I4-l7I" secondAttribute="width" id="59f-Sg-tv4"/>
+                                            <constraint firstAttribute="bottom" secondItem="SFb-I4-l7I" secondAttribute="bottom" id="Wek-pg-4i5"/>
+                                            <constraint firstAttribute="height" constant="50" id="gQE-U4-9Xv"/>
+                                            <constraint firstItem="SFb-I4-l7I" firstAttribute="top" secondItem="i7Q-ZX-2Hh" secondAttribute="top" id="kql-2o-D4R"/>
+                                            <constraint firstAttribute="bottom" secondItem="bvf-ek-UZr" secondAttribute="bottom" id="m4f-MH-NKr"/>
+                                            <constraint firstItem="bvf-ek-UZr" firstAttribute="height" secondItem="SFb-I4-l7I" secondAttribute="height" id="seq-Kz-Mbz"/>
+                                            <constraint firstItem="bvf-ek-UZr" firstAttribute="top" secondItem="i7Q-ZX-2Hh" secondAttribute="top" id="z0b-Uh-AvT"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Drug" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mc-jm-X33">
+                                        <rect key="frame" x="103.5" y="30" width="157.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drug Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J2-Q7-ppY">
+                                        <rect key="frame" x="18" y="82" width="86" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uso-jD-2Xj">
+                                        <rect key="frame" x="20" y="286" width="324" height="50"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="j12-X4-3RL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="ADD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapOnAddButton:" destination="vGw-eb-6WO" eventType="touchUpInside" id="LuR-rv-Pk3"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qqq-hY-CHz" customClass="MDPTextField" customModule="mdpPractise" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="107.5" width="330" height="50"/>
+                                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="F1J-pU-je9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Qqq-hY-CHz" firstAttribute="top" secondItem="1J2-Q7-ppY" secondAttribute="bottom" constant="6" id="0WS-vX-uUh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qqq-hY-CHz" secondAttribute="trailing" constant="17" id="CJw-bb-r7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="uso-jD-2Xj" secondAttribute="trailing" constant="20" id="CR0-bT-gs8"/>
+                                    <constraint firstItem="uso-jD-2Xj" firstAttribute="top" secondItem="i7Q-ZX-2Hh" secondAttribute="bottom" constant="30" id="Cgo-g3-Gpz"/>
+                                    <constraint firstItem="Qqq-hY-CHz" firstAttribute="leading" secondItem="Ay2-Rw-FDf" secondAttribute="leading" constant="17" id="DLA-6c-GOp"/>
+                                    <constraint firstAttribute="trailing" secondItem="mto-tO-Wxo" secondAttribute="trailing" constant="17" id="KlS-fu-GDo"/>
+                                    <constraint firstItem="mto-tO-Wxo" firstAttribute="leading" secondItem="Ay2-Rw-FDf" secondAttribute="leading" constant="17" id="Mi5-25-gMU"/>
+                                    <constraint firstItem="1J2-Q7-ppY" firstAttribute="leading" secondItem="Ay2-Rw-FDf" secondAttribute="leading" constant="18" id="URd-Xk-RY2"/>
+                                    <constraint firstAttribute="trailing" secondItem="i7Q-ZX-2Hh" secondAttribute="trailing" constant="12" id="W2A-Gi-xUB"/>
+                                    <constraint firstAttribute="bottom" secondItem="uso-jD-2Xj" secondAttribute="bottom" constant="20" id="WaH-MS-EtV"/>
+                                    <constraint firstItem="mto-tO-Wxo" firstAttribute="top" secondItem="Qqq-hY-CHz" secondAttribute="bottom" constant="23" id="XOv-Ce-kEo"/>
+                                    <constraint firstItem="i7Q-ZX-2Hh" firstAttribute="leading" secondItem="Ay2-Rw-FDf" secondAttribute="leading" constant="12" id="aDP-Ct-OjJ"/>
+                                    <constraint firstItem="i7Q-ZX-2Hh" firstAttribute="top" secondItem="mto-tO-Wxo" secondAttribute="bottom" constant="6" id="guw-jX-Xbr"/>
+                                    <constraint firstItem="1J2-Q7-ppY" firstAttribute="top" secondItem="0Mc-jm-X33" secondAttribute="bottom" constant="23" id="iVs-jl-SLW"/>
+                                    <constraint firstItem="uso-jD-2Xj" firstAttribute="leading" secondItem="Ay2-Rw-FDf" secondAttribute="leading" constant="20" id="pAQ-3k-kLm"/>
+                                    <constraint firstItem="0Mc-jm-X33" firstAttribute="centerX" secondItem="Ay2-Rw-FDf" secondAttribute="centerX" id="sBF-tX-Lgu"/>
+                                    <constraint firstItem="0Mc-jm-X33" firstAttribute="top" secondItem="Ay2-Rw-FDf" secondAttribute="top" constant="30" id="wR8-St-i5d"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wst-FW-BTr"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.62924391558381165" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ay2-Rw-FDf" firstAttribute="centerX" secondItem="Wst-FW-BTr" secondAttribute="centerX" id="Ugx-ji-dbt"/>
+                            <constraint firstItem="Wst-FW-BTr" firstAttribute="trailing" secondItem="Ay2-Rw-FDf" secondAttribute="trailing" constant="25" id="Vi1-eR-jmZ"/>
+                            <constraint firstItem="Ay2-Rw-FDf" firstAttribute="centerY" secondItem="Wst-FW-BTr" secondAttribute="centerY" priority="750" id="huX-rT-XAP"/>
+                            <constraint firstItem="Ay2-Rw-FDf" firstAttribute="top" secondItem="Wst-FW-BTr" secondAttribute="top" priority="250" constant="16" id="m5Q-Tx-LzU"/>
+                            <constraint firstItem="Ay2-Rw-FDf" firstAttribute="leading" secondItem="Wst-FW-BTr" secondAttribute="leading" constant="25" id="od4-HM-RrB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="uso-jD-2Xj" id="Hxz-V3-5iB"/>
+                        <outlet property="containerView" destination="Ay2-Rw-FDf" id="ZeN-zT-zbK"/>
+                        <outlet property="drugName" destination="Qqq-hY-CHz" id="OFQ-d7-8gL"/>
+                        <outlet property="measure" destination="bvf-ek-UZr" id="uNT-Gk-7Nb"/>
+                        <outlet property="strength" destination="SFb-I4-l7I" id="1fz-hI-xTD"/>
+                        <outlet property="topAlign" destination="m5Q-Tx-LzU" id="PsB-2b-HyH"/>
+                        <outlet property="verticalCenter" destination="huX-rT-XAP" id="jzC-lg-uyG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qIq-6z-dxc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740.5797101449277" y="677.67857142857144"/>
         </scene>
     </scenes>
     <resources>
