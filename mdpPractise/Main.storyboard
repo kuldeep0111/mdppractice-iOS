@@ -3069,7 +3069,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8o-vr-Qtm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DrugCell" rowHeight="75" id="qbk-Wg-eiP" customClass="DrugCell" customModule="mdpPractise" customModuleProvider="target">
@@ -3149,14 +3149,47 @@
                                     <outlet property="delegate" destination="Ry9-Y6-IhG" id="KgA-Og-emX"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwR-Gg-Vv8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajR-og-em6">
+                                        <rect key="frame" x="16" y="16" width="382" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CaY-Jd-nns"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Try-kl-XG0">
+                                        <rect key="frame" x="30" y="31" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="AOs-sX-4q6"/>
+                                            <constraint firstAttribute="height" constant="20" id="Ykc-Hq-p5b"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ajR-og-em6" secondAttribute="trailing" constant="16" id="0kl-3k-qhe"/>
+                                    <constraint firstItem="Try-kl-XG0" firstAttribute="leading" secondItem="AwR-Gg-Vv8" secondAttribute="leading" constant="30" id="IZP-0l-LoN"/>
+                                    <constraint firstItem="ajR-og-em6" firstAttribute="top" secondItem="AwR-Gg-Vv8" secondAttribute="top" constant="16" id="XJf-2r-3Fi"/>
+                                    <constraint firstItem="ajR-og-em6" firstAttribute="leading" secondItem="AwR-Gg-Vv8" secondAttribute="leading" constant="16" id="j2N-dQ-yeE"/>
+                                    <constraint firstAttribute="height" constant="82" id="u2g-EX-aC7"/>
+                                    <constraint firstItem="Try-kl-XG0" firstAttribute="centerY" secondItem="ajR-og-em6" secondAttribute="centerY" id="z7w-eJ-PfC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RYu-7f-2dx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="b8o-vr-Qtm" firstAttribute="top" secondItem="RYu-7f-2dx" secondAttribute="top" id="27Q-iD-59b"/>
+                            <constraint firstItem="b8o-vr-Qtm" firstAttribute="top" secondItem="AwR-Gg-Vv8" secondAttribute="bottom" id="6wp-b2-7Tj"/>
+                            <constraint firstItem="AwR-Gg-Vv8" firstAttribute="leading" secondItem="RYu-7f-2dx" secondAttribute="leading" id="Eyr-Oi-a4W"/>
                             <constraint firstItem="RYu-7f-2dx" firstAttribute="trailing" secondItem="b8o-vr-Qtm" secondAttribute="trailing" id="KPU-NE-tpc"/>
                             <constraint firstItem="b8o-vr-Qtm" firstAttribute="leading" secondItem="RYu-7f-2dx" secondAttribute="leading" id="L0i-LF-UVL"/>
                             <constraint firstItem="RYu-7f-2dx" firstAttribute="bottom" secondItem="b8o-vr-Qtm" secondAttribute="bottom" id="MMw-RP-tS2"/>
+                            <constraint firstItem="AwR-Gg-Vv8" firstAttribute="top" secondItem="J3V-oq-kw2" secondAttribute="top" id="R1P-gD-Tc3"/>
+                            <constraint firstItem="b8o-vr-Qtm" firstAttribute="top" secondItem="AwR-Gg-Vv8" secondAttribute="bottom" id="bvt-R2-kUE"/>
+                            <constraint firstItem="AwR-Gg-Vv8" firstAttribute="trailing" secondItem="RYu-7f-2dx" secondAttribute="trailing" id="c3D-BE-bgW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3542,7 +3575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxO-5E-f6H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3051" y="7907"/>
+            <point key="canvasLocation" x="3050.7246376811595" y="7906.79347826087"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="xhC-hg-aIK">
