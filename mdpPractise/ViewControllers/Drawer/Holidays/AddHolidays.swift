@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class AddHolidays: UIViewController {
 
@@ -45,15 +46,38 @@ class AddHolidays: UIViewController {
     }
     
     @IBAction func didTapOnSave(_ sender: UIButton){
-        
-        SorryView.showPopup(parentVC: self, subText: "Holidays")
-        
+        if(validateStartDate() && validateEndDate()){
+            SorryView.showPopup(parentVC: self, boxTitle: "Confirmation!", subText: "Update all clinics with new holiday changes.",buttonText: "Confirm")
+        }
     }
 }
 
 extension AddHolidays : SorryViewDelegate {
     func didTapOnOK() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension AddHolidays {
+    
+    func validateStartDate() -> Bool{
+        if(startDateTFD.text?.count ?? 0 > 2){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter start date", duration: .short)
+            snackbar.show()
+            return false
+        }
+    }
+
+    func validateEndDate() -> Bool{
+        if(endDateTFD.text?.count ?? 0 > 2){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter end date", duration: .short)
+            snackbar.show()
+            return false
+        }
     }
 }
 

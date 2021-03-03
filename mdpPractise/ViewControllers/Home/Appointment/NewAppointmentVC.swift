@@ -147,7 +147,8 @@ extension NewAppointmentVC {
     
     @IBAction func didTapOnCreate(_ sender: UIButton){
         if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming()){
-            SorryView.showPopup(parentVC: self, subText: "Appointment")
+            SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new Appointment.",buttonText: "OK")
+
         }
     }
     

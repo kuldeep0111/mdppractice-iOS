@@ -39,11 +39,15 @@ class SorryView: UIViewController {
         }
     }
     
+    var boxTitleText = "Success!"
     var subText = ""
+    var buttonTitle = "OK"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subTitle.text = "You have successfully added \(subText)"
+        boxTitle.text = boxTitleText
+        subTitle.text = "\(subText)"
+        confirmBtn.setTitle(buttonTitle, for: .normal)
     }
     
     @IBAction func didTapOnConfirm(_ sender: UIButton!){
@@ -51,14 +55,16 @@ class SorryView: UIViewController {
         delegate?.didTapOnOK()
     }
     
-    static func showPopup(parentVC: UIViewController, subText : String){
+    static func showPopup(parentVC: UIViewController,boxTitle : String, subText : String, buttonText: String){
         //creating a reference for the dialogView controller
         if let popupViewController = UIStoryboard(name: "CustomViews", bundle: nil).instantiateViewController(withIdentifier: "SorryView") as? SorryView {
         popupViewController.modalPresentationStyle = .custom
         popupViewController.modalTransitionStyle = .crossDissolve
         popupViewController.delegate = parentVC as? SorryViewDelegate
+        popupViewController.boxTitleText = boxTitle
         popupViewController.subText = subText
+        popupViewController.buttonTitle = buttonText
         parentVC.present(popupViewController, animated: true)
       }
-  }
+   }
 }
