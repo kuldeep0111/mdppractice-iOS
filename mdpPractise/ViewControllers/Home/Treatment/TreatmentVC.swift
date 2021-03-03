@@ -170,7 +170,12 @@ extension TreatmentVC {
                 let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "DentalImagesVC") as! DentalImagesVC
                 self?.navigationController?.pushViewController(vc, animated: true)
                break
-                
+             
+            case 2:
+                let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PrescriptionListVC") as! PrescriptionListVC
+                self?.navigationController?.pushViewController(vc, animated: true)
+               break
+
             case 3:
                 let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "PaymentDetailVC") as! PaymentDetailVC
                 self?.navigationController?.pushViewController(vc, animated: true)

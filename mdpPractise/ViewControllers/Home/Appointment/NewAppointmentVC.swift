@@ -212,9 +212,6 @@ extension NewAppointmentVC {
         }
     }
 
-
-    
-    
     func validateClinic() -> Bool{
         if(clinicName.text?.count != 0){
             return true
@@ -244,9 +241,6 @@ extension NewAppointmentVC {
             return false
         }
     }
-    
-    
-    
 }
 
 //MARK: UIPickerView
