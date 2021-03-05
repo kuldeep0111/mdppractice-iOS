@@ -9,7 +9,7 @@ import UIKit
 import TTGSnackbar
 
 class OTPVerifyVC: UIViewController {
-
+    
     @IBOutlet weak var digit1text : MDPTextField!
     @IBOutlet weak var digit2text : MDPTextField!
     @IBOutlet weak var digit3text : MDPTextField!
@@ -23,7 +23,7 @@ class OTPVerifyVC: UIViewController {
     @IBOutlet weak var bottomSpace : NSLayoutConstraint!
     
     var mobileno = ""
-        
+    
     func setupUI(){
         verifyBtn.layer.cornerRadius = 25
         
@@ -31,8 +31,8 @@ class OTPVerifyVC: UIViewController {
         digit2text.delegate = self
         digit3text.delegate = self
         digit4text.delegate = self
-
-
+        
+        
         digit1text.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         digit2text.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         digit3text.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
@@ -54,7 +54,7 @@ extension OTPVerifyVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
@@ -66,7 +66,7 @@ extension OTPVerifyVC {
     @objc func keyboardWillAppear() {
         bottomSpace.constant = 240
     }
-
+    
     @objc func keyboardWillDisappear() {
         bottomSpace.constant = 20
     }
@@ -76,9 +76,9 @@ extension OTPVerifyVC {
     
     @IBAction func didTapOnVerify(_ sender: UIButton){
         if (digit4text.text?.count != 0) {
-//            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-//            let vc = story.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
-//            self.navigationController?.pushViewController(vc, animated: true)
+            //            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+            //            let vc = story.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+            //            self.navigationController?.pushViewController(vc, animated: true)
             
             verifyOTP()
             
@@ -91,13 +91,13 @@ extension OTPVerifyVC {
 
 extension OTPVerifyVC : UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
-            textField.text = ""
-        }
+        textField.text = ""
+    }
     
     @objc func textFieldDidChange(textField: UITextField){
-
+        
         let text = textField.text
-         print(text?.utf16.count ?? 0)
+        print(text?.utf16.count ?? 0)
         if (text?.utf16.count ?? 0) >= 1{
             switch textField{
             case digit1text:
@@ -134,14 +134,14 @@ extension OTPVerifyVC {
     func verifyOTP(){
         
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
+        
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
-
+        
         
         AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, response, error) in
             self.dismiss(animated: true, completion: nil)
@@ -156,26 +156,21 @@ extension OTPVerifyVC {
                 
                 if let dict = response?.dictionaryObject {
                     let id = (dict["prospectid"] as? NSString)?.intValue
-                    prospectid = Int(id!)
+                    prospectid = Int(id ?? 0)
                     let clinicCount = (dict["clinic_count"] as? NSString)?.intValue
                     if(response!["usertype"] == "prospect" && prospectid == 0) {
                         userType = 2
                     }else if(response!["usertype"] == "prospect" && prospectid > 0){
-                        
-                        //if let count =  clinicCount {
                         if(clinicCount! > 0){
                             userType = 4
-                                print("Case 4")
-                            
-                            }
+                        }
                         else{
                             userType = 3
-                            print("Case 3")
                         }
                     }
                     else if(dict["providerid"] != nil) {
-                       print("case 1")
                         userType = 1
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
                     }
                 }
                 
@@ -200,7 +195,7 @@ extension OTPVerifyVC {
                 case 4:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
                     self.navigationController?.pushViewController(vc, animated: true)
-                  break
+                    break
                 default:
                     break
                 }
@@ -209,30 +204,6 @@ extension OTPVerifyVC {
             
             let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
             snackbar.show()
-
-           
-        //    Error
-            
-//            if error?.code == NSURLErrorNetworkConnectionLost ||  error?.code == NSURLErrorNotConnectedToInternet {
-//                let errorViewController = UIViewController.userOfflineViewController()
-//                if(IS_IPHONE_5){
-//                    errorViewController.modalPresentationStyle = .fullScreen
-//                }
-//                self.present(errorViewController, animated: true, completion: nil)
-//                return ;
-//            }
-//
-//            let errorViewController = UIViewController.errorOccurredViewController()
-//            errorViewController.shouldHideRefreshButton = true
-//            if let errorTitle = error?.userInfo["title"] as? String {
-//                errorViewController.errorTitle = errorTitle
-//                errorViewController.errorSubtitle = error?.userInfo["description"] as? String ?? ""
-//            }
-//            if(IS_IPHONE_5){
-//                errorViewController.modalPresentationStyle = .fullScreen
-//            }
-//            self.present(errorViewController, animated: true, completion: nil)
-            
         }
         
     }
