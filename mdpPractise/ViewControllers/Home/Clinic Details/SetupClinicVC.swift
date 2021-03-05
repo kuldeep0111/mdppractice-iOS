@@ -73,6 +73,12 @@ class SetupClinicVC: UIViewController {
     var prospectedID = ""
     var mobileNo = ""
     
+    var pickerToolbar: UIToolbar?
+    var cityPicker =  UIPickerView()
+    var statePicker =  UIPickerView()
+
+    var cityList: [String] = []
+    var stateList: [String] = []
 }
 
 //MARK: LifeCycle
@@ -82,6 +88,28 @@ extension SetupClinicVC{
         super.viewDidLoad()
         self.title = "Clinic Setup"
         self.navigationController?.navigationBar.isHidden = false
+        
+        getCities()
+        
+        createUIToolBar()
+        
+        cityPicker = UIPickerView()
+        cityPicker.dataSource = self
+        cityPicker.delegate = self
+        cityPicker.backgroundColor = .white
+        
+        cityTextField.inputAccessoryView = pickerToolbar
+        cityTextField.inputView = cityPicker
+        
+        statePicker = UIPickerView()
+        statePicker.dataSource = self
+        statePicker.delegate = self
+        statePicker.backgroundColor = .white
+        
+        stateTextField.inputAccessoryView = pickerToolbar
+        stateTextField.inputView = statePicker
+
+        
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = true
@@ -142,8 +170,8 @@ extension SetupClinicVC {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = false
-        self.stateTextField.isUserInteractionEnabled = false
+        self.cityTextField.isUserInteractionEnabled = true
+        self.stateTextField.isUserInteractionEnabled = true
         self.councelNoTextField.isUserInteractionEnabled = true
         self.checkBtn.isUserInteractionEnabled = true
         self.frontFacadeBtn.isUserInteractionEnabled = true
@@ -206,8 +234,8 @@ extension SetupClinicVC {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = false
-        self.stateTextField.isUserInteractionEnabled = false
+        self.cityTextField.isUserInteractionEnabled = true
+        self.stateTextField.isUserInteractionEnabled = true
         self.councelNoTextField.isUserInteractionEnabled = true
         self.checkBtn.isUserInteractionEnabled = true
         self.frontFacadeBtn.isUserInteractionEnabled = true
@@ -243,7 +271,7 @@ extension SetupClinicVC {
     
     @IBAction func didTapOnApprovalBtn(_ sender: UIButton){
         
-        if(validateName() && validateAddress1() && validatePin() && validateCouncilNo()){
+        if(validateName() && validateAddress1() && validatePin() && validateCity() && validateState() && validateCouncilNo()){
             
             addClinicCall()
             
@@ -364,6 +392,100 @@ extension SetupClinicVC {
     }
 }
 
+//MARK: UIDatePicker
+extension SetupClinicVC {
+    
+    func createUIToolBar() {
+            pickerToolbar = UIToolbar()
+            pickerToolbar?.autoresizingMask = .flexibleHeight
+
+            //customize the toolbar
+            pickerToolbar?.barStyle = .default
+            pickerToolbar?.barTintColor = UIColor.white
+            pickerToolbar?.backgroundColor = UIColor.white
+            pickerToolbar?.isTranslucent = false
+
+            //add buttons
+            let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action:
+                #selector(cancelBtnClicked(_:)))
+        cancelButton.tintColor = UIColor.black
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action:
+                #selector(doneBtnClicked(_:)))
+            doneButton.tintColor = UIColor.black
+
+            //add the items to the toolbar
+            pickerToolbar?.items = [cancelButton, flexSpace, doneButton]
+            
+        }
+        
+        @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
+            cityTextField.resignFirstResponder()
+            stateTextField.resignFirstResponder()
+        }
+        
+        @objc func doneBtnClicked(_ button: UIBarButtonItem?) {
+            if(cityTextField.isFirstResponder){
+                if(cityTextField.text?.count == 0){
+                    cityTextField.text = cityList[0]
+                }
+                cityTextField.resignFirstResponder()
+
+            }else if(stateTextField.isFirstResponder){
+                if(stateTextField.text?.count == 0){
+                    stateTextField.text = stateList[0]
+                }
+                stateTextField.resignFirstResponder()
+            }
+        }
+    }
+
+
+//MARK: UIPickerView
+extension SetupClinicVC : UIPickerViewDelegate , UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        switch pickerView {
+        case cityPicker:
+            return cityList.count
+        case statePicker:
+            return stateList.count
+        default:
+            break
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case cityPicker:
+            return cityList[row]
+        case statePicker:
+            return stateList[row]
+            
+        default:
+            break
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        switch pickerView {
+        case cityPicker:
+            cityTextField.text = cityList[row]
+        case statePicker:
+            stateTextField.text = stateList[row]
+        default:
+            break
+        }
+        //self.view.endEditing(true)
+    }
+}
+
+
 
 //MARK: API CALL
 extension SetupClinicVC {
@@ -394,4 +516,53 @@ extension SetupClinicVC {
             }
         }
     }
+    
+    func getCities(){
+     
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        ClinicManager.sharedInstance.getCity() {(successful, user, error) in
+            self.dismiss(animated: true, completion: nil)
+            if(successful){
+                self.cityList = user
+                self.getStates()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        }
+    }
+    
+    func getStates(){
+     
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        ClinicManager.sharedInstance.getState() {(successful, user, error) in
+            self.dismiss(animated: true, completion: nil)
+            if(successful){
+                self.stateList = user
+                 print("Success")
+            
+            }else{
+                let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        }
+    }
+
+    
 }

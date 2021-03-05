@@ -18,6 +18,57 @@ class ClinicManager: APIManager {
         return Static.instance
     }
     
+    
+    func getCity(completionHandler: ((Bool, _ user: [String], _ error: NSError?)->())?) {
+        print(apiURL(APIEndPoint.City))
+
+        let _ =  makeRequest(apiURL(APIEndPoint.City), action: .post, params: nil) { (successful, response, error) in
+                
+            var CityArray : [String] = []
+            
+            if successful {
+                
+                if let array = response.arrayObject{
+                    
+                    for item in array {
+                        CityArray.append(item as! String)
+                    }
+                    
+                }
+                print(CityArray)
+                completionHandler?(true, CityArray, error)
+                return
+            }
+            completionHandler?(false, [], error)
+        }
+    }
+    
+    func getState(completionHandler: ((Bool, _ user: [String], _ error: NSError?)->())?) {
+        print(apiURL(APIEndPoint.State))
+                
+        let _ =  makeRequest(apiURL(APIEndPoint.State), action: .post, params: nil) { (successful, response, error) in
+                        
+            if successful {
+                
+                var stateArray : [String] = []
+                if let array = response.arrayObject{
+                    
+                    for item in array {
+                        stateArray.append(item as! String)
+                    }
+                    
+                }
+                print(stateArray)
+
+                
+                completionHandler?(true, stateArray, error)
+                return
+            }
+            completionHandler?(false, [], error)
+        }
+    }
+
+    
     func AddNewClinic(prospectedID: String,mobileNo: String,name: String,address1: String,address2: String,city: String,state: String,pin: String,email: String, completionHandler: ((Bool, _ userType: Any?, _ error: NSError?)->())?) {
         var params: JSONDictionary = [:]
         params["action"]    = "new_clinic"

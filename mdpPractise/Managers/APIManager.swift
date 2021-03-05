@@ -18,6 +18,8 @@ enum APIEndPoint: String {
     case UserLogin              = "userAPI/otp_login"
     case NewClinic              = "clinicAPI/new_clinic"
     case SignUp                 = "prospectAPI/new_prospect"
+    case City                   = "mdpapi/?action=cities"
+    case State                  = "mdpapi/?action=states"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {
