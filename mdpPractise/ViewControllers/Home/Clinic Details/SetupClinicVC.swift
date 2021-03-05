@@ -375,6 +375,7 @@ extension SetupClinicVC {
                  print("Success")
                 UserDefaults.standard.setValue(4, forKey: "userType")
                 let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
+                vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }else{
                 

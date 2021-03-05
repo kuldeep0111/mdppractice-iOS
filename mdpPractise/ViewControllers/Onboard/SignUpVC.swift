@@ -30,6 +30,8 @@ class SignUpVC: UIViewController {
     
     var pickerToolbar: UIToolbar?
     
+    var mobileNo = ""
+    
 }
 
 //MARK: LifeCycle
@@ -106,9 +108,7 @@ extension SignUpVC {
     @IBAction func didTapOnSubmit(_ sender: UIButton){
         
         if(validateName() && validateEmail() && validateDate() && validateCheck()){
-            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: "ThanksPageVC") as! ThanksPageVC
-            self.navigationController?.pushViewController(vc, animated: true)
+                submitAPICall()
         }
     }
 }
@@ -170,9 +170,17 @@ extension SignUpVC {
             DOBTextfield?.resignFirstResponder()
             let formatter = DateFormatter()
             formatter.dateStyle = .short
-            DOBTextfield?.text = formatter.string(from: datePicker.date)
-        }
-    
+            
+           var day = "\(datePicker.date.day)"
+           var month = "\(datePicker.date.month)"
+            if day.count == 1 {
+                day = "0\(day)"
+            }
+            if(month.count == 1){
+                month = "0\(month)"
+            }
+            DOBTextfield?.text = "\(day)/\(month)/\(datePicker.date.year)"
+          }
        }
 
 //MARK: Validate TextFields
@@ -241,5 +249,25 @@ extension SignUpVC : UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         return true
+    }
+}
+
+//MARK: API Call
+extension SignUpVC {
+    
+    func submitAPICall(){
+        
+        AuthenticationManager.sharedInstance.signUP(mobileNo, name: nameTextfield.text!, email: emailTextfield.text!, gender: GenderTextfield.text!, dob: DOBTextfield.text!){
+            (successful, response, error) in
+            
+            if(successful){
+                UserDefaults.standard.setValue(3, forKey: "userType")
+                let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = story.instantiateViewController(withIdentifier: "SetupClinicVC") as! SetupClinicVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                
+            }
+        }
     }
 }
