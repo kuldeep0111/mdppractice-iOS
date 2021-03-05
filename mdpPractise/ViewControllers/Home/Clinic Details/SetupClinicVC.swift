@@ -369,8 +369,19 @@ extension SetupClinicVC {
 extension SetupClinicVC {
     
     func addClinicCall(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        
         ClinicManager.sharedInstance.AddNewClinic(prospectedID: prospectedID, mobileNo: mobileNo, name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email") {(successful, user, error) in
-            
+            self.dismiss(animated: true, completion: nil)
             if(successful){
                  print("Success")
                 UserDefaults.standard.setValue(4, forKey: "userType")

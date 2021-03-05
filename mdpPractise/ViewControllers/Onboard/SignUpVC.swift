@@ -257,13 +257,24 @@ extension SignUpVC {
     
     func submitAPICall(){
         
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        
         AuthenticationManager.sharedInstance.signUP(mobileNo, name: nameTextfield.text!, email: emailTextfield.text!, gender: GenderTextfield.text!, dob: DOBTextfield.text!){
             (successful, response, error) in
-            
+            self.dismiss(animated: true, completion: nil)
             if(successful){
                 UserDefaults.standard.setValue(3, forKey: "userType")
                 let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
                 let vc = story.instantiateViewController(withIdentifier: "SetupClinicVC") as! SetupClinicVC
+                vc.mobileNo = self.mobileNo
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 

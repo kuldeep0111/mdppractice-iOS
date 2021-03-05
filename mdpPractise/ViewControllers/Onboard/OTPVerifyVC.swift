@@ -133,7 +133,19 @@ extension OTPVerifyVC {
     
     func verifyOTP(){
         
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        
         AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, response, error) in
+            self.dismiss(animated: true, completion: nil)
+            
             if successful{
                 print("SUCCESS")
                 
@@ -144,7 +156,7 @@ extension OTPVerifyVC {
                 
                 if let dict = response?.dictionaryObject {
                     let id = (dict["prospectid"] as? NSString)?.intValue
-                    prospectid = Int(id!)                    
+                    prospectid = Int(id!)
                     let clinicCount = (dict["clinic_count"] as? NSString)?.intValue
                     if(response!["usertype"] == "prospect" && prospectid == 0) {
                         userType = 2
@@ -176,11 +188,13 @@ extension OTPVerifyVC {
                     break
                 case 2:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "SignUpVC") as SignUpVC
+                    vc.mobileNo = self.mobileno
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
                 case 3:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
                     vc.prospectedID = "\(prospectid)"
+                    vc.mobileNo = self.mobileno
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
                 case 4:
