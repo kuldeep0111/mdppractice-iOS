@@ -76,9 +76,12 @@ extension OTPVerifyVC {
     
     @IBAction func didTapOnVerify(_ sender: UIButton){
         if (digit4text.text?.count != 0) {
-            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let vc = story.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+            verifyOTP()
+            
         }else{
             let snackbar = TTGSnackbar(message: "Please enter OTP", duration: .short)
             snackbar.show()
@@ -120,5 +123,67 @@ extension OTPVerifyVC : UITextFieldDelegate {
                 break
             }
         }
+    }
+}
+
+
+//MARK: API CALL
+
+extension OTPVerifyVC {
+    
+    func verifyOTP(){
+        
+        AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, user, error) in
+            if successful{
+                print("SUCCESS")
+                
+                switch user {
+                case 1:
+                    let rootVC = mdpStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                    UIApplication.shared.windows.first?.rootViewController = rootVC
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    break
+                case 2:
+                    let vc = mdpStoryBoard.instantiateViewController(identifier: "SignUpVC") as SignUpVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    break
+                case 3:
+                    let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    break
+                case 4:
+                    let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                  break
+                default:
+                    break
+                }
+                return;
+            }
+           
+        //    Error
+            
+//            if error?.code == NSURLErrorNetworkConnectionLost ||  error?.code == NSURLErrorNotConnectedToInternet {
+//                let errorViewController = UIViewController.userOfflineViewController()
+//                if(IS_IPHONE_5){
+//                    errorViewController.modalPresentationStyle = .fullScreen
+//                }
+//                self.present(errorViewController, animated: true, completion: nil)
+//                return ;
+//            }
+//
+//            let errorViewController = UIViewController.errorOccurredViewController()
+//            errorViewController.shouldHideRefreshButton = true
+//            if let errorTitle = error?.userInfo["title"] as? String {
+//                errorViewController.errorTitle = errorTitle
+//                errorViewController.errorSubtitle = error?.userInfo["description"] as? String ?? ""
+//            }
+//            if(IS_IPHONE_5){
+//                errorViewController.modalPresentationStyle = .fullScreen
+//            }
+//            self.present(errorViewController, animated: true, completion: nil)
+            
+        }
+        
     }
 }

@@ -26,6 +26,9 @@ class TreatmentVC: UIViewController {
     
     var searchButton : UIBarButtonItem?
     var isSearch = false
+    
+    let searchTextField = UITextField(frame: CGRect(x: 20, y: 100, width: screenWidth - 100, height: 40))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = "Treatments"
@@ -189,3 +192,16 @@ extension TreatmentVC {
         
     }
 }
+
+//
+//
+////searchTextField.backgroundColor = UIColor.white
+//searchTextField.textColor = UIColor.white
+//let bottomLine = CALayer()
+//bottomLine.frame = CGRect(x: 0.0, y: 75 - 1, width: 300, height: 1.0)
+//bottomLine.backgroundColor = UIColor.white.cgColor
+//searchTextField.borderStyle = UITextField.BorderStyle.none
+//searchTextField.layer.addSublayer(bottomLine)
+//searchTextField.placeholder = "Search"
+//self.navigationItem.titleView = searchTextField
+//searchTextField.becomeFirstResponder()

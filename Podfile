@@ -10,6 +10,9 @@ target 'mdpPractise' do
    pod 'VACalendar'
    pod ‘SideMenu’
    pod 'DropDown'
+   pod 'Alamofire'
+   pod 'SwiftyJSON'
+   pod 'Sugar'
 
   target 'mdpPractiseTests' do
     inherit! :search_paths
