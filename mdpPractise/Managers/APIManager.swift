@@ -16,6 +16,7 @@ let BaseURL = "http://13.71.115.17/my_pms2/mdpapi/"
 
 enum APIEndPoint: String {
     case UserLogin              = "userAPI/otp_login"
+    case NewClinic              = "clinicAPI/new_clinic"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {

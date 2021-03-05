@@ -70,6 +70,9 @@ class SetupClinicVC: UIViewController {
     var isAlreadyFeel = false
     var id: Int?
     
+    var prospectedID = ""
+    var mobileNo = ""
+    
 }
 
 //MARK: LifeCycle
@@ -242,8 +245,10 @@ extension SetupClinicVC {
         
         if(validateName() && validateAddress1() && validatePin() && validateCouncilNo()){
             
-            let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as! AnalyseVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            addClinicCall()
+            
+//            let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as! AnalyseVC
+//            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             
         }
@@ -355,6 +360,25 @@ extension SetupClinicVC {
             let snackbar = TTGSnackbar(message: "Please enter council No", duration: .short)
             snackbar.show()
             return false
+        }
+    }
+}
+
+
+//MARK: API CALL
+extension SetupClinicVC {
+    
+    func addClinicCall(){
+        ClinicManager.sharedInstance.AddNewClinic(prospectedID: prospectedID, mobileNo: mobileNo, name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email") {(successful, user, error) in
+            
+            if(successful){
+                 print("Success")
+                UserDefaults.standard.setValue(4, forKey: "userType")
+                let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
+                self.present(vc, animated: true, completion: nil)
+            }else{
+                
+            }
         }
     }
 }

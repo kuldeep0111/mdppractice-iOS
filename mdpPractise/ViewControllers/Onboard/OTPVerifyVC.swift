@@ -133,11 +133,42 @@ extension OTPVerifyVC {
     
     func verifyOTP(){
         
-        AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, user, error) in
+        AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, response, error) in
             if successful{
                 print("SUCCESS")
                 
-                switch user {
+                var userType = 0
+                
+                var prospectid = 0
+                
+                
+                if let dict = response?.dictionaryObject {
+                    let id = (dict["prospectid"] as? NSString)?.intValue
+                    prospectid = Int(id!)                    
+                    let clinicCount = (dict["clinic_count"] as? NSString)?.intValue
+                    if(response!["usertype"] == "prospect" && prospectid == 0) {
+                        userType = 2
+                    }else if(response!["usertype"] == "prospect" && prospectid > 0){
+                        
+                        //if let count =  clinicCount {
+                        if(clinicCount! > 0){
+                            userType = 4
+                                print("Case 4")
+                            
+                            }
+                        else{
+                            userType = 3
+                            print("Case 3")
+                        }
+                    }
+                    else if(dict["providerid"] != nil) {
+                       print("case 1")
+                        userType = 1
+                    }
+                }
+                
+                
+                switch userType {
                 case 1:
                     let rootVC = mdpStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
                     UIApplication.shared.windows.first?.rootViewController = rootVC
@@ -149,6 +180,7 @@ extension OTPVerifyVC {
                     break
                 case 3:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+                    vc.prospectedID = "\(prospectid)"
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
                 case 4:
