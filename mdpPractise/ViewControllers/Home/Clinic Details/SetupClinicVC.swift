@@ -389,7 +389,8 @@ extension SetupClinicVC {
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         }
     }

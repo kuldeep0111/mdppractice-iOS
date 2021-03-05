@@ -277,7 +277,8 @@ extension SignUpVC {
                 vc.mobileNo = self.mobileNo
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         }
     }

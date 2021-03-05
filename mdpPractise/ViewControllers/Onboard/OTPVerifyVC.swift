@@ -206,6 +206,10 @@ extension OTPVerifyVC {
                 }
                 return;
             }
+            
+            let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+            snackbar.show()
+
            
         //    Error
             
