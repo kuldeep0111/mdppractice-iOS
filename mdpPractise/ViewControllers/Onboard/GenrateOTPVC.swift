@@ -7,6 +7,7 @@
 
 import UIKit
 import TTGSnackbar
+import SystemConfiguration
 
 class GenrateOTPVC: UIViewController {
 
@@ -55,6 +56,13 @@ extension GenrateOTPVC {
         self.navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        if(isConnectedToNetwork() == true){
+            print("Connected")
+        }else{
+            let snackbar = TTGSnackbar(message: "Check your internet connection", duration: .short)
+            snackbar.show()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,5 +108,32 @@ extension GenrateOTPVC {
             let snackbar = TTGSnackbar(message: "Please enter valid number", duration: .short)
             snackbar.show()
         }
+    }
+    
+     func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        if flags.isEmpty {
+            return false
+        }
+
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+
+        return (isReachable && !needsConnection)
     }
 }
