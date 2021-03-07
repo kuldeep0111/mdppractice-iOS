@@ -15,17 +15,17 @@ class ThanksPageVC: UIViewController {
         }
     }
     
+    var mobileNo = ""
+    var prospectid = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
     }
-    
 
     @IBAction func didTapOnSetupClinicBtn(_ sender: UIButton){
-        let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = story.instantiateViewController(withIdentifier: "SetupClinicVC") as! SetupClinicVC
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+        vc.prospectedID = "\(prospectid)"
+        vc.mobileNo = self.mobileNo
         self.navigationController?.pushViewController(vc, animated: true)
-
     }
 }

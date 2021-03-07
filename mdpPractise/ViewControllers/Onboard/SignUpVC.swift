@@ -273,9 +273,12 @@ extension SignUpVC {
             if(successful){
                 UserDefaults.standard.setValue(3, forKey: "userType")
                 let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let vc = story.instantiateViewController(withIdentifier: "SetupClinicVC") as! SetupClinicVC
+                let vc = story.instantiateViewController(withIdentifier: "ThanksPageVC") as! ThanksPageVC
                 vc.mobileNo = self.mobileNo
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.prospectid = "\(response!["prospectid"])"
+                let navVC = UINavigationController.init(rootViewController: vc)
+                navVC.modalPresentationStyle = .fullScreen
+                self.present(navVC, animated: true, completion: nil)
             }else{
                 let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
                 snackbar.show()

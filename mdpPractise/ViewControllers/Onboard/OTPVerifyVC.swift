@@ -184,13 +184,17 @@ extension OTPVerifyVC {
                 case 2:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "SignUpVC") as SignUpVC
                     vc.mobileNo = self.mobileno
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
                     break
                 case 3:
-                    let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
-                    vc.prospectedID = "\(prospectid)"
+                    let vc = mdpStoryBoard.instantiateViewController(identifier: "ThanksPageVC") as ThanksPageVC
+                    vc.prospectid = "\(prospectid)"
                     vc.mobileNo = self.mobileno
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    let navVC = UINavigationController.init(rootViewController: vc)
+                    navVC.modalPresentationStyle = .fullScreen
+                    //self.navigationController?.pushViewController(vc, animated: true)
+                    self.present(navVC, animated: true, completion: nil)
                     break
                 case 4:
                     let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
@@ -202,7 +206,7 @@ extension OTPVerifyVC {
                 return;
             }
             
-            let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+            let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
             snackbar.show()
         }
         

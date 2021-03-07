@@ -959,7 +959,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUk-eD-hYA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="174"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="174"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dental" translatesAutoresizingMaskIntoConstraints="NO" id="lAs-RW-QOp">
                                         <rect key="frame" x="50" y="40" width="314" height="94"/>
@@ -975,7 +975,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r57-PC-B0e">
-                                <rect key="frame" x="0.0" y="174" width="414" height="562"/>
+                                <rect key="frame" x="0.0" y="218" width="414" height="518"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You for Registering on My Dental Plan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAQ-Ir-n5Q">
                                         <rect key="frame" x="20" y="178" width="374" height="109"/>
@@ -984,7 +984,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bko-uo-zF3">
-                                        <rect key="frame" x="20" y="492" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="448" width="374" height="50"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vwq-qB-gaZ"/>
@@ -1029,13 +1029,14 @@
                             <constraint firstItem="xUk-eD-hYA" firstAttribute="trailing" secondItem="pea-0b-puE" secondAttribute="trailing" id="yRD-5S-gVT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GTy-XH-nre"/>
                     <connections>
                         <outlet property="setupClinicButton" destination="bko-uo-zF3" id="cDX-ho-kMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbo-pF-5Pt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1664" y="-990"/>
+            <point key="canvasLocation" x="3247.826086956522" y="-990.48913043478274"/>
         </scene>
         <!--Setup ClinicVC-->
         <scene sceneID="Nxc-Az-ayA">
@@ -7383,6 +7384,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6iC-w8-Smh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1916" y="5059"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7dX-6Z-wUP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="79x-ud-YUS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XZP-Ai-dx7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="j7Y-VD-Men" kind="relationship" relationship="rootViewController" id="t5k-Xv-FaH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zuG-Zm-4ZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2340.5797101449275" y="-990.48913043478274"/>
         </scene>
     </scenes>
     <resources>
