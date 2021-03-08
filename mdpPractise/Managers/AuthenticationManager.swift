@@ -56,8 +56,4 @@ class AuthenticationManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
-
-    
-    
-    
 }

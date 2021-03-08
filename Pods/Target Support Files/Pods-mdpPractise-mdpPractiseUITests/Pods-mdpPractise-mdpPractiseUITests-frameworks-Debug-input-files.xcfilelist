@@ -5,4 +5,5 @@ ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
 ${BUILT_PRODUCTS_DIR}/Sugar/Sugar.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework
+${BUILT_PRODUCTS_DIR}/Tailor/Tailor.framework
 ${BUILT_PRODUCTS_DIR}/VACalendar/VACalendar.framework

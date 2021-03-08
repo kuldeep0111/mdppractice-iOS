@@ -181,6 +181,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Sugar/Sugar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Tailor/Tailor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VACalendar/VACalendar.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -190,6 +191,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Sugar/Sugar.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Tailor/Tailor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/VACalendar/VACalendar.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

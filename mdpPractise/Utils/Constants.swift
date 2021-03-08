@@ -26,3 +26,6 @@ var IS_IPHONE_X_OR_NOCH: Bool {
 
 public typealias JSONArray = [[String : Any]]
 public typealias JSONDictionary = [String : Any]
+
+
+var selectedClinic : ClinicListModel?

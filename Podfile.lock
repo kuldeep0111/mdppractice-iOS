@@ -4,6 +4,7 @@ PODS:
   - SideMenu (6.5.0)
   - Sugar (5.0.1)
   - SwiftyJSON (5.0.0)
+  - Tailor (3.0.0)
   - TTGSnackbar (1.10.3)
   - VACalendar (1.3)
 
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - SideMenu
   - Sugar
   - SwiftyJSON
+  - Tailor
   - TTGSnackbar
   - VACalendar
 
@@ -23,6 +25,7 @@ SPEC REPOS:
     - SideMenu
     - Sugar
     - SwiftyJSON
+    - Tailor
     - TTGSnackbar
     - VACalendar
 
@@ -32,9 +35,10 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   Sugar: 63e1266ec7978a847a35aeb9d0d8b7cc48f31881
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Tailor: 4fb574e8815d076abbf2bd7ffdbf4b14103fe17c
   TTGSnackbar: 97c033600de8a9c8f4a093f25a08543a03946bcc
   VACalendar: 3e5a001cbf437ebed2bcfc747f3187e555d65175
 
-PODFILE CHECKSUM: 064b79ae94c1ceb61c2f97bcbb46eb0d928f7816
+PODFILE CHECKSUM: bb81fe47ce09e102679f1b4ca18cdf75eb32f2ec
 
 COCOAPODS: 1.10.1

@@ -13,6 +13,7 @@ target 'mdpPractise' do
    pod 'Alamofire'
    pod 'SwiftyJSON'
    pod 'Sugar'
+   pod 'Tailor'
 
   target 'mdpPractiseTests' do
     inherit! :search_paths

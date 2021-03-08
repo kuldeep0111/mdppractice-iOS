@@ -20,6 +20,8 @@ enum APIEndPoint: String {
     case SignUp                 = "prospectAPI/new_prospect"
     case City                   = "mdpapi/?action=cities"
     case State                  = "mdpapi/?action=states"
+    case NewAppointment         = "appointmentAPI/new_appointmen"
+    case ClinicList        = "clinicAPI/list_clinic"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {
@@ -59,8 +61,9 @@ class APIManager {
         var headers: HTTPHeaders = [:]
         
         headers[HeaderContentType] = "application/json"
-
-         print(headers)
+        print(path)
+        print(headers)
+        print(params)
         let request = AF.request(path, method: action, parameters: params,encoding: Alamofire.JSONEncoding.default, headers: headers).responseData { description in print(description) }.validate().responseJSON { response in
                         
             DispatchQueue.main.async {

@@ -9,6 +9,7 @@ import UIKit
 import VACalendar
 import SideMenu
 import DropDown
+import TTGSnackbar
 
 class HomeVC: UIViewController {
 
@@ -45,8 +46,12 @@ class HomeVC: UIViewController {
         return calendar
     }()
     
+    var clinicList : [ClinicListModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadClinicList()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "menuLine")!.withRenderingMode(.alwaysTemplate),
@@ -119,7 +124,12 @@ extension HomeVC {
     
     @IBAction func didTapOnSelectClinicBtn(_ sender: UIButton){
         
-        dropDown.dataSource = ["Siddhu Clinic", "Madhu Clinic","Bhamashah Clinic"]//4
+        var clinicName : [String] = []
+        for item in clinicList {
+            clinicName.append(item.clinicName)
+        }
+        
+        dropDown.dataSource = clinicName//4
         dropDown.backgroundColor = UIColor(rgb: 0x0173b7)
         dropDown.textColor = UIColor.white
         dropDown.separatorColor = UIColor(rgb: 0x666666)
@@ -130,6 +140,8 @@ extension HomeVC {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
             guard let _ = self else { return }
             self!.clinicName.text = item
+            self!.clinicLocation.text = self!.clinicList[index].city
+            selectedClinic = self!.clinicList[index]
         }
     }
 
@@ -245,5 +257,37 @@ extension HomeVC: VACalendarViewDelegate {
         print(dateFormatter.string(from: date))
         AppointmentBlockView.showPopup(parentVC: self)
         //MMM d, yyyy
+    }
+}
+
+
+//MARK: API CALL
+
+extension HomeVC {
+    
+    func loadClinicList(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        ClinicManager.sharedInstance.ClinicListList(completionHandler: {
+            (success,list,error) in
+            alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.clinicList = list
+                self.clinicName.text = self.clinicList[0].clinicName
+                self.clinicLocation.text = self.clinicList[0].city
+                selectedClinic = self.clinicList[0]
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
     }
 }

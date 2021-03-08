@@ -171,6 +171,15 @@ extension OTPVerifyVC {
                     else if(dict["providerid"] != nil) {
                         userType = 1
                         UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["cell"], forKey: "cell")
+                        UserDefaults.standard.set(dict["email"], forKey: "email")
+                        UserDefaults.standard.set(dict["providername"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providername")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
+                        UserDefaults.standard.set(dict["providerid"], forKey: "providerid")
                     }
                 }
                 

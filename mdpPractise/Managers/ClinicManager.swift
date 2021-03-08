@@ -18,6 +18,33 @@ class ClinicManager: APIManager {
         return Static.instance
     }
     
+    func ClinicListList(completionHandler: ((Bool, _ user: [ClinicListModel], _ error: NSError?)->())?) {
+
+        var params: JSONDictionary = [:]
+        params["action"]    = "list_clinic"
+        params["ref_code"] = "PRV"
+        params["ref_id"] = "1339"
+    
+        let _ =  makeRequest(apiURL(APIEndPoint.ClinicList), action: .post, params: params) { (successful, response, error) in
+                
+            var clinicArray : [ClinicListModel] = []
+            
+            if successful {
+                
+                if let array = response["clinic_list"].arrayObject{
+                       
+                    for item in array {
+                        clinicArray.append(ClinicListModel(item as! JSONDictionary))
+                    }
+                    print(array)
+                }
+                
+                completionHandler?(true, clinicArray, error)
+                return
+            }
+            completionHandler?(false, [], error)
+        }
+    }
     
     func getCity(completionHandler: ((Bool, _ user: [String], _ error: NSError?)->())?) {
         print(apiURL(APIEndPoint.City))
