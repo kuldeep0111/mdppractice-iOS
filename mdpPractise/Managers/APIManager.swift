@@ -23,6 +23,9 @@ enum APIEndPoint: String {
     case NewAppointment         = "appointmentAPI/new_appointmen"
     case ClinicList             = "clinicAPI/list_clinic"
     case AppointmentList        = "appointmentAPI/list_appointment"
+    case CancelAppointment      = "appointmentAPI/cancel_appointment"
+    case AcceptAppointment      = "appointmentAPI/confirm_appointment"
+    case doctorList             = "clinicAPI/list_doc_clinic"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {

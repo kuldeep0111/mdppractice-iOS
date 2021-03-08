@@ -14,7 +14,13 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var GenderTextField : MDPTextField!
     @IBOutlet weak var ageTextField : MDPTextField!
     @IBOutlet weak var patientID : MDPTextField!
-    @IBOutlet weak var clinicName : MDPTextField!
+    @IBOutlet weak var clinicName : MDPTextField!{
+        didSet{
+            clinicName.text = selectedClinic?.clinicName
+        }
+    }
+    
+    @IBOutlet weak var dateTextField : MDPTextField!
     @IBOutlet weak var doctorName : MDPTextField!
     @IBOutlet weak var timing : MDPTextField!
     @IBOutlet weak var reasonOfAppointment : UITextView!{
@@ -45,11 +51,11 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     var datePicker = UIDatePicker()
     var pickerToolbar: UIToolbar?
     var selectedTimeSlot = ""
-    var clinicNameList = ["Clinic","Clinic","Clinic"]
-    var drNameList = ["Dr 1","DR 2","DR 3"]
-    var timingList = ["10.00 - 10.30","10.30 - 11.00","11.00 - 11.30"]
+    var clinicNameList : [ClinicListModel] = ClinicManager.sharedInstance.clinicArray
     
     var genderList = ["Male","Female","Other"]
+    var drNameList : [DoctorModel] = []
+    var selectedDoctor : Int?
 }
 
 //MARK: LifeCycle
@@ -58,6 +64,9 @@ extension NewAppointmentVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabBarController?.tabBar.isHidden = true
+        
+        getDoctorList()
+        createUIToolBar()
         self.title = "New Appointment"
         clinicPickerView = UIPickerView()
         clinicPickerView.dataSource = self
@@ -91,6 +100,13 @@ extension NewAppointmentVC {
         
         GenderTextField.inputAccessoryView = pickerToolbar
         GenderTextField.inputView = genderPicker
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        dateTextField?.inputAccessoryView = pickerToolbar
+        dateTextField?.inputView = datePicker
+
+        
        // GenderTextField.delegate = self
     }
 
@@ -136,6 +152,84 @@ extension NewAppointmentVC : UITextViewDelegate {
     }
 }
 
+extension NewAppointmentVC {
+    
+    
+    func createUIToolBar() {
+            
+            pickerToolbar = UIToolbar()
+            pickerToolbar?.autoresizingMask = .flexibleHeight
+
+            //customize the toolbar
+            pickerToolbar?.barStyle = .default
+            pickerToolbar?.barTintColor = UIColor.white
+            pickerToolbar?.backgroundColor = UIColor.white
+            pickerToolbar?.isTranslucent = false
+
+            //add buttons
+            let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action:
+                #selector(cancelBtnClicked(_:)))
+        cancelButton.tintColor = UIColor.black
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action:
+                #selector(doneBtnClicked(_:)))
+            doneButton.tintColor = UIColor.black
+
+            //add the items to the toolbar
+            pickerToolbar?.items = [cancelButton, flexSpace, doneButton]
+            
+        }
+        
+        @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
+            GenderTextField?.resignFirstResponder()
+            clinicName.resignFirstResponder()
+            doctorName.resignFirstResponder()
+            timing.resignFirstResponder()
+        }
+        
+        @objc func doneBtnClicked(_ button: UIBarButtonItem?) {
+            
+            if(GenderTextField.isFirstResponder){
+                GenderTextField?.resignFirstResponder()
+                if(GenderTextField.text?.count == 0){
+                    GenderTextField.text = genderList[0]
+                }
+            }else if(clinicName.isFirstResponder){
+                if(clinicName.text?.count == 0){
+                    clinicName.text = clinicNameList[0].clinicName
+                }
+                clinicName.resignFirstResponder()
+            }else if(doctorName.isFirstResponder){
+                if(doctorName.text?.count == 0){
+                    doctorName.text = drNameList[0].doctorName
+                }
+                selectedDoctor = 0
+                doctorName.resignFirstResponder()
+            }else if(dateTextField.isFirstResponder){
+                dateTextField?.resignFirstResponder()
+                let formatter = DateFormatter()
+                formatter.dateStyle = .short
+                
+                var day = "\(datePicker.date.day)"
+                var month = "\(datePicker.date.month)"
+                 if day.count == 1 {
+                     day = "0\(day)"
+                 }
+                 if(month.count == 1){
+                     month = "0\(month)"
+                 }
+                dateTextField?.text = "\(day)/\(month)/\(datePicker.date.year)"
+            }
+            else{
+                if(timing.text?.count == 0){
+                    timing.text = TimingSlot[0]
+                }
+                timing.resignFirstResponder()
+            }
+           }
+       }
+
+
 extension NewAppointmentVC : SorryViewDelegate {
     func didTapOnOK() {
         self.navigationController?.popViewController(animated: true)
@@ -146,9 +240,8 @@ extension NewAppointmentVC : SorryViewDelegate {
 extension NewAppointmentVC {
     
     @IBAction func didTapOnCreate(_ sender: UIButton){
-        if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming()){
-            SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new Appointment.",buttonText: "OK")
-
+        if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming() && validateDate()){
+            addNewAppointment()
         }
     }
     
@@ -222,6 +315,16 @@ extension NewAppointmentVC {
         }
     }
     
+    func validateDate() -> Bool{
+        if(dateTextField.text?.count != 0){
+            return true
+        }else{
+            let snackbar = TTGSnackbar(message: "Please enter date", duration: .short)
+            snackbar.show()
+            return false
+        }
+    }
+    
     func validateDr() -> Bool{
         if(doctorName.text?.count != 0){
             return true
@@ -258,7 +361,7 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
         case doctorPickerView:
             return drNameList.count
         case timingPickerView:
-            return timingList.count
+            return TimingSlot.count
             
         default:
             break
@@ -271,11 +374,11 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
         case genderPicker:
             return genderList[row]
         case clinicPickerView:
-            return clinicNameList[row]
+            return clinicNameList[row].clinicName
         case doctorPickerView:
-            return drNameList[row]
+            return drNameList[row].doctorName
         case timingPickerView:
-            return timingList[row]
+            return TimingSlot[row]
             
         default:
             break
@@ -288,14 +391,67 @@ extension NewAppointmentVC : UIPickerViewDelegate , UIPickerViewDataSource {
         case genderPicker:
             GenderTextField.text = genderList[row]
         case clinicPickerView:
-            clinicName.text = clinicNameList[row]
+            clinicName.text = clinicNameList[row].clinicName
         case doctorPickerView:
-            doctorName.text = drNameList[row]
+            doctorName.text = drNameList[row].doctorName
         case timingPickerView:
-            timing.text = timingList[row]
+            timing.text = TimingSlot[row]
         default:
             break
         }
-        self.view.endEditing(true)
+    }
+}
+
+
+//MARK: API CALL
+extension NewAppointmentVC {
+    
+    func addNewAppointment(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        let first5 = String((timing.text!).prefix(5))
+        let tim = dateTextField.text! + " \(first5)"
+        
+        AppointmentManager.sharedInstance.NewAppointment(patientID: patientID.text!, appointmentStart: tim, name: nameTextField.text!, reason: reasonOfAppointment.text, doctorID: "\(drNameList[selectedDoctor!].doctorID!)", completionHandler: {(success,data,error)in
+            alert.dismiss(animated: true, completion: nil)
+            
+            if(success){
+                SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new Appointment.",buttonText: "OK")
+            }else{
+                
+            }
+        })
+    }
+    
+    
+    func getDoctorList(){
+        
+//        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+//
+//        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+//        loadingIndicator.hidesWhenStopped = true
+//        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+//        loadingIndicator.startAnimating();
+//        alert.view.addSubview(loadingIndicator)
+//        present(alert, animated: true, completion: nil)
+        
+        let id = selectedClinic?.clinicID
+        
+        AppointmentManager.sharedInstance.doctorList(clinicID: id, completionHandler: {(success,data,error) in
+           // alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.drNameList = data!
+            }else{
+                 
+            }
+        })
     }
 }

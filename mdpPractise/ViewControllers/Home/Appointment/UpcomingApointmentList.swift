@@ -20,6 +20,13 @@ class UpcomingApointmentList: UIViewController {
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("Done")
+        if(tableView != nil){
+            UpcomiongList = AppointmentManager.sharedInstance.UpcomingAppointmentList
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension UpcomingApointmentList : UITableViewDelegate, UITableViewDataSource {
@@ -89,6 +96,4 @@ extension UpcomingApointmentList {
         }
         
     }
-
-    
 }

@@ -109,6 +109,7 @@
 		2CB23AED25C9752300D5EF23 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE425C9752200D5EF23 /* Inter-SemiBold.ttf */; };
 		2CB826E625F6068000BD6452 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB826E525F6068000BD6452 /* Date + Extension.swift */; };
 		2CB826EB25F60A4100BD6452 /* AppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */; };
+		2CB826F325F631E100BD6452 /* DoctorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB826F225F631E100BD6452 /* DoctorModel.swift */; };
 		2CC7AA0025D14B5E00FB6769 /* UpcomingApointmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9FF25D14B5E00FB6769 /* UpcomingApointmentList.swift */; };
 		2CC7AA0525D14C6A00FB6769 /* BookingRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0425D14C6A00FB6769 /* BookingRequestVC.swift */; };
 		2CC7AA0D25D14D9600FB6769 /* AppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */; };
@@ -235,6 +236,7 @@
 		2CB23AE425C9752200D5EF23 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		2CB826E525F6068000BD6452 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListModel.swift; sourceTree = "<group>"; };
+		2CB826F225F631E100BD6452 /* DoctorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
 		2CC7A9E225D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		2CC7A9E325D141F300FB6769 /* CAPSPageMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+Options.swift"; sourceTree = "<group>"; };
 		2CC7A9E425D141F300FB6769 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				2C630D6525F1FD83006A0990 /* AuthenticationModel.swift */,
 				2C630D7D25F5FB54006A0990 /* ClinicListModel.swift */,
 				2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */,
+				2CB826F225F631E100BD6452 /* DoctorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				2C0FED5425CD640400E94B8A /* DentalProcedureView.swift in Sources */,
 				2C59F73225EF52210006DAFF /* CAPSPageMenu.swift in Sources */,
 				1822286925C8496B0032BE30 /* Constants.swift in Sources */,
+				2CB826F325F631E100BD6452 /* DoctorModel.swift in Sources */,
 				2C59F72F25EF52210006DAFF /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				1822289425C849B60032BE30 /* OTPVerifyVC.swift in Sources */,
 				2CB826E625F6068000BD6452 /* Date + Extension.swift in Sources */,

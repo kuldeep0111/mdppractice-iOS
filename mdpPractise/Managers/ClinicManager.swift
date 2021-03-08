@@ -18,6 +18,8 @@ class ClinicManager: APIManager {
         return Static.instance
     }
     
+    var clinicArray : [ClinicListModel] = []
+    
     func ClinicListList(completionHandler: ((Bool, _ user: [ClinicListModel], _ error: NSError?)->())?) {
 
         var params: JSONDictionary = [:]
@@ -26,20 +28,18 @@ class ClinicManager: APIManager {
         params["ref_id"] = providerID
     
         let _ =  makeRequest(apiURL(APIEndPoint.ClinicList), action: .post, params: params) { (successful, response, error) in
-                
-            var clinicArray : [ClinicListModel] = []
             
             if successful {
-                
+                self.clinicArray.removeAll()
                 if let array = response["clinic_list"].arrayObject{
                        
                     for item in array {
-                        clinicArray.append(ClinicListModel(item as! JSONDictionary))
+                        self.clinicArray.append(ClinicListModel(item as! JSONDictionary))
                     }
                     print(array)
                 }
                 
-                completionHandler?(true, clinicArray, error)
+                completionHandler?(true, self.clinicArray, error)
                 return
             }
             completionHandler?(false, [], error)

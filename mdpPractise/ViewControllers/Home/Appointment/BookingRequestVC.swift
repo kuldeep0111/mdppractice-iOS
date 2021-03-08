@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class BookingRequestVC: UIViewController {
 
@@ -68,12 +69,82 @@ extension BookingRequestVC {
 //MARK: AppointmentAcceptRejectViewDelegate
 extension BookingRequestVC : AppointmentAcceptRejectViewDelegate {
     func didTapOnConfirm(isReject: Bool) {
-        listData.remove(at: selectedIndex!)
         if(isReject){
-             
+            RejectAppointment(appointmentID: BookingList[selectedIndex!].appointmentID)
         }else{
-            
+            AcceptAppointment(appointmentID: BookingList[selectedIndex!].appointmentID)
         }
         tableView.reloadData()
+    }
+}
+
+//MARK: API CALL
+extension BookingRequestVC {
+    
+    func AcceptAppointment(appointmentID: String){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        AppointmentManager.sharedInstance.AcceptAppointment(appointmentID: appointmentID, completionHandler: {(success,data,error) in
+            self.dismiss(animated: true, completion: nil)
+            if(success){
+                self.AppointmentList()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+    
+    func RejectAppointment(appointmentID: String){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        AppointmentManager.sharedInstance.RejectAppointment(appointmentID: appointmentID, completionHandler: {(success,data,error) in
+            self.dismiss(animated: true, completion: nil)
+            if(success){
+                self.AppointmentList()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+
+    
+    func AppointmentList(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        AppointmentManager.sharedInstance.AppointmentList(completionHandler: { (success,list,error) in
+            self.dismiss(animated: true, completion: nil)
+            if(success){
+                self.BookingList = list!
+                self.tableView.reloadData()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
     }
 }

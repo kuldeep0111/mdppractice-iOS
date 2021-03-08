@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
 
@@ -14,8 +15,11 @@ class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppointmentList()
         self.title = "List of Appointments"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        AppointmentList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,7 +33,7 @@ class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
 
     
     func PageMenu() {
-            
+        controllerArray.removeAll()
             let profile = self.storyboard?.instantiateViewController(withIdentifier: "UpcomingApointmentList") as! UpcomingApointmentList
         profile.title = "UPCOMING Appointments".capitalized
             
@@ -95,7 +99,9 @@ extension AppointmentVC {
             if(success){
                 self.PageMenu()
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+
             }
         })
     }

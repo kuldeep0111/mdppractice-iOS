@@ -22,6 +22,6 @@ func currentDate() -> String {
     if(month.count == 1){
         month = "0\(month)"
     }
-    let formatedDate = "\(day)/\(month)/\(currentDate.year) 00:00"
+    let formatedDate = "\(day)/\(month)/\(currentDate.year)"
     return formatedDate
 }
