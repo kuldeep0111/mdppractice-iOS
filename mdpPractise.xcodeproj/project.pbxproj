@@ -107,6 +107,8 @@
 		2CB23AEB25C9752300D5EF23 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE225C9752200D5EF23 /* Inter-ExtraLight.ttf */; };
 		2CB23AEC25C9752300D5EF23 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE325C9752200D5EF23 /* Inter-Black.ttf */; };
 		2CB23AED25C9752300D5EF23 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB23AE425C9752200D5EF23 /* Inter-SemiBold.ttf */; };
+		2CB826E625F6068000BD6452 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB826E525F6068000BD6452 /* Date + Extension.swift */; };
+		2CB826EB25F60A4100BD6452 /* AppointmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */; };
 		2CC7AA0025D14B5E00FB6769 /* UpcomingApointmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7A9FF25D14B5E00FB6769 /* UpcomingApointmentList.swift */; };
 		2CC7AA0525D14C6A00FB6769 /* BookingRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0425D14C6A00FB6769 /* BookingRequestVC.swift */; };
 		2CC7AA0D25D14D9600FB6769 /* AppointmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */; };
@@ -231,6 +233,8 @@
 		2CB23AE225C9752200D5EF23 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		2CB23AE325C9752200D5EF23 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
 		2CB23AE425C9752200D5EF23 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		2CB826E525F6068000BD6452 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
+		2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListModel.swift; sourceTree = "<group>"; };
 		2CC7A9E225D141F300FB6769 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		2CC7A9E325D141F300FB6769 /* CAPSPageMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+Options.swift"; sourceTree = "<group>"; };
 		2CC7A9E425D141F300FB6769 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 				2CB239F825C9588100D5EF23 /* Color + Extension.swift */,
 				2C4CBD5125CBE1BF0060CAE1 /* UIButton + Extension.swift */,
 				2C20BCE225F0A63B00EFDD7B /* NSObject + MDPObject.swift */,
+				2CB826E525F6068000BD6452 /* Date + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -506,9 +511,9 @@
 			children = (
 				1822288125C849B60032BE30 /* AppointmentDetailsVC.swift */,
 				1822288A25C849B60032BE30 /* NewAppointmentVC.swift */,
+				2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */,
 				2CC7A9FF25D14B5E00FB6769 /* UpcomingApointmentList.swift */,
 				2CC7AA0425D14C6A00FB6769 /* BookingRequestVC.swift */,
-				2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 			children = (
 				2C630D6525F1FD83006A0990 /* AuthenticationModel.swift */,
 				2C630D7D25F5FB54006A0990 /* ClinicListModel.swift */,
+				2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -961,6 +967,7 @@
 				2C3E675425CAB123000DDA32 /* VersionCell.swift in Sources */,
 				1822289225C849B60032BE30 /* PatientListVC.swift in Sources */,
 				2C6F205325CD045700CD0E8E /* ConsentPendingVC.swift in Sources */,
+				2CB826EB25F60A4100BD6452 /* AppointmentListModel.swift in Sources */,
 				2C630D6625F1FD83006A0990 /* AuthenticationModel.swift in Sources */,
 				2CCA33CC25C985E100330274 /* HomeVC.swift in Sources */,
 				1822289625C849B60032BE30 /* SignUpVC.swift in Sources */,
@@ -987,6 +994,7 @@
 				1822286925C8496B0032BE30 /* Constants.swift in Sources */,
 				2C59F72F25EF52210006DAFF /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				1822289425C849B60032BE30 /* OTPVerifyVC.swift in Sources */,
+				2CB826E625F6068000BD6452 /* Date + Extension.swift in Sources */,
 				2C59F74625EF5F1B0006DAFF /* AddNewPrescriptionsVC.swift in Sources */,
 				2C59F73425EF52210006DAFF /* CAPSPageMenuConfiguration.swift in Sources */,
 				2C3E672825CA84B0000DDA32 /* ProcedureCell.swift in Sources */,

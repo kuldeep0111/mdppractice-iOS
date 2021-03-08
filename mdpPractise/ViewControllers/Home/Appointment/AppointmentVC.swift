@@ -14,8 +14,8 @@ class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppointmentList()
         self.title = "List of Appointments"
-        PageMenu()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,4 +72,31 @@ class AppointmentVC: UIViewController,CAPSPageMenuDelegate {
             
         }
 
+}
+
+
+
+
+//MARK: API CALL
+extension AppointmentVC {
+    
+    func AppointmentList(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        AppointmentManager.sharedInstance.AppointmentList(completionHandler: {(success,list,error) in
+            alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.PageMenu()
+            }else{
+                
+            }
+        })
+    }
 }

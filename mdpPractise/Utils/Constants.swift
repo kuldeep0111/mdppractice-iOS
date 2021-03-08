@@ -29,3 +29,5 @@ public typealias JSONDictionary = [String : Any]
 
 
 var selectedClinic : ClinicListModel?
+
+var providerID = UserDefaults.standard.string(forKey: "providerid")

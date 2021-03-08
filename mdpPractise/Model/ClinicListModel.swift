@@ -27,7 +27,7 @@ class ClinicListModel: NSObject,Mappable {
     var cell: String = ""
     var city: String = ""
     var clinic: String = ""
-    var clinicID: String = ""
+    var clinicID: Int?
     var email: String = ""
     var clinicName: String = ""
     var primaryClinic: String = ""

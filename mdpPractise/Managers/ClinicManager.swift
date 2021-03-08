@@ -23,7 +23,7 @@ class ClinicManager: APIManager {
         var params: JSONDictionary = [:]
         params["action"]    = "list_clinic"
         params["ref_code"] = "PRV"
-        params["ref_id"] = "1339"
+        params["ref_id"] = providerID
     
         let _ =  makeRequest(apiURL(APIEndPoint.ClinicList), action: .post, params: params) { (successful, response, error) in
                 
