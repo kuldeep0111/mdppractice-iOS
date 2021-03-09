@@ -22,6 +22,7 @@ class ClinicListModel: NSObject,Mappable {
         static let primaryKey = "primary_clinic"
         static let refCodeKey = "ref_code"
         static let statusKey = "status"
+        static let pinCodeKey = "pin"
     }
 
     var cell: String = ""
@@ -33,7 +34,7 @@ class ClinicListModel: NSObject,Mappable {
     var primaryClinic: String = ""
     var refCode: String = ""
     var status: String = ""
-    
+    var pinCode: String = ""
     required convenience init(_ map: JSONDictionary) {
         self.init()
         cell            <- map.property(clinicListModelKey.cellKey)
@@ -45,6 +46,7 @@ class ClinicListModel: NSObject,Mappable {
         primaryClinic   <- map.property(clinicListModelKey.primaryKey)
         refCode         <- map.property(clinicListModelKey.refCodeKey)
         status          <- map.property(clinicListModelKey.statusKey)
+        pinCode         <- map.property(clinicListModelKey.pinCodeKey)
     }
 
     override init() {

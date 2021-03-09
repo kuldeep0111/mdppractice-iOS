@@ -133,6 +133,24 @@ class ClinicManager: APIManager {
         }
     }
 
-    
+    func ClinicDetail(clinicID: Int,completionHandler: ((Bool, _ user: ClinicDetailModel?, _ error: NSError?)->())?) {
+        var params: JSONDictionary = [:]
+        params["action"]    = "get_clinic"
+        params["clinicid"] = clinicID
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.ClinicDetail), action: .post, params: params) { (successful, response, error) in
+                        
+            if successful {
+                
+                var ClinicDetail : ClinicDetailModel?
+                if let dict = response.dictionaryObject {
+                    ClinicDetail = ClinicDetailModel(dict)
+                }
+                completionHandler?(true, ClinicDetail, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 
 }

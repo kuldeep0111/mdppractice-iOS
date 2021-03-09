@@ -24,10 +24,11 @@ class ClinicVC: UIViewController {
     }
     @IBOutlet weak var tableView : UITableView!
     
-    
+    var ClinicList: [ClinicListModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //loadClinicList()
         self.title = "Clinic"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
@@ -37,6 +38,8 @@ class ClinicVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        ClinicList = ClinicManager.sharedInstance.clinicArray
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,15 +67,15 @@ extension ClinicVC {
 
 extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ClinicList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClinicCell", for: indexPath) as! ClinicCell
         cell.img.image = UIImage.init(named: "dentaldemo")
-        cell.name.text = "Madhu Clinic"
-        cell.patientNo.text = "P1678SH"
-        cell.subTitle.text = "Shayam Nagar"
+        cell.name.text = ClinicList[indexPath.row].clinicName
+        cell.patientNo.text = "\(String(describing: ClinicList[indexPath.row].clinicID!))"
+        cell.subTitle.text = ClinicList[indexPath.row].city
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
@@ -84,6 +87,7 @@ extension ClinicVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "ClinicDetails") as ClinicDetails
         vc.isAlreadyFeel = true
+        vc.clinicID = ClinicList[indexPath.row].clinicID
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

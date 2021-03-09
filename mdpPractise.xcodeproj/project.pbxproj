@@ -41,6 +41,7 @@
 		2C20BCCC25F09FDE00EFDD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */; };
 		2C20BCDE25F0A30000EFDD7B /* UserDefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */; };
 		2C20BCE325F0A63B00EFDD7B /* NSObject + MDPObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCE225F0A63B00EFDD7B /* NSObject + MDPObject.swift */; };
+		2C38FC6D25F73CD900959663 /* ClinicDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */; };
 		2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */; };
 		2C3E671425CA6770000DDA32 /* TreatmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E671325CA6770000DDA32 /* TreatmentVC.swift */; };
 		2C3E671925CA6CB2000DDA32 /* TreatmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */; };
@@ -175,6 +176,7 @@
 		2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultDataManager.swift; sourceTree = "<group>"; };
 		2C20BCE225F0A63B00EFDD7B /* NSObject + MDPObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + MDPObject.swift"; sourceTree = "<group>"; };
+		2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicDetailModel.swift; sourceTree = "<group>"; };
 		2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentCell.swift; sourceTree = "<group>"; };
 		2C3E671325CA6770000DDA32 /* TreatmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentVC.swift; sourceTree = "<group>"; };
 		2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentDetailVC.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				2C630D7D25F5FB54006A0990 /* ClinicListModel.swift */,
 				2CB826EA25F60A4100BD6452 /* AppointmentListModel.swift */,
 				2CB826F225F631E100BD6452 /* DoctorModel.swift */,
+				2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				1822289825C849B60032BE30 /* ThanksPageVC.swift in Sources */,
 				2C4CBD2625CBB3790060CAE1 /* DentalImageCell.swift in Sources */,
 				1822289B25C849B60032BE30 /* SceneDelegate.swift in Sources */,
+				2C38FC6D25F73CD900959663 /* ClinicDetailModel.swift in Sources */,
 				2C42211325D13959000C41FB /* PaymentProcedureCell.swift in Sources */,
 				2C0FED4A25CD3BA000E94B8A /* ConsentFormView.swift in Sources */,
 				2C59F72E25EF52210006DAFF /* MenuItemView.swift in Sources */,
