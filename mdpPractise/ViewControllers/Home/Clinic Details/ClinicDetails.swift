@@ -137,8 +137,8 @@ extension ClinicDetails {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = false
-        self.stateTextField.isUserInteractionEnabled = false
+        self.cityTextField.isUserInteractionEnabled = true
+        self.stateTextField.isUserInteractionEnabled = true
         self.councelNoTextField.isUserInteractionEnabled = true
         self.ownerName.isUserInteractionEnabled = true
         self.noOfChairs.isUserInteractionEnabled = true
@@ -207,8 +207,8 @@ extension ClinicDetails {
         self.address1TextField.isUserInteractionEnabled = true
         self.address2TextField.isUserInteractionEnabled = true
         self.pincodeTextField.isUserInteractionEnabled = true
-        self.cityTextField.isUserInteractionEnabled = false
-        self.stateTextField.isUserInteractionEnabled = false
+        self.cityTextField.isUserInteractionEnabled = true
+        self.stateTextField.isUserInteractionEnabled = true
         self.ownerName.isUserInteractionEnabled = true
         self.noOfChairs.isUserInteractionEnabled = true
         self.approvalBtn.isHidden = false
@@ -218,6 +218,19 @@ extension ClinicDetails {
     
     @objc func didTapOnDelete(){
         
+        let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure want to delete this clinic.", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.deleteClinic()
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
+
+        //deleteClinic()
     }
     
     @IBAction func didTapOnApprovalBtn(_ sender: UIButton){
@@ -473,7 +486,7 @@ extension ClinicDetails {
             if(successful){
                 self.stateList = user
                  print("Success")
-                self.loadClinicList()
+                self.loadClinicDetail()
             }else{
                 let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
                 snackbar.show()
@@ -481,7 +494,7 @@ extension ClinicDetails {
         }
     }
     
-    func loadClinicList(){
+    func loadClinicDetail(){
         
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -507,6 +520,50 @@ extension ClinicDetails {
                 
             }else{
                 
+            }
+        })
+    }
+    
+    func deleteClinic(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        ClinicManager.sharedInstance.DeleteClinic(clinicID: clinicID!, completionHandler: {
+           (success,data,error) in
+            alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.loadClinicList()
+            }else{
+                
+            }
+        })
+    }
+    
+    func loadClinicList(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        ClinicManager.sharedInstance.ClinicListList(completionHandler: {
+            (success,list,error) in
+            alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

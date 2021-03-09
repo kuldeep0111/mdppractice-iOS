@@ -152,5 +152,22 @@ class ClinicManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
+    
+    
+    func DeleteClinic(clinicID: Int,completionHandler: ((Bool, _ user: ClinicDetailModel?, _ error: NSError?)->())?) {
+        var params: JSONDictionary = [:]
+        params["action"]    = "delete_clinic"
+        params["clinicid"] = clinicID
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.DeleteClinic), action: .post, params: params) { (successful, response, error) in
+                        
+            if successful {
+                completionHandler?(true, nil, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
+
 
 }
