@@ -132,6 +132,46 @@ class ClinicManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
+    
+    func UpdateClinic(clinicID: Int,mobileNo: String,name: String,address1: String,address2: String,city: String,state: String,pin: String,email: String,status: String, completionHandler: ((Bool, _ userType: Any?, _ error: NSError?)->())?) {
+        var params: JSONDictionary = [:]
+        params["action"]    = "update_clinic"
+        params["clinicid"] = clinicID
+        params["name"] = name
+        params["address1"] = address1
+        params["address2"] = address2
+        params["address3"] = ""
+//        params["city"] = city
+//        params["st"] = state
+//        params["pin"] = pin
+        params["email"] = email
+        params["telephone"] = mobileNo
+        params["status"] = status
+        
+       let user = UserDefaults.standard.integer(forKey: "userType")
+        if(user == 3){
+            params["ref_code"] = "PST"
+        }else{
+            params["ref_code"] = "PRV"
+        }
+        
+        print(params)
+        print(apiURL(APIEndPoint.UserLogin))
+        let _ =  makeRequest(apiURL(APIEndPoint.NewClinic), action: .post, params: params) { (successful, response, error) in
+            
+            
+            if successful {
+                
+                if let dict = response.dictionaryObject {
+                    print(dict)
+                }
+                completionHandler?(true, nil, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
+
 
     func ClinicDetail(clinicID: Int,completionHandler: ((Bool, _ user: ClinicDetailModel?, _ error: NSError?)->())?) {
         var params: JSONDictionary = [:]

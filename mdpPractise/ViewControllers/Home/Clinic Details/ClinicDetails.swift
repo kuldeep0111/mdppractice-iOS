@@ -213,6 +213,7 @@ extension ClinicDetails {
         self.noOfChairs.isUserInteractionEnabled = true
         self.approvalBtn.isHidden = false
         self.locationButton.isUserInteractionEnabled = true
+        self.councelNoTextField.isUserInteractionEnabled = true
         self.title = "Edit Clinic Details"
     }
     
@@ -237,10 +238,15 @@ extension ClinicDetails {
         
         if(validateName() && validateAddress1() && validatePin() && validateCity() && validateState() && validateCouncilNo()){
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-            mainTabBarController.modalPresentationStyle = .fullScreen
-            self.present(mainTabBarController, animated: true, completion: nil)
+            if(isAlreadyFeel){
+                UpdateClinicCall()
+            }else{
+                
+            }
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+//            mainTabBarController.modalPresentationStyle = .fullScreen
+//            self.present(mainTabBarController, animated: true, completion: nil)
         }else{
             
         }
@@ -522,6 +528,31 @@ extension ClinicDetails {
                 
             }
         })
+    }
+    
+    
+    func UpdateClinicCall(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        
+        ClinicManager.sharedInstance.UpdateClinic(clinicID: clinicID!, mobileNo: "", name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email", status: (clinicDetail?.status)!) {(successful, user, error) in
+            self.dismiss(animated: true, completion: nil)
+            if(successful){
+                 print("Success")
+                self.loadClinicList()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        }
     }
     
     func deleteClinic(){

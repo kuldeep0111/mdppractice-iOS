@@ -28,6 +28,7 @@ enum APIEndPoint: String {
     case doctorList             = "clinicAPI/list_doc_clinic"
     case ClinicDetail           = "clinicAPI/get_clinic"
     case DeleteClinic           = "clinicAPI/delete_clinic"
+    case UpdateClinic           = "clinicAPI/update_clinic"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {
