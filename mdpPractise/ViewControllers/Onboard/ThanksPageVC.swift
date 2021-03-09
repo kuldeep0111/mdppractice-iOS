@@ -9,6 +9,13 @@ import UIKit
 
 class ThanksPageVC: UIViewController {
 
+    
+    @IBOutlet weak var containerView : UIView!{
+        didSet{
+            containerView.roundCorners(corners: [.topLeft, .topRight], radius: 30.0)
+        }
+    }
+    
     @IBOutlet weak var setupClinicButton : UIButton!{
         didSet{
             setupClinicButton.layer.cornerRadius = 25
