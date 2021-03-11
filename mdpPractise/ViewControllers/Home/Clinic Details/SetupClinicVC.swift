@@ -9,8 +9,14 @@ import UIKit
 import TTGSnackbar
 import Photos
 
+protocol SetupClinicVCDelegate {
+    func updateClinicList()
+}
+
 class SetupClinicVC: UIViewController {
 
+    var delegate : SetupClinicVCDelegate?
+    
     @IBOutlet weak var clinicName : MDPTextField!
     @IBOutlet weak var address1TextField : MDPTextField!
     @IBOutlet weak var address2TextField : MDPTextField!
@@ -488,6 +494,7 @@ extension SetupClinicVC : UIPickerViewDelegate , UIPickerViewDataSource {
 extension SetupClinicVC : SorryViewDelegate {
     func didTapOnOK() {
         self.navigationController?.popViewController(animated: true)
+        self.delegate?.updateClinicList()
     }
 }
 
@@ -518,7 +525,7 @@ extension SetupClinicVC {
 
                 }else{
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")
                         }
 //                    SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")

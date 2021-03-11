@@ -26,7 +26,7 @@ class ClinicVC: UIViewController {
     }
     @IBOutlet weak var tableView : UITableView!
     
-    var ClinicList: [ClinicListModel] = []
+    var ClinicList: [ClinicListModel] = ClinicManager.sharedInstance.clinicArray
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ClinicVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        loadClinicList()
+        ClinicList = ClinicManager.sharedInstance.clinicArray
         tableView.reloadData()
     }
     
@@ -63,7 +63,13 @@ extension ClinicVC : UITextFieldDelegate {
 extension ClinicVC {
     @objc func addNewClinic(){
         let vc = mdpStoryBoard.instantiateViewController(identifier: "SetupClinicVC") as SetupClinicVC
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension ClinicVC : SetupClinicVCDelegate {
+    func updateClinicList() {
+        loadClinicList()
     }
 }
 
