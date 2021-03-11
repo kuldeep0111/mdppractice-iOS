@@ -7,6 +7,8 @@
 
 import UIKit
 import DropDown
+import TTGSnackbar
+
 class ClinicVC: UIViewController {
     
     let dropDown = DropDown()
@@ -38,7 +40,7 @@ class ClinicVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        ClinicList = ClinicManager.sharedInstance.clinicArray
+        loadClinicList()
         tableView.reloadData()
     }
     
@@ -129,4 +131,36 @@ extension ClinicVC {
         
     }
     
+}
+
+
+//MARK: Action
+extension ClinicVC {
+    
+    func loadClinicList(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+
+        ClinicManager.sharedInstance.ClinicListList(completionHandler: {
+            (success,list,error) in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                alert.dismiss(animated: true, completion: nil)
+                }
+            if(success){
+                self.ClinicList = ClinicManager.sharedInstance.clinicArray
+                self.tableView.reloadData()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
 }

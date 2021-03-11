@@ -26,7 +26,6 @@ class AppointmentByMonthModel: NSObject,Mappable {
         date                <- map.transform(doctorModelKey.dateKey, transformer: { (value: String) -> Date? in
             return value.toDate(dateFormat: "dd/MM/yyyy")
         })
-        print(date)
     }
     override init() {
 

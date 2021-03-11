@@ -485,7 +485,11 @@ extension SetupClinicVC : UIPickerViewDelegate , UIPickerViewDataSource {
     }
 }
 
-
+extension SetupClinicVC : SorryViewDelegate {
+    func didTapOnOK() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
 
 //MARK: API CALL
 extension SetupClinicVC {
@@ -503,13 +507,22 @@ extension SetupClinicVC {
 
         
         ClinicManager.sharedInstance.AddNewClinic(prospectedID: prospectedID, mobileNo: mobileNo, name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email") {(successful, user, error) in
-            self.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: nil)
             if(successful){
                  print("Success")
-                UserDefaults.standard.setValue(4, forKey: "userType")
-                let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
+                if(self.prospectedID != ""){
+                    UserDefaults.standard.setValue(4, forKey: "userType")
+                    let vc = mdpStoryBoard.instantiateViewController(identifier: "AnalyseVC") as AnalyseVC
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+
+                }else{
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")
+                        }
+//                    SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")
+                }
             }else{
                 let snackbar = TTGSnackbar(message: error?.description ?? "Something went wrong", duration: .long)
                 snackbar.show()
@@ -563,6 +576,4 @@ extension SetupClinicVC {
             }
         }
     }
-
-    
 }

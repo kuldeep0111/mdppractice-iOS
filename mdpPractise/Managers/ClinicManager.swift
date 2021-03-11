@@ -99,7 +99,6 @@ class ClinicManager: APIManager {
     func AddNewClinic(prospectedID: String,mobileNo: String,name: String,address1: String,address2: String,city: String,state: String,pin: String,email: String, completionHandler: ((Bool, _ userType: Any?, _ error: NSError?)->())?) {
         var params: JSONDictionary = [:]
         params["action"]    = "new_clinic"
-        params["ref_id"] = prospectedID
         params["name"] = name
         params["address1"] = address1
         params["address2"] = address2
@@ -108,6 +107,13 @@ class ClinicManager: APIManager {
         params["pin"] = pin
         params["email"] = email
         params["cell"] = mobileNo
+        
+        let id = UserDefaults.standard.integer(forKey: "providerid")
+        if(id != 0){
+            params["ref_id"] = id
+        }else{
+            params["ref_id"] = prospectedID
+        }
         
        let user = UserDefaults.standard.integer(forKey: "userType")
         if(user == 3){

@@ -7,16 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "727BF8DF-69EE-4310-9C88-CDD4537A183D"
+            uuid = "837EB0CD-80FE-4F0A-BDCE-5A9A5E36593B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mdpPractise/Model/AppointmentByMonth.swift"
+            filePath = "mdpPractise/Managers/AppointmentManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "init(_:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "AppointmentByMonth(month:year:clinicID:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32EC68B0-91D4-4AAB-9D27-57E5EBB0453E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mdpPractise/Managers/ClinicManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "AddNewClinic(prospectedID:mobileNo:name:address1:address2:city:state:pin:email:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC0F22F7-454B-471C-8F33-9C76D17E5878"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mdpPractise/ViewControllers/Home/Clinic Details/SetupClinicVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
+            landmarkName = "addClinicCall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

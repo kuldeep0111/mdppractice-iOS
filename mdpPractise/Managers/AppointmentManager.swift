@@ -168,11 +168,11 @@ class AppointmentManager: APIManager {
             var aptDateByMonthList : [AppointmentByMonthModel] = []
             
             if successful {
+                aptDateByMonthList.removeAll()
                 if let array = response["apptlist"].arrayObject{
                     for item in array {
                         aptDateByMonthList.append(AppointmentByMonthModel(item as! JSONDictionary))
                     }
-                    print(array)
                 }
                 completionHandler?(true, aptDateByMonthList, error)
                 return

@@ -148,6 +148,7 @@ extension HomeVC {
             self!.clinicName.text = item
             self!.clinicLocation.text = self!.clinicList[index].city
             selectedClinic = self!.clinicList[index]
+            self!.getAppointment()
         }
     }
 
@@ -177,6 +178,7 @@ extension HomeVC {
                 currentMonth = currentMonth! - 1
             }
         }
+        getAppointment()
     }
 }
 
