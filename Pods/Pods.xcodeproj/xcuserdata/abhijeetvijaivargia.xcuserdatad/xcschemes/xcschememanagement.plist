@@ -18,68 +18,68 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-mdpPractise-mdpPractiseUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>Pods-mdpPractise.xcscheme</key>
+		<key>FSCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Pods-mdpPractiseTests.xcscheme</key>
+		<key>Pods-mdpPractise-mdpPractiseUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>SideMenu.xcscheme</key>
+		<key>Pods-mdpPractise.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-mdpPractiseTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Sugar.xcscheme</key>
+		<key>SideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>Sugar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>TTGSnackbar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>Tailor.xcscheme</key>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>VACalendar.xcscheme</key>
+		<key>TTGSnackbar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
+		</dict>
+		<key>Tailor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

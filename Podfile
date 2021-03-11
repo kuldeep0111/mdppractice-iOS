@@ -7,13 +7,13 @@ target 'mdpPractise' do
 
   # Pods for mdpPractise
    pod "TTGSnackbar"
-   pod 'VACalendar'
    pod ‘SideMenu’
    pod 'DropDown'
    pod 'Alamofire'
    pod 'SwiftyJSON'
    pod 'Sugar'
    pod 'Tailor'
+   pod 'FSCalendar'
 
   target 'mdpPractiseTests' do
     inherit! :search_paths

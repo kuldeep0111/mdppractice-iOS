@@ -19,13 +19,14 @@ class AppointmentByMonthModel: NSObject,Mappable {
     
     var date: Date = Date()
     var count: Int?
-    
+    var dateString: String = ""
     required convenience init(_ map: JSONDictionary) {
         self.init()
         count        <- map.property(doctorModelKey.countKey)
         date                <- map.transform(doctorModelKey.dateKey, transformer: { (value: String) -> Date? in
             return value.toDate(dateFormat: "dd/MM/yyyy")
         })
+        dateString <- map.property(doctorModelKey.dateKey)
     }
     override init() {
 

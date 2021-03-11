@@ -6,166 +6,116 @@
 //
 
 import UIKit
-import VACalendar
+import FSCalendar
 
 class HolidayVC: UIViewController {
 
-    let dateFormatterGet = DateFormatter()
+    @IBOutlet weak var calendar: FSCalendar!
     
-    @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
-           didSet {
-               let appereance = VAMonthHeaderViewAppearance(
-                previousButtonImage: (UIImage.init(named: "leftArrow")?.withTintColor(UIColor(rgb: 0x0173B7), renderingMode: .alwaysOriginal))!,
-                nextButtonImage: (UIImage.init(named: "rightArrow")?.withTintColor(UIColor(rgb: 0x0173B7), renderingMode: .alwaysOriginal))!,
-                   dateFormatter: dateFormatterGet
-               )
-               monthHeaderView.delegate = self
-               monthHeaderView.appearance = appereance
-           }
-       }
-       
-       @IBOutlet weak var weekDaysView: VAWeekDaysView! {
-           didSet {
-               let appereance = VAWeekDaysViewAppearance(symbolsType: .veryShort, calendar: defaultCalendar)
-               weekDaysView.appearance = appereance
-           }
-       }
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
-    var calendarView: VACalendarView!
+    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.indian)
     
-    let defaultCalendar: Calendar = {
-        var calendar = Calendar.current
-        calendar.firstWeekday = 1
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-        return calendar
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+    
+    private var currentPage: Date?
+
+    private lazy var today: Date = {
+        return Date()
     }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetupMethod()
         self.title = "Holidays"
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addHoliDay))
-        
-        dateFormatterGet.dateFormat = "MMMM yyyy"
-        let calendar = VACalendar(calendar: defaultCalendar)
-        calendarView = VACalendarView(frame: .zero, calendar: calendar)
-        calendarView.showDaysOut = true
-        calendarView.selectionStyle = .single
-        calendarView.monthDelegate = monthHeaderView
-        calendarView.dayViewAppearanceDelegate = self
-        calendarView.monthViewAppearanceDelegate = self
-        calendarView.calendarDelegate = self
-        calendarView.scrollDirection = .horizontal
-        view.addSubview(calendarView)
+    }
+}
 
+
+//MARK: HelpingMethod
+extension HolidayVC {
+    
+    func SetupMethod(){
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.appearance.weekdayTextColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerTitleColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerTitleFont = UIFont(name:"Inter-Bold",size:15)
+        self.calendar.appearance.eventDefaultColor = UIColor(red: 31/255.0, green: 119/255.0, blue: 219/255.0, alpha: 1.0)
+        self.calendar.appearance.selectionColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerDateFormat = "MMMM yyyy"
+        self.calendar.appearance.todayColor = UIColor(red: 198/255.0, green: 51/255.0, blue: 42/255.0, alpha: 1.0)
+        self.calendar.appearance.borderRadius = 1.0
+        self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        
+        if UIDevice.current.model.hasPrefix("iPad") {
+            self.calendarHeightConstraint.constant = 400
+        }
+        self.calendar.headerHeight = 50
+        self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
+        self.calendar.select(Date())
+        let scopeGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+        self.calendar.addGestureRecognizer(scopeGesture)
+        // For UITest
+        self.calendar.accessibilityIdentifier = "calendar"
+        
     }
     
-    override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            
-            if calendarView.frame == .zero {
-                calendarView.frame = CGRect(
-                    x: 0,
-                    y: weekDaysView.frame.maxY,
-                    width: view.frame.width,
-                    height: view.frame.height * 0.6
-                )
-                calendarView.setup()
-            }
-        }
 }
+
+//MARK: FSCalendarDataSource
+extension HolidayVC : FSCalendarDataSource, FSCalendarDelegate {
+    
+//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//
+//        let dateString = self.formatter.string(from: date)
+//        let faf = self.aptDateByMonthList.contains{ (amcData) -> Bool in
+//            return amcData.dateString == dateString
+//        }
+//
+//        if faf {
+//            return 1
+//        }
+//
+//        return 0
+//    }
+    
+    // MARK:- FSCalendarDelegate
+    
+//    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+//        print("change page to \(self.formatter.string(from: calendar.currentPage))")
+//        currentYear = calendar.currentPage.year
+//        currentMonth = calendar.currentPage.month
+//        getAppointment()
+//    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("calendar did select date \(self.formatter.string(from: date))")
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+}
+
 
 extension HolidayVC {
     @objc func addHoliDay(){
         let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: "AddHolidays") as! AddHolidays
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-
-extension HolidayVC: VAMonthHeaderViewDelegate {
-    
-    func didTapNextMonth() {
-        calendarView.nextMonth()
-    }
-    
-    func didTapPreviousMonth() {
-        calendarView.previousMonth()
-    }
-    
-}
-
-extension HolidayVC: VAMonthViewAppearanceDelegate {
-    
-    func leftInset() -> CGFloat {
-        return 10.0
-    }
-    
-    func rightInset() -> CGFloat {
-        return 10.0
-    }
-    
-    func verticalMonthTitleFont() -> UIFont {
-        return UIFont.systemFont(ofSize: 16, weight: .semibold)
-    }
-    
-    func verticalMonthTitleColor() -> UIColor {
-        return UIColor(rgb: 0x0173B7)
-    }
-    
-    func verticalCurrentMonthTitleColor() -> UIColor {
-        return UIColor(rgb: 0x0173B7)
-    }
-    
-}
-
-extension HolidayVC: VADayViewAppearanceDelegate {
-    
-    func textColor(for state: VADayState) -> UIColor {
-        switch state {
-        case .out:
-            return UIColor(red: 214 / 255, green: 214 / 255, blue: 219 / 255, alpha: 1.0)
-        case .selected:
-            return .white
-        case .unavailable:
-            return .lightGray
-        default:
-            return .black
-        }
-    }
-    
-    func textBackgroundColor(for state: VADayState) -> UIColor {
-        switch state {
-        case .selected:
-            return UIColor(rgb: 0x0173B7)
-        default:
-            return .clear
-        }
-    }
-    
-    func shape() -> VADayShape {
-        return .circle
-    }
-    
-    func dotBottomVerticalOffset(for state: VADayState) -> CGFloat {
-        switch state {
-        case .selected:
-            return 2
-        default:
-            return -7
-        }
-    }
-    
-}
-
-extension HolidayVC: VACalendarViewDelegate {
-    
-    func selectedDates(_ dates: [Date]) {
-        calendarView.startDate = dates.last ?? Date()
-        print(dates)
     }
 }

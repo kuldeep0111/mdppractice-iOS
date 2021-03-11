@@ -2165,18 +2165,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9r-q6-LHX" customClass="VAMonthHeaderView" customModule="VACalendar">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9r-q6-LHX" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="IUY-ku-rhw"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-mY-mrp" customClass="VAWeekDaysView" customModule="VACalendar">
-                                <rect key="frame" x="0.0" y="76" width="414" height="76"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="dqq-BD-nag"/>
+                                    <constraint firstAttribute="height" constant="300" id="IUY-ku-rhw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2185,15 +2178,12 @@
                         <constraints>
                             <constraint firstItem="H9r-q6-LHX" firstAttribute="top" secondItem="hIs-4J-kHl" secondAttribute="top" id="96g-aU-gK4"/>
                             <constraint firstItem="H9r-q6-LHX" firstAttribute="leading" secondItem="hIs-4J-kHl" secondAttribute="leading" id="Azc-eN-0I0"/>
-                            <constraint firstItem="bB9-mY-mrp" firstAttribute="leading" secondItem="hIs-4J-kHl" secondAttribute="leading" id="BU7-c1-Bts"/>
-                            <constraint firstItem="bB9-mY-mrp" firstAttribute="top" secondItem="H9r-q6-LHX" secondAttribute="bottom" id="Hp7-Jv-zH9"/>
-                            <constraint firstItem="bB9-mY-mrp" firstAttribute="trailing" secondItem="hIs-4J-kHl" secondAttribute="trailing" id="Nel-k0-HiM"/>
                             <constraint firstItem="H9r-q6-LHX" firstAttribute="trailing" secondItem="hIs-4J-kHl" secondAttribute="trailing" id="nC3-sg-HiN"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="monthHeaderView" destination="H9r-q6-LHX" id="3kN-OS-FRP"/>
-                        <outlet property="weekDaysView" destination="bB9-mY-mrp" id="0K4-Ha-YLG"/>
+                        <outlet property="calendar" destination="H9r-q6-LHX" id="MdC-6I-Wcm"/>
+                        <outlet property="calendarHeightConstraint" destination="IUY-ku-rhw" id="gME-j6-VDD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7a-2t-hLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3713,55 +3703,62 @@
                                     <constraint firstItem="A7d-PF-JMi" firstAttribute="leading" secondItem="koj-ew-5Rf" secondAttribute="trailing" constant="12" id="y0p-45-Ymy"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbt-jB-bvz" customClass="VAMonthHeaderView" customModule="VACalendar">
-                                <rect key="frame" x="0.0" y="68" width="414" height="76"/>
-                                <subviews>
-                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7G-nj-wdt">
-                                        <rect key="frame" x="0.0" y="-65" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <items>
-                                            <navigationItem title="Title" id="QYU-JM-jub"/>
-                                        </items>
-                                    </navigationBar>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbt-jB-bvz" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="68" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="opI-XO-HMl"/>
+                                    <constraint firstAttribute="height" constant="300" id="opI-XO-HMl"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkI-qh-96F" customClass="VAWeekDaysView" customModule="VACalendar">
-                                <rect key="frame" x="0.0" y="144" width="414" height="76"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJv-Cs-fDu">
+                                <rect key="frame" x="30" y="85" width="20" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="P1A-f6-sMT"/>
+                                    <constraint firstAttribute="width" constant="20" id="0Qi-cr-k6K"/>
+                                    <constraint firstAttribute="height" constant="22" id="WuJ-Lf-XRV"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" image="leftArrow"/>
+                                <connections>
+                                    <action selector="monthBackButtonPressed:" destination="rOr-ML-REI" eventType="touchUpInside" id="eAV-Ri-X72"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvB-Sl-pGR">
+                                <rect key="frame" x="364" y="85" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="6jx-65-mij"/>
+                                    <constraint firstAttribute="width" constant="20" id="hGa-Sv-hXi"/>
+                                </constraints>
+                                <state key="normal" image="rightArrow"/>
+                                <connections>
+                                    <action selector="monthForthButtonPressed:" destination="rOr-ML-REI" eventType="touchUpInside" id="rp0-CS-GBJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dOQ-jE-87B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dOQ-jE-87B" firstAttribute="trailing" secondItem="IvB-Sl-pGR" secondAttribute="trailing" constant="30" id="3Ie-ye-wlm"/>
+                            <constraint firstItem="IvB-Sl-pGR" firstAttribute="top" secondItem="0Sf-CN-fPp" secondAttribute="bottom" constant="17" id="7ex-QW-4g8"/>
                             <constraint firstItem="dOQ-jE-87B" firstAttribute="trailing" secondItem="0Sf-CN-fPp" secondAttribute="trailing" id="EQT-eP-cbn"/>
+                            <constraint firstItem="lJv-Cs-fDu" firstAttribute="top" secondItem="0Sf-CN-fPp" secondAttribute="bottom" constant="17" id="KVi-KD-iCh"/>
                             <constraint firstItem="lbt-jB-bvz" firstAttribute="trailing" secondItem="dOQ-jE-87B" secondAttribute="trailing" id="O5w-9x-sPd"/>
                             <constraint firstItem="lbt-jB-bvz" firstAttribute="leading" secondItem="dOQ-jE-87B" secondAttribute="leading" id="UBw-Mo-0QC"/>
                             <constraint firstItem="lbt-jB-bvz" firstAttribute="top" secondItem="0Sf-CN-fPp" secondAttribute="bottom" id="XWn-PE-gJP"/>
-                            <constraint firstItem="QkI-qh-96F" firstAttribute="top" secondItem="lbt-jB-bvz" secondAttribute="bottom" id="cIp-SM-nvn"/>
-                            <constraint firstItem="QkI-qh-96F" firstAttribute="trailing" secondItem="dOQ-jE-87B" secondAttribute="trailing" id="dnh-Df-6Ml"/>
-                            <constraint firstItem="QkI-qh-96F" firstAttribute="leading" secondItem="dOQ-jE-87B" secondAttribute="leading" id="gbw-FM-6Hi"/>
                             <constraint firstItem="0Sf-CN-fPp" firstAttribute="leading" secondItem="dOQ-jE-87B" secondAttribute="leading" id="gzX-CG-Yc7"/>
                             <constraint firstItem="0Sf-CN-fPp" firstAttribute="top" secondItem="HIG-8p-3hq" secondAttribute="top" id="kEQ-aM-JHG"/>
+                            <constraint firstItem="lJv-Cs-fDu" firstAttribute="leading" secondItem="dOQ-jE-87B" secondAttribute="leading" constant="30" id="t2b-ut-Afn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2L4-sb-FbX"/>
+                    <navigationItem key="navigationItem" id="pOp-U7-jpH"/>
                     <connections>
+                        <outlet property="calendar" destination="lbt-jB-bvz" id="4QC-Rx-lzs"/>
+                        <outlet property="calendarHeightConstraint" destination="opI-XO-HMl" id="a0y-H9-mAp"/>
                         <outlet property="clinicLocation" destination="GQm-tR-Ujc" id="wYi-yJ-nYj"/>
                         <outlet property="clinicName" destination="A7d-PF-JMi" id="etl-Kr-KFU"/>
-                        <outlet property="monthHeaderView" destination="lbt-jB-bvz" id="7nb-ZY-kfd"/>
-                        <outlet property="weekDaysView" destination="QkI-qh-96F" id="Zjr-AE-jpe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PZ-NW-HYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3642.0289855072465" y="2536.9565217391305"/>
+            <point key="canvasLocation" x="3640.579710144928" y="2534.5108695652175"/>
         </scene>
         <!--Dental ChartVC-->
         <scene sceneID="pID-PV-r1s">
@@ -4806,7 +4803,7 @@
                         <outlet property="delegate" destination="XCY-Xe-6wR" id="loT-21-lul"/>
                         <segue destination="Uit-0O-INy" kind="relationship" relationship="viewControllers" id="CQK-pK-Jr3"/>
                         <segue destination="vDL-m5-yVP" kind="relationship" relationship="viewControllers" id="JP3-rI-87J"/>
-                        <segue destination="dXR-ke-I2t" kind="relationship" relationship="viewControllers" id="at3-4Y-QjV"/>
+                        <segue destination="H9I-5K-OX0" kind="relationship" relationship="viewControllers" id="hPP-Y5-oay"/>
                         <segue destination="ejm-UA-8Xf" kind="relationship" relationship="viewControllers" id="Ran-XA-3ak"/>
                         <segue destination="JF8-da-ghu" kind="relationship" relationship="viewControllers" id="lvI-z8-5Of"/>
                     </connections>
@@ -5524,7 +5521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uo-TQ-N2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4322" y="1957"/>
+            <point key="canvasLocation" x="5228.985507246377" y="1956.521739130435"/>
         </scene>
         <!--ProcedureVC-->
         <scene sceneID="gBR-72-Zg2">
@@ -5689,25 +5686,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7BX-Qb-Dbo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5031.884057971015" y="1849.7282608695652"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="yZ1-uD-fW5">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dXR-ke-I2t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="homeUnSelected" selectedImage="home" id="Rt1-rB-SgO"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t0j-Rd-PTa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rOr-ML-REI" kind="relationship" relationship="rootViewController" id="oaK-W1-wJQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B6h-jj-S50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2958" y="2537"/>
         </scene>
         <!--Dental Chart-->
         <scene sceneID="99E-ui-1Q4">
@@ -7455,6 +7433,25 @@
             </objects>
             <point key="canvasLocation" x="2340.5797101449275" y="-990.48913043478274"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="klQ-xI-cFN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H9I-5K-OX0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="homeUnSelected" selectedImage="home" id="wc3-Ap-Fla"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JE9-Ty-1dv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rOr-ML-REI" kind="relationship" relationship="rootViewController" id="JE7-l5-Jlg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Yc-sI-FgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2958" y="2535"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Shospital" width="21.333333969116211" height="21.333333969116211"/>
@@ -7473,6 +7470,7 @@
         <image name="home" width="24" height="24"/>
         <image name="homeUnSelected" width="24" height="24"/>
         <image name="hospital" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="leftArrow" width="11" height="19"/>
         <image name="location" width="14.666666984558105" height="14.666666984558105"/>
         <image name="male" width="57" height="57"/>
         <image name="menuLine" width="25" height="20"/>
@@ -7481,6 +7479,7 @@
         <image name="payment" width="32" height="32"/>
         <image name="phone" width="120" height="120"/>
         <image name="phoneIcon" width="50" height="50"/>
+        <image name="rightArrow" width="11" height="19"/>
         <image name="search" width="20" height="20"/>
         <image name="selectCheck" width="42.666667938232422" height="42.666667938232422"/>
         <image name="selectCircle" width="16" height="16"/>

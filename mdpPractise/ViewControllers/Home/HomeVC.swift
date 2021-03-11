@@ -6,44 +6,36 @@
 //
 
 import UIKit
-import VACalendar
 import SideMenu
 import DropDown
 import TTGSnackbar
+import FSCalendar
 
-class HomeVC: UIViewController {
-
+class HomeVC: UIViewController, UINavigationBarDelegate {
+    
     let dateFormatterGet = DateFormatter()
     var dropDown = DropDown()
-    @IBOutlet weak var monthHeaderView: VAMonthHeaderView! {
-           didSet {
-               let appereance = VAMonthHeaderViewAppearance(
-                previousButtonImage: (UIImage.init(named: "leftArrow")?.withTintColor(UIColor(rgb: 0x0173B7), renderingMode: .alwaysOriginal))!,
-                nextButtonImage: (UIImage.init(named: "rightArrow")?.withTintColor(UIColor(rgb: 0x0173B7), renderingMode: .alwaysOriginal))!,
-                   dateFormatter: dateFormatterGet
-               )
-               monthHeaderView.delegate = self
-               monthHeaderView.appearance = appereance
-           }
-       }
-       
-       @IBOutlet weak var weekDaysView: VAWeekDaysView! {
-           didSet {
-               let appereance = VAWeekDaysViewAppearance(symbolsType: .veryShort, calendar: defaultCalendar)
-               weekDaysView.appearance = appereance
-           }
-       }
     
     @IBOutlet weak var clinicName : UILabel!
     @IBOutlet weak var clinicLocation : UILabel!
     
-    var calendarView: VACalendarView!
     
-    let defaultCalendar: Calendar = {
-        var calendar = Calendar.current
-        calendar.firstWeekday = 1
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-        return calendar
+    @IBOutlet weak var calendar: FSCalendar!
+    
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
+    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.indian)
+    
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+    
+    private var currentPage: Date?
+
+    private lazy var today: Date = {
+        return Date()
     }()
     
     var clinicList : [ClinicListModel] = []
@@ -55,6 +47,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetupMethod()
         currentMonth = todayDate.month
         currentYear  = todayDate.year
         loadClinicList()
@@ -64,34 +57,7 @@ class HomeVC: UIViewController {
             style: .plain, target: self, action: #selector(didTapOnMenuBtn(_:)))
         
         self.navigationController?.navigationBar.isHidden = true
-        
-        dateFormatterGet.dateFormat = "MMMM yyyy"
-        let calendar = VACalendar(calendar: defaultCalendar)
-        calendarView = VACalendarView(frame: .zero, calendar: calendar)
-        calendarView.showDaysOut = true
-        calendarView.selectionStyle = .single
-        calendarView.monthDelegate = monthHeaderView
-        calendarView.dayViewAppearanceDelegate = self
-        calendarView.monthViewAppearanceDelegate = self
-        calendarView.calendarDelegate = self
-        calendarView.scrollDirection = .horizontal
-        //calendarView.setSupplementaries([(Date(), [VADaySupplementary.bottomDots([.red])])])
-        view.addSubview(calendarView)
     }
-    
-    override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            
-            if calendarView.frame == .zero {
-                calendarView.frame = CGRect(
-                    x: 0,
-                    y: weekDaysView.frame.maxY,
-                    width: view.frame.width,
-                    height: view.frame.height * 0.6
-                )
-                calendarView.setup()
-            }
-        }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -107,18 +73,120 @@ class HomeVC: UIViewController {
 }
 
 
-//MARK: DialogConfiguration
-
+//MARK: HelpingMethod
 extension HomeVC {
     
+    func SetupMethod(){
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.appearance.weekdayTextColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerTitleColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerTitleFont = UIFont(name:"Inter-Bold",size:15)
+        self.calendar.appearance.eventDefaultColor = UIColor(red: 31/255.0, green: 119/255.0, blue: 219/255.0, alpha: 1.0)
+        self.calendar.appearance.selectionColor = UIColor(rgb: 0x0173B7)
+        self.calendar.appearance.headerDateFormat = "MMMM yyyy"
+        self.calendar.appearance.todayColor = UIColor(red: 198/255.0, green: 51/255.0, blue: 42/255.0, alpha: 1.0)
+        self.calendar.appearance.borderRadius = 1.0
+        self.calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        
+        if UIDevice.current.model.hasPrefix("iPad") {
+            self.calendarHeightConstraint.constant = 400
+        }
+        self.calendar.headerHeight = 50
+        self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
+        self.calendar.select(Date())
+        let scopeGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+        self.calendar.addGestureRecognizer(scopeGesture)
+        // For UITest
+        self.calendar.accessibilityIdentifier = "calendar"
+        
+    }
     
+}
+
+//MARK: DataSource
+extension HomeVC : FSCalendarDataSource, FSCalendarDelegate {
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        let dateString = self.formatter.string(from: date)
+        let faf = self.aptDateByMonthList.contains{ (amcData) -> Bool in
+            return amcData.dateString == dateString
+        }
+        
+        if faf {
+            return 1
+        }
+        
+        return 0
+    }
+    
+    // MARK:- FSCalendarDelegate
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("change page to \(self.formatter.string(from: calendar.currentPage))")
+        currentYear = calendar.currentPage.year
+        currentMonth = calendar.currentPage.month
+        getAppointment()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("calendar did select date \(self.formatter.string(from: date))")
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
+        let dateString = self.formatter.string(from: date)
+        let faf = self.aptDateByMonthList.contains{ (amcData) -> Bool in
+            return amcData.dateString == dateString
+        }
+        
+        if faf {
+            let vc = mdpStoryBoard.instantiateViewController(identifier: "AppointmentDetailsVC") as AppointmentDetailsVC
+            vc.date = date
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }else{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d MMM yyyy"
+            print(dateFormatter.string(from: date))
+            AppointmentBlockView.showPopup(parentVC: self)
+        }
+        
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
 }
 
 //MARK: Actions
 extension HomeVC {
     
+    
+    @IBAction func monthForthButtonPressed(_ sender: Any) {
+            
+        self.moveCurrentPage(moveUp: true)
+    }
+        
+    @IBAction func monthBackButtonPressed(_ sender: Any) {
+            
+        self.moveCurrentPage(moveUp: false)
+    }
+
+    private func moveCurrentPage(moveUp: Bool) {
+            
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = moveUp ? 1 : -1
+        
+        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
+        self.calendar.setCurrentPage(self.currentPage!, animated: true)
+    }
+    
+    
     @IBAction func didTapOnMenuBtn(_ sender: UIButton){
-       // SJSwiftSideMenuController.toggleLeftSideMenu()
+        // SJSwiftSideMenuController.toggleLeftSideMenu()
         let menu = storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! SideMenuNavigationController
         menu.settings.blurEffectStyle = .dark
         menu.settings.menuWidth = screenWidth - 50
@@ -151,12 +219,12 @@ extension HomeVC {
             self!.getAppointment()
         }
     }
-
+    
     @IBAction func didTapOnNotificationBtn(_ sender: UIButton){
         let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NotificaitonVC") as! NotificaitonVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func didTapOnAddBtn(_ sender: UIButton){
         let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewAppointmentVC") as! NewAppointmentVC
         self.navigationController?.pushViewController(vc, animated: true)
@@ -167,7 +235,7 @@ extension HomeVC {
             if (currentMonth! < 12) {
                 currentMonth = currentMonth! + 1
             }else{
-                 currentMonth = 1
+                currentMonth = 1
                 currentYear = currentYear! + 1
             }
         }else{
@@ -191,107 +259,9 @@ extension HomeVC : AppointmentBlockViewDelegate {
     func didTabOnAddNewAppointment() {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as! NewAppointmentVC
         self.navigationController?.pushViewController(vc, animated: true)
-
-    }
-}
-
-//MARK: VAMonthHeaderViewDelegate
-extension HomeVC: VAMonthHeaderViewDelegate {
-    
-    func didTapNextMonth() {
-         calendarView.nextMonth()
-        setupCurrentMonthYear(increase: true)
-    }
-    
-    func didTapPreviousMonth() {
-        calendarView.previousMonth()
-        setupCurrentMonthYear(increase: false)
-    }
-}
-
-//MARK: VAMonthViewAppearanceDelegate
-extension HomeVC: VAMonthViewAppearanceDelegate {
-    
-    func leftInset() -> CGFloat {
-        return 10.0
-    }
-    
-    func rightInset() -> CGFloat {
-        return 10.0
-    }
-    
-    func verticalMonthTitleFont() -> UIFont {
-        return UIFont.systemFont(ofSize: 16, weight: .semibold)
-    }
-    
-    func verticalMonthTitleColor() -> UIColor {
-        return UIColor(rgb: 0x0173B7)
-    }
-    
-    func verticalCurrentMonthTitleColor() -> UIColor {
-        return UIColor(rgb: 0x0173B7)
-    }
-    
-}
-
-//MARK: VADayViewAppearanceDelegate
-extension HomeVC: VADayViewAppearanceDelegate {
-    
-    func textColor(for state: VADayState) -> UIColor {
-        switch state {
-        case .out:
-            return UIColor(red: 214 / 255, green: 214 / 255, blue: 219 / 255, alpha: 1.0)
-        case .selected:
-            return .white
-        case .unavailable:
-            return .lightGray
-        default:
-            return .black
-        }
-    }
-    
-    func textBackgroundColor(for state: VADayState) -> UIColor {
-        switch state {
-        case .selected:
-            return UIColor(rgb: 0x0173B7)
-        default:
-            return .clear
-        }
-    }
-    
-    func shape() -> VADayShape {
-        return .circle
-    }
-    
-    func dotBottomVerticalOffset(for state: VADayState) -> CGFloat {
-        switch state {
-        case .selected:
-            return 2
-        default:
-            return -7
-        }
-    }
-    
-}
-
-//MARK: VACalendarViewDelegate
-extension HomeVC: VACalendarViewDelegate {
-    
-    func selectedDate(_ date: Date) {
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "d MMM yyyy"
-//        print(dateFormatter.string(from: date))
-//        AppointmentBlockView.showPopup(parentVC: self)
-        
-        
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "AppointmentDetailsVC") as AppointmentDetailsVC
-        vc.date = date
-        self.navigationController?.pushViewController(vc, animated: true)
-        //MMM d, yyyy
     }
 }
-
 
 //MARK: API CALL
 
@@ -307,7 +277,7 @@ extension HomeVC {
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
-
+        
         ClinicManager.sharedInstance.ClinicListList(completionHandler: {
             (success,list,error) in
             alert.dismiss(animated: true, completion: nil)
@@ -324,7 +294,7 @@ extension HomeVC {
     }
     
     func getAppointment(){
-
+        
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -335,19 +305,13 @@ extension HomeVC {
         present(alert, animated: true, completion: nil)
         
         AppointmentManager.sharedInstance.AppointmentByMonth(month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
-                        (success,data,error) in
+            (success,data,error) in
             alert.dismiss(animated: true, completion: nil)
             if(success){
                 self.aptDateByMonthList = data!
-                for item in self.aptDateByMonthList {
-                    print(item.date)
-                    self.calendarView.setSupplementaries([
-                        (item.date, [VADaySupplementary.bottomDots([UIColor(rgb: 0x0173b7)])]),
-                        ])
-                    }
-                self.view.addSubview(self.calendarView)
+                self.calendar.reloadData()
             }else{
-
+                
             }
         })
     }
