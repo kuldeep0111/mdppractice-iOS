@@ -51,6 +51,7 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     var datePicker = UIDatePicker()
     var pickerToolbar: UIToolbar?
     var selectedTimeSlot = ""
+    var selectedDate = ""
     var clinicNameList : [ClinicListModel] = ClinicManager.sharedInstance.clinicArray
     
     var genderList = ["Male","Female","Other"]
@@ -105,7 +106,7 @@ extension NewAppointmentVC {
         datePicker.preferredDatePickerStyle = .wheels
         dateTextField?.inputAccessoryView = pickerToolbar
         dateTextField?.inputView = datePicker
-
+        dateTextField.text = selectedDate
         
        // GenderTextField.delegate = self
     }

@@ -279,10 +279,15 @@ extension HomeVC: VACalendarViewDelegate {
     
     func selectedDate(_ date: Date) {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMM yyyy"
-        print(dateFormatter.string(from: date))
-        AppointmentBlockView.showPopup(parentVC: self)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "d MMM yyyy"
+//        print(dateFormatter.string(from: date))
+//        AppointmentBlockView.showPopup(parentVC: self)
+        
+        
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "AppointmentDetailsVC") as AppointmentDetailsVC
+        vc.date = date
+        self.navigationController?.pushViewController(vc, animated: true)
         //MMM d, yyyy
     }
 }

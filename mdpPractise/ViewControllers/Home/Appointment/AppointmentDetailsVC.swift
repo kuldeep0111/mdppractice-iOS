@@ -15,12 +15,18 @@ class AppointmentDetailsVC: UIViewController {
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var collectionViewHeight : NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight : NSLayoutConstraint!
+    @IBOutlet weak var appointmerntDate : UILabel!
     
     var dropDown = DropDown()
+    var date : Date?
+    
+    var appointmentList : [AppointmentByDayModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAppointment()
         setMainCollectionViewLayout()
+        navigationController?.navigationBar.isHidden = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(addNewAppointmet))
@@ -31,9 +37,12 @@ class AppointmentDetailsVC: UIViewController {
             tableView.layoutIfNeeded()
             return tableView.contentSize.height
         }
-        tableViewHeight.constant = 10 * 111
-        collectionView.reloadData()
-        self.view.layoutIfNeeded()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //getAppointment()
+        appointmerntDate.text = "Appointment for :\(date!.day)/\(date!.month)/\(date!.year)"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,12 +110,12 @@ extension AppointmentDetailsVC {
 extension AppointmentDetailsVC : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return TimingSlot.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeSlotCell", for: indexPath) as! TimeSlotCell
-        cell.timeSlotLbl.text = "10.00 - 11.00"
+        cell.timeSlotLbl.text = TimingSlot[indexPath.row]
         cell.cellView.layer.borderColor = UIColor(red: 0.908, green: 0.908, blue: 0.908, alpha: 1).cgColor
         cell.cellView.layer.borderWidth = 1
         cell.cellView.layer.cornerRadius = 8
@@ -119,9 +128,9 @@ extension AppointmentDetailsVC : UICollectionViewDelegate, UICollectionViewDataS
             cell.timeSlotLbl.textColor = UIColor.white
         }
         let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as! NewAppointmentVC
-        vc.selectedTimeSlot = "10.00 - 11.00"
+        vc.selectedTimeSlot = TimingSlot[indexPath.row]
+        vc.selectedDate = "\(date!.day)/\(date!.month)/\(date!.year)"
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -135,7 +144,7 @@ extension AppointmentDetailsVC : UICollectionViewDelegate, UICollectionViewDataS
 
 extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return appointmentList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -152,5 +161,37 @@ extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
         cell.containerView.layer.borderColor = UIColor(rgb: 0xE8E8E8).cgColor
         cell.menuButton.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
+    }
+}
+
+
+//MARK: API CALL
+extension AppointmentDetailsVC {
+    
+    func getAppointment(){
+
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        AppointmentManager.sharedInstance.AppointmentByDay(day: date?.day, month: date?.month, year: date?.year, clinicID: selectedClinic?.clinicID, completionHandler: {
+                        (success,data,error) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+                }
+            if(success){
+                self.appointmentList = data!
+                self.tableViewHeight.constant = CGFloat(self.appointmentList.count * 111)
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
+                self.view.layoutIfNeeded()
+            }else{
+
+            }
+        })
     }
 }

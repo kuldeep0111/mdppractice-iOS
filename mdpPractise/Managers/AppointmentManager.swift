@@ -180,4 +180,33 @@ class AppointmentManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
+    
+    func AppointmentByDay(day: Int?,month: Int?,year: Int?,clinicID: Int?,completionHandler: ((Bool, _ user: [AppointmentByDayModel]?, _ error: NSError?)->())?) {
+        var params: JSONDictionary = [:]
+        
+        params["action"]  = "list_appointments_byday"
+        params["day"] = day
+        params["month"] = month
+        params["year"] = year
+        params["providerid"] = providerID
+        params["clinicid"] = clinicID
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.AppointmentByDay), action: .post, params: params) {(successful, response, error) in
+            
+            var aptDateByDayList : [AppointmentByDayModel] = []
+            
+            if successful {
+                aptDateByDayList.removeAll()
+                print(response)
+                if let array = response["apptlist"].arrayObject{
+                    for item in array {
+                        aptDateByDayList.append(AppointmentByDayModel(item as! JSONDictionary))
+                    }
+                }
+                completionHandler?(true, aptDateByDayList, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 }

@@ -4179,6 +4179,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Appointments" id="IaT-wI-EV8"/>
                     <connections>
+                        <outlet property="appointmerntDate" destination="ipt-0E-ga5" id="3pJ-EY-hbD"/>
                         <outlet property="collectionView" destination="b8g-Af-Pa4" id="UJr-zj-7dt"/>
                         <outlet property="collectionViewHeight" destination="Aje-Am-MpY" id="QnF-d2-Dlr"/>
                         <outlet property="tableView" destination="eZg-LE-Dnz" id="Gak-oh-twa"/>

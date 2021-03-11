@@ -157,7 +157,7 @@ extension ClinicVC {
         ClinicManager.sharedInstance.ClinicListList(completionHandler: {
             (success,list,error) in
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 alert.dismiss(animated: true, completion: nil)
                 }
             if(success){
