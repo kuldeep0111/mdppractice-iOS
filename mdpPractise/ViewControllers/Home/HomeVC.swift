@@ -47,12 +47,18 @@ class HomeVC: UIViewController {
     }()
     
     var clinicList : [ClinicListModel] = []
+    var aptDateByMonthList : [AppointmentByMonthModel] = []
+    
+    var todayDate = Date()
+    var currentMonth : Int?
+    var currentYear : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        currentMonth = todayDate.month
+        currentYear  = todayDate.year
         loadClinicList()
-        
+        getAppointment()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "menuLine")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(didTapOnMenuBtn(_:)))
@@ -69,7 +75,7 @@ class HomeVC: UIViewController {
         calendarView.monthViewAppearanceDelegate = self
         calendarView.calendarDelegate = self
         calendarView.scrollDirection = .horizontal
-        calendarView.setSupplementaries([(Date(), [VADaySupplementary.bottomDots([.red])])])
+        //calendarView.setSupplementaries([(Date(), [VADaySupplementary.bottomDots([.red])])])
         view.addSubview(calendarView)
     }
     
@@ -154,6 +160,24 @@ extension HomeVC {
         let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewAppointmentVC") as! NewAppointmentVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func setupCurrentMonthYear(increase : Bool){
+        if increase {
+            if (currentMonth! < 12) {
+                currentMonth = currentMonth! + 1
+            }else{
+                 currentMonth = 1
+                currentYear = currentYear! + 1
+            }
+        }else{
+            if (currentMonth! == 1) {
+                currentMonth = 12
+                currentYear = currentYear! - 1
+            }else{
+                currentMonth = currentMonth! - 1
+            }
+        }
+    }
 }
 
 extension HomeVC : AppointmentBlockViewDelegate {
@@ -173,13 +197,14 @@ extension HomeVC : AppointmentBlockViewDelegate {
 extension HomeVC: VAMonthHeaderViewDelegate {
     
     func didTapNextMonth() {
-        calendarView.nextMonth()
+         calendarView.nextMonth()
+        setupCurrentMonthYear(increase: true)
     }
     
     func didTapPreviousMonth() {
         calendarView.previousMonth()
+        setupCurrentMonthYear(increase: false)
     }
-    
 }
 
 //MARK: VAMonthViewAppearanceDelegate
@@ -287,6 +312,35 @@ extension HomeVC {
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
                 snackbar.show()
+            }
+        })
+    }
+    
+    func getAppointment(){
+
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        AppointmentManager.sharedInstance.AppointmentByMonth(month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
+                        (success,data,error) in
+            alert.dismiss(animated: true, completion: nil)
+            if(success){
+                self.aptDateByMonthList = data!
+                for item in self.aptDateByMonthList {
+                    print(item.date)
+                    self.calendarView.setSupplementaries([
+                        (item.date, [VADaySupplementary.bottomDots([UIColor(rgb: 0x0173b7)])]),
+                        ])
+                    }
+                self.view.addSubview(self.calendarView)
+            }else{
+
             }
         })
     }

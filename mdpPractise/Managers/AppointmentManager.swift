@@ -153,5 +153,31 @@ class AppointmentManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
-
+    
+    func AppointmentByMonth(month: Int?,year: Int?,clinicID: Int?,completionHandler: ((Bool, _ user: [AppointmentByMonthModel]?, _ error: NSError?)->())?) {
+        var params: JSONDictionary = [:]
+        
+        params["action"]  = "list_appointment_count_bymonth"
+        params["month"] = month
+        params["year"] = year
+        params["providerid"] = providerID
+        params["clinicid"] = clinicID
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.AppointmentByMonth), action: .post, params: params) {(successful, response, error) in
+            
+            var aptDateByMonthList : [AppointmentByMonthModel] = []
+            
+            if successful {
+                if let array = response["apptlist"].arrayObject{
+                    for item in array {
+                        aptDateByMonthList.append(AppointmentByMonthModel(item as! JSONDictionary))
+                    }
+                    print(array)
+                }
+                completionHandler?(true, aptDateByMonthList, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 }
