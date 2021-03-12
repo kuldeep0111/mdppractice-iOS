@@ -21,12 +21,16 @@ class OTPVerifyVC: UIViewController {
         }
     }
     @IBOutlet weak var bottomSpace : NSLayoutConstraint!
-    
+    @IBOutlet weak var recentCodeView : UIView!
+    @IBOutlet weak var timerView : UIView!
+    @IBOutlet weak var timeLabel : UILabel!
     var mobileno = ""
+    
+    var count = 30
     
     func setupUI(){
         verifyBtn.layer.cornerRadius = 25
-        
+        recentCodeView.isHidden = true
         digit1text.delegate = self
         digit2text.delegate = self
         digit3text.delegate = self
@@ -46,6 +50,7 @@ extension OTPVerifyVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,20 +77,36 @@ extension OTPVerifyVC {
     }
 }
 
+//MARK: Action's
 extension OTPVerifyVC {
+    
+    @objc func update() {
+        if(count > 0) {
+            count = count - 1
+            timeLabel.text = String(count) + " seconds remaining..."
+            if(count == 0) {
+                timerView.isHidden = true
+                recentCodeView.isHidden = false
+            }else{
+                timerView.isHidden = false
+                recentCodeView.isHidden = true
+            }
+        }
+    }
     
     @IBAction func didTapOnVerify(_ sender: UIButton){
         if (digit4text.text?.count != 0) {
-            //            let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-            //            let vc = story.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
-            //            self.navigationController?.pushViewController(vc, animated: true)
-            
             verifyOTP()
             
         }else{
             let snackbar = TTGSnackbar(message: "Please enter OTP", duration: .short)
             snackbar.show()
         }
+    }
+    
+    @IBAction func didTapOnRecentCode(_ sender: UIButton){
+        count = 30
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
 }
 

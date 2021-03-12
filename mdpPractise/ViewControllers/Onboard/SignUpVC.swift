@@ -22,7 +22,22 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var dobError : UILabel!
     @IBOutlet weak var emailError : UILabel!
     @IBOutlet weak var bottomSpace : NSLayoutConstraint!
-    
+    @IBOutlet weak var termsLabel : UILabel!{
+        didSet{
+            let attributedString = NSMutableAttributedString(string: termsText)
+//            let  attribute1 =  [NSAttributedString.Key.foregroundColor: UIColor(rgb: 0xED6E2E),
+//                               NSAttributedString.Key.font: UIFont(name:"Inter-Regular",size:14)]
+//            let  attribute2 =  [NSAttributedString.Key.foregroundColor: UIColor(rgb: 0xED6E2E),
+//                               NSAttributedString.Key.font: UIFont(name:"Inter-Medium",size:14)]
+//            let underLine = [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ]
+                    
+            attributedString.addAttribute(.font, value: UIFont(name:"Inter-Regular",size:14), range: NSRange(location: 0, length: 14))
+            attributedString.addAttribute(.font, value: UIFont(name:"Inter-SemiBold",size:14), range: NSRange(location: 15, length: 37))
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 15, length: 37))
+            attributedString.addAttribute(.foregroundColor, value: UIColor(rgb: 0xED6E2E), range: NSRange(location: 15, length: 37))
+            termsLabel.attributedText = attributedString
+        }
+    }
     
     var genderList = ["Male","Female","Other"]
     var gradePicker: UIPickerView!
@@ -31,7 +46,7 @@ class SignUpVC: UIViewController {
     var pickerToolbar: UIToolbar?
     
     var mobileNo = ""
-    
+    var termsText = "I agree to our Terms & Conditions and Privacy Policy"
 }
 
 //MARK: LifeCycle
