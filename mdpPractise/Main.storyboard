@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j7Y-VD-Men">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfB-Pd-kLc">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -162,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-310.14492753623193" y="-990.48913043478274"/>
+            <point key="canvasLocation" x="-267" y="-990"/>
         </scene>
         <!--SideVC-->
         <scene sceneID="E5j-yz-m5f">
@@ -334,7 +334,9 @@
                             <constraint firstItem="U8I-kk-s9u" firstAttribute="leading" secondItem="33D-Al-Atm" secondAttribute="leading" id="wXw-hK-b6Z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8tb-gT-buc"/>
+                    <navigationItem key="navigationItem" id="8tb-gT-buc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="hdt-hK-jMa"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="arrowIcon" destination="mm5-y5-Ovh" id="Gkm-2x-bus"/>
                         <outlet property="id" destination="os3-Cy-zNC" id="Tlh-3X-ycw"/>
@@ -810,7 +812,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSA-8Y-Vkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347.82608695652175" y="-990.48913043478274"/>
+            <point key="canvasLocation" x="410" y="-990"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="xdA-SH-fo1">
@@ -833,7 +835,7 @@
                                                         <rect key="frame" x="50" y="40" width="314" height="94"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="YqV-rj-6bu" secondAttribute="trailing" constant="50" id="3S2-GI-wDb"/>
                                                     <constraint firstAttribute="bottom" secondItem="YqV-rj-6bu" secondAttribute="bottom" constant="40" id="NFq-zl-QGp"/>
@@ -990,7 +992,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="lXc-TD-UiJ" firstAttribute="leading" secondItem="Whj-3M-adG" secondAttribute="leading" id="M2D-nQ-wRh"/>
                                             <constraint firstItem="hBJ-Bz-IN7" firstAttribute="leading" secondItem="Whj-3M-adG" secondAttribute="leading" id="Ru9-LE-kRg"/>
@@ -1025,7 +1027,7 @@
                     <connections>
                         <outlet property="DOBTextfield" destination="XMN-QI-ywr" id="wjC-7s-8Wx"/>
                         <outlet property="GenderTextfield" destination="fpc-cu-qnf" id="G3Y-HR-46e"/>
-                        <outlet property="bottomSpace" destination="R6A-TM-OfF" id="YvX-ZW-e9t"/>
+                        <outlet property="bottomSpace" destination="SMJ-OQ-NlD" id="jf7-tP-RgU"/>
                         <outlet property="checkBtn" destination="OaZ-ZE-KAg" id="RSv-Qa-F3Y"/>
                         <outlet property="containerView" destination="lXc-TD-UiJ" id="SBA-z8-TMg"/>
                         <outlet property="dobError" destination="FRh-NP-oZg" id="Ycw-KH-mjj"/>
@@ -1039,7 +1041,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uio-K7-ry7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="-990"/>
+            <point key="canvasLocation" x="1094" y="-990"/>
         </scene>
         <!--Thanks PageVC-->
         <scene sceneID="Nr2-E7-RbL">
@@ -1140,7 +1142,9 @@
                             <constraint firstItem="xUk-eD-hYA" firstAttribute="trailing" secondItem="pea-0b-puE" secondAttribute="trailing" id="yRD-5S-gVT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GTy-XH-nre"/>
+                    <navigationItem key="navigationItem" id="GTy-XH-nre">
+                        <barButtonItem key="backBarButtonItem" title=" " id="GyR-Fc-L7Z"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="r57-PC-B0e" id="hcy-9L-pmI"/>
                         <outlet property="setupClinicButton" destination="bko-uo-zF3" id="cDX-ho-kMX"/>
@@ -3857,7 +3861,9 @@
                             <constraint firstAttribute="bottom" secondItem="fGA-mv-GMz" secondAttribute="bottom" id="uiH-KR-NdD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pOp-U7-jpH"/>
+                    <navigationItem key="navigationItem" id="pOp-U7-jpH">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Hkh-zj-Jfx"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="lbt-jB-bvz" id="4QC-Rx-lzs"/>
                         <outlet property="calendarHeightConstraint" destination="opI-XO-HMl" id="a0y-H9-mAp"/>
@@ -3869,7 +3875,7 @@
             </objects>
             <point key="canvasLocation" x="3640.579710144928" y="2534.5108695652175"/>
         </scene>
-        <!--Dental ChartVC-->
+        <!-- -->
         <scene sceneID="pID-PV-r1s">
             <objects>
                 <viewController storyboardIdentifier="DentalChartVC" id="0JZ-gb-aoi" customClass="DentalChartVC" customModule="mdpPractise" customModuleProvider="target" sceneMemberID="viewController">
@@ -3879,7 +3885,7 @@
                         <viewLayoutGuide key="safeArea" id="v9l-Ca-Uxx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CY1-fJ-uAt"/>
+                    <navigationItem key="navigationItem" title=" " id="CY1-fJ-uAt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-Bs-eHb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4042,7 +4048,9 @@
                             <constraint firstItem="cYZ-9m-y0d" firstAttribute="top" secondItem="wbe-UG-I9a" secondAttribute="bottom" id="tGB-ir-EoF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="572-gD-K1x"/>
+                    <navigationItem key="navigationItem" id="572-gD-K1x">
+                        <barButtonItem key="backBarButtonItem" title=" " id="soq-DO-9dZ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchTextFiels" destination="gWf-uT-BKd" id="1Q2-AJ-frA"/>
                         <outlet property="tableView" destination="cYZ-9m-y0d" id="IH8-yp-jPY"/>
@@ -4306,7 +4314,9 @@
                         <viewLayoutGuide key="safeArea" id="eeK-N4-aab"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qN7-fm-Wkm"/>
+                    <navigationItem key="navigationItem" id="qN7-fm-Wkm">
+                        <barButtonItem key="backBarButtonItem" title=" " id="me1-6R-iLH"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQS-Sy-KJL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5140,7 +5150,9 @@
                             <constraint firstItem="zab-5W-aH7" firstAttribute="leading" secondItem="FRG-gJ-Qf6" secondAttribute="leading" id="zMD-Es-Ju2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Treatments" id="P42-aC-uJH"/>
+                    <navigationItem key="navigationItem" title="Treatments" id="P42-aC-uJH">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Afz-mm-K7a"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="zab-5W-aH7" id="GlS-YD-Xt6"/>
                     </connections>
@@ -7548,7 +7560,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H9I-5K-OX0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="homeUnSelected" selectedImage="home" id="wc3-Ap-Fla"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JE9-Ty-1dv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorTransitionMaskImage=" " id="JE9-Ty-1dv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -7563,6 +7575,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name=" " width="128" height="128"/>
         <image name="Shospital" width="21.333333969116211" height="21.333333969116211"/>
         <image name="addAppointment" width="22" height="22"/>
         <image name="ambrella" width="50" height="50"/>
