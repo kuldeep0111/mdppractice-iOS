@@ -51,7 +51,6 @@ class HomeVC: UIViewController, UINavigationBarDelegate {
         currentMonth = todayDate.month
         currentYear  = todayDate.year
         loadClinicList()
-        getAppointment()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "menuLine")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(didTapOnMenuBtn(_:)))
@@ -287,6 +286,7 @@ extension HomeVC {
                 self.clinicName.text = self.clinicList[0].clinicName
                 self.clinicLocation.text = self.clinicList[0].city
                 selectedClinic = self.clinicList[0]
+                self.getAppointment()
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
                 snackbar.show()

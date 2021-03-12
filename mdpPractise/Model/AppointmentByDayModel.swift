@@ -35,8 +35,9 @@ class AppointmentByDayModel: NSObject,Mappable {
     var duration: Int?
     var clinicName: String = ""
     var isBlock: Bool = false
-    var apptdatetime: Date = Date()
-    
+    var appointmentDate: Date?
+    var appointmentTime: String = ""
+    var dateTimeString = ""
     required convenience init(_ map: JSONDictionary) {
         self.init()
         patientID            <- map.property("patientid")
@@ -55,7 +56,21 @@ class AppointmentByDayModel: NSObject,Mappable {
         patientName   <- map.property("patientname")
         patientID             <- map.property("patientid")
         memberID            <- map.property("memberid")
-
+        dateTimeString <- map.property("apptdatetime")
+        let start = dateTimeString.index(dateTimeString.startIndex, offsetBy: 0)
+        let end =  dateTimeString.index(dateTimeString.endIndex, offsetBy: -9)
+        let range = start..<end
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        appointmentDate = dateFormatter.date(from:"\(dateTimeString[range])") ?? nil
+        print(appointmentDate)
+        let start1 = dateTimeString.index(dateTimeString.startIndex, offsetBy: 11)
+        let end1 =  dateTimeString.index(dateTimeString.endIndex, offsetBy: 0)
+        let range1 = start1..<end1
+        appointmentTime = "\(dateTimeString[range1])"
+        
     }
     override init() {
 

@@ -74,20 +74,6 @@ class AppointmentManager: APIManager {
         params["duration"] = 30
         params["appointment_start"] = appointmentStart
         
-//        {
-//        "action":"new_appointment",
-//        "providerid":"1339",
-//        "doctorid":"26",
-//        "clinicid":"113",
-//        "memberid":"001",
-//        "patientid":"1",
-//        "cell":"6361334930",
-//        "complaint":"abc",
-//        "appointment_start":"2/3/2021 10:00",
-//        "duration":30
-//        }
-        
-        
         let _ =  makeRequest(apiURL(APIEndPoint.NewAppointment), action: .post, params: params) { (successful, response, error) in
             
             if successful {
@@ -162,7 +148,7 @@ class AppointmentManager: APIManager {
         params["year"] = year
         params["providerid"] = providerID
         params["clinicid"] = clinicID
-        
+        print(params)
         let _ =  makeRequest(apiURL(APIEndPoint.AppointmentByMonth), action: .post, params: params) {(successful, response, error) in
             
             var aptDateByMonthList : [AppointmentByMonthModel] = []

@@ -57,6 +57,39 @@ extension ClinicVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextFiels.resignFirstResponder()
     }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+
+        let searchText  = textField.text! + string
+
+        if searchText.count > 0 {
+            tableView.isHidden = false
+
+            ClinicList = ClinicManager.sharedInstance.clinicArray.filter({ (result) -> Bool in
+                return result.clinicName.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        }
+        else{
+            print(ClinicManager.sharedInstance.clinicArray.count)
+            ClinicList = ClinicManager.sharedInstance.clinicArray
+        }
+        tableView.reloadData()
+
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if(textField.text?.count == 0){
+            ClinicList = ClinicManager.sharedInstance.clinicArray
+            tableView.reloadData()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+            ClinicList = ClinicManager.sharedInstance.clinicArray
+            tableView.reloadData()
+    }
+    
 }
 
 //MARK: Action

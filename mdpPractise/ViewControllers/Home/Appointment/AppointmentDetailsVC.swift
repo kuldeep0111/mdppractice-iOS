@@ -27,10 +27,6 @@ class AppointmentDetailsVC: UIViewController {
         getAppointment()
         setMainCollectionViewLayout()
         navigationController?.navigationBar.isHidden = false
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
-            style: .plain, target: self, action: #selector(addNewAppointmet))
-        
         let height = collectionView.collectionViewLayout.collectionViewContentSize.height
         collectionViewHeight.constant = height
         var tableviewHeight: CGFloat {
@@ -154,9 +150,9 @@ extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
         //cell.img.image = UIImage.init(named: "")
-        cell.patientName.text = "Patient: Test Deepak"
-        cell.treatedBy.text = "Treating Doctor: Dr. Manjunath"
-        cell.appointmentTime.text = "Appointment time: 07:50 PM"
+        cell.patientName.text = "Patient: \(appointmentList[indexPath.row].patientName)"
+        cell.treatedBy.text = "Treating Doctor: \(appointmentList[indexPath.row].docName)"
+        cell.appointmentTime.text = "Appointment time: \(appointmentList[indexPath.row].appointmentTime)"
         cell.containerView.layer.borderWidth = 2
         cell.containerView.layer.borderColor = UIColor(rgb: 0xE8E8E8).cgColor
         cell.menuButton.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
