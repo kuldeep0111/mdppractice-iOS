@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfB-Pd-kLc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j7Y-VD-Men">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -1086,7 +1086,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bko-uo-zF3">
-                                        <rect key="frame" x="20" y="436" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="399" width="374" height="50"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.45098039220000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vwq-qB-gaZ"/>
@@ -1104,18 +1104,27 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clinicThanku" translatesAutoresizingMaskIntoConstraints="NO" id="DhI-d2-RG3">
                                         <rect key="frame" x="148.66666666666666" y="30" width="116.99999999999997" height="117"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For any further questions, please feel free to call us on 1800 102 7526" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-eL-2An">
+                                        <rect key="frame" x="20" y="465" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" name="Inter-Light" family="Inter" pointSize="14"/>
+                                        <color key="textColor" red="0.26667000000000002" green="0.26667000000000002" blue="0.26667000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bko-uo-zF3" secondAttribute="trailing" constant="20" id="0dK-8p-Kcd"/>
+                                    <constraint firstItem="UtE-eL-2An" firstAttribute="top" secondItem="bko-uo-zF3" secondAttribute="bottom" constant="16" id="C4A-Bk-QKm"/>
                                     <constraint firstItem="EAQ-Ir-n5Q" firstAttribute="centerX" secondItem="r57-PC-B0e" secondAttribute="centerX" id="F7S-Ke-qbZ"/>
                                     <constraint firstItem="DhI-d2-RG3" firstAttribute="top" secondItem="r57-PC-B0e" secondAttribute="top" constant="30" id="FrD-Hw-zU3"/>
                                     <constraint firstItem="DhI-d2-RG3" firstAttribute="centerX" secondItem="r57-PC-B0e" secondAttribute="centerX" id="JGU-n8-e8k"/>
                                     <constraint firstItem="EAQ-Ir-n5Q" firstAttribute="leading" secondItem="r57-PC-B0e" secondAttribute="leading" constant="30" id="Kv7-yf-nnf"/>
                                     <constraint firstItem="bko-uo-zF3" firstAttribute="leading" secondItem="r57-PC-B0e" secondAttribute="leading" constant="20" id="Og7-2K-Ble"/>
                                     <constraint firstItem="EAQ-Ir-n5Q" firstAttribute="top" secondItem="DhI-d2-RG3" secondAttribute="bottom" constant="30" id="SFa-nW-HG2"/>
+                                    <constraint firstItem="UtE-eL-2An" firstAttribute="leading" secondItem="r57-PC-B0e" secondAttribute="leading" constant="20" symbolic="YES" id="VlK-Zx-SFb"/>
+                                    <constraint firstAttribute="trailing" secondItem="UtE-eL-2An" secondAttribute="trailing" constant="20" symbolic="YES" id="al4-mp-a1o"/>
+                                    <constraint firstAttribute="bottom" secondItem="UtE-eL-2An" secondAttribute="bottom" constant="30" id="lEk-yw-PBS"/>
                                     <constraint firstAttribute="trailing" secondItem="EAQ-Ir-n5Q" secondAttribute="trailing" constant="30" id="nUB-Yl-Cz1"/>
-                                    <constraint firstAttribute="bottom" secondItem="bko-uo-zF3" secondAttribute="bottom" constant="43" id="xIW-Kn-iXe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1135,11 +1144,12 @@
                     <connections>
                         <outlet property="containerView" destination="r57-PC-B0e" id="hcy-9L-pmI"/>
                         <outlet property="setupClinicButton" destination="bko-uo-zF3" id="cDX-ho-kMX"/>
+                        <outlet property="termsLabel" destination="UtE-eL-2An" id="Ge2-cT-mmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbo-pF-5Pt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3176.811594202899" y="-990.48913043478274"/>
+            <point key="canvasLocation" x="3068" y="-990"/>
         </scene>
         <!--Setup ClinicVC-->
         <scene sceneID="Nxc-Az-ayA">
