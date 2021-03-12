@@ -57,6 +57,7 @@ class NewAppointmentVC: UIViewController, UITextFieldDelegate {
     var genderList = ["Male","Female","Other"]
     var drNameList : [DoctorModel] = []
     var selectedDoctor : Int?
+    var appointmentDetail : AppointmentByDayModel?
 }
 
 //MARK: LifeCycle
@@ -65,7 +66,6 @@ extension NewAppointmentVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.tabBarController?.tabBar.isHidden = true
-        
         getDoctorList()
         createUIToolBar()
         self.title = "New Appointment"
@@ -109,6 +109,7 @@ extension NewAppointmentVC {
         dateTextField.text = selectedDate
         
        // GenderTextField.delegate = self
+        setupData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +156,24 @@ extension NewAppointmentVC : UITextViewDelegate {
 
 extension NewAppointmentVC {
     
+   func setupData(){
+    if appointmentDetail != nil {
+        patientID.text = "\(String(describing: appointmentDetail!.patientID!))"
+        nameTextField.text = appointmentDetail?.patientName
+       // GenderTextField.text = appointmentDetail
+       // ageTextField.text = appointmentDetail.ag
+        clinicName.text = appointmentDetail!.clinicName
+        doctorName.text = appointmentDetail!.docName
+        dateTextField.text = "\(appointmentDetail!.appointmentDate!.day)/\(appointmentDetail!.appointmentDate!.month)/\(appointmentDetail!.appointmentDate!.year)"
+        patientID.isUserInteractionEnabled = false
+        nameTextField.isUserInteractionEnabled = false
+        GenderTextField.isUserInteractionEnabled = false
+        ageTextField.isUserInteractionEnabled = false
+        clinicName.isUserInteractionEnabled = false
+        doctorName.isUserInteractionEnabled = false
+        dateTextField.isUserInteractionEnabled = false
+      }
+    }
     
     func createUIToolBar() {
             
@@ -242,7 +261,11 @@ extension NewAppointmentVC {
     
     @IBAction func didTapOnCreate(_ sender: UIButton){
         if(validatePatientID() && validateName() && validateGender() && validateAge() && validateClinic() && validateDr() && validateTiming() && validateDate()){
-            addNewAppointment()
+            if(appointmentDetail != nil){
+                
+            }else{
+                addNewAppointment()
+            }
         }
     }
     

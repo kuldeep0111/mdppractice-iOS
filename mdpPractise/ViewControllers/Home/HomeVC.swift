@@ -307,7 +307,9 @@ extension HomeVC {
         
         AppointmentManager.sharedInstance.AppointmentByMonth(month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
             (success,data,error) in
-            alert.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+                }
             if(success){
                 self.aptDateByMonthList = data!
                 self.calendar.reloadData()

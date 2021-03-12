@@ -158,6 +158,13 @@ extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
         cell.menuButton.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as NewAppointmentVC
+        vc.appointmentDetail = appointmentList[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 
