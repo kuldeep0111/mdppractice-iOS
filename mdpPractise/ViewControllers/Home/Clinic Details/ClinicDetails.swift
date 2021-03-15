@@ -567,7 +567,9 @@ extension ClinicDetails {
         
         ClinicManager.sharedInstance.DeleteClinic(clinicID: clinicID!, completionHandler: {
            (success,data,error) in
-            alert.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+                }
             if(success){
                 self.loadClinicList()
             }else{

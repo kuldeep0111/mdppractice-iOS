@@ -59,6 +59,7 @@ class HomeVC: UIViewController, UINavigationBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        clinicList = ClinicManager.sharedInstance.clinicArray
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -149,7 +150,7 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d MMM yyyy"
             print(dateFormatter.string(from: date))
-            AppointmentBlockView.showPopup(parentVC: self)
+            AppointmentBlockView.showPopup(parentVC: self, date: date)
         }
         
     }
@@ -252,16 +253,17 @@ extension HomeVC {
 }
 
 extension HomeVC : AppointmentBlockViewDelegate {
+    func didTabOnAddNewAppointment(date: Date) {
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as! NewAppointmentVC
+        vc.delegate = self
+        vc.selectedDate = "\(date.day)/\(date.month)/\(date.year)"
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+    
     func didTapOnBlockDate() {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "BlockDateVC") as! BlockDateVC
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func didTabOnAddNewAppointment() {
-        let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as! NewAppointmentVC
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 protocol AppointmentBlockViewDelegate {
     func didTapOnBlockDate()
-    func didTabOnAddNewAppointment()
+    func didTabOnAddNewAppointment(date: Date)
 }
 
 class AppointmentBlockView: UIViewController {
@@ -40,6 +40,9 @@ class AppointmentBlockView: UIViewController {
             blockImgView.tintColor = UIColor.red
         }
     }
+    
+    var date: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissMe))
@@ -56,7 +59,7 @@ extension AppointmentBlockView {
     
     @IBAction func didTapOnNewAppointment(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)
-        delegate?.didTabOnAddNewAppointment()
+        delegate?.didTabOnAddNewAppointment(date: date!)
     }
     
     @IBAction func didTapOnBlockDate(_ sender: UIButton){
@@ -64,12 +67,13 @@ extension AppointmentBlockView {
         delegate?.didTapOnBlockDate()
     }
     
-    static func showPopup(parentVC: UIViewController){
+    static func showPopup(parentVC: UIViewController,date: Date){
         //creating a reference for the dialogView controller
         if let popupViewController = UIStoryboard(name: "CustomViews", bundle: nil).instantiateViewController(withIdentifier: "AppointmentBlockView") as? AppointmentBlockView {
         popupViewController.modalPresentationStyle = .custom
         popupViewController.modalTransitionStyle = .crossDissolve
         popupViewController.delegate = parentVC as! AppointmentBlockViewDelegate
+        popupViewController.date = date
         parentVC.present(popupViewController, animated: true)
         }
       }
