@@ -15,5 +15,35 @@ class TreatmentManager: APIManager {
         }
         return Static.instance
     }
+    
+    var TreatmentList : [TreatmentDetails] = []
+    
+    func TreatmentList(completionHandler: ((Bool, _ user: TreatmentModel?, _ error: NSError?)->())?) {
+
+        var params: JSONDictionary = [:]
+        params["action"]    = "gettreatments"
+        params["providerid"] = 1011
+        params["clinicid"] = 5
+        params["memberid"] = 13916
+        params["patientid"] = 13916
+    
+        let _ =  makeRequest(apiURL(APIEndPoint.TreatmentList), action: .post, params: params) { (successful, response, error) in
+            
+            if successful {
+              self.TreatmentList.removeAll()
+                if let dict = response.dictionaryObject {
+                    print(dict)
+                    let data : TreatmentModel = TreatmentModel(dict)
+                    
+                    print(data.next)
+                    
+                    
+                    completionHandler?(true, data, error)
+                }
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 }
 

@@ -29,8 +29,11 @@ class TreatmentVC: UIViewController {
     
     let searchTextField = UITextField(frame: CGRect(x: 20, y: 100, width: screenWidth - 100, height: 40))
     
+    var treatmentList: [TreatmentDetails] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadTreatments()
         self.navigationController?.title = "Treatments"
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 45, right: 0)
         //addSearchBar()
@@ -83,14 +86,14 @@ extension TreatmentVC {
 
 extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchController.isActive ? searchResults.count : entries.count
+        return treatmentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentCell", for: indexPath) as! TreatmentCell
-        cell.treatmentNo.text = entries[indexPath.row].treatmentNo
-        cell.doctorName.text = entries[indexPath.row].doctorName
-        cell.date.text = "07/08/2020"
+        cell.treatmentNo.text = treatmentList[indexPath.row].treatment
+        cell.doctorName.text = treatmentList[indexPath.row].docName
+        cell.date.text = "\(treatmentList[indexPath.row].treatmentDate)"
         cell.statusView.layer.cornerRadius = 5
         cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall(_:)), for: .touchUpInside)
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
@@ -187,21 +190,33 @@ extension TreatmentVC {
             default:
                 break
             }
-            
         }
-        
     }
 }
 
-//
-//
-////searchTextField.backgroundColor = UIColor.white
-//searchTextField.textColor = UIColor.white
-//let bottomLine = CALayer()
-//bottomLine.frame = CGRect(x: 0.0, y: 75 - 1, width: 300, height: 1.0)
-//bottomLine.backgroundColor = UIColor.white.cgColor
-//searchTextField.borderStyle = UITextField.BorderStyle.none
-//searchTextField.layer.addSublayer(bottomLine)
-//searchTextField.placeholder = "Search"
-//self.navigationItem.titleView = searchTextField
-//searchTextField.becomeFirstResponder()
+//MARK: API CALL
+extension TreatmentVC {
+    
+    func loadTreatments(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        TreatmentManager.sharedInstance.TreatmentList(completionHandler: {
+                        (success,data,error) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+                }
+            if(success){
+                self.treatmentList = data!.treatmentList
+                self.tableView.reloadData()
+            }else{
+
+            }
+        })
+    }
+}
