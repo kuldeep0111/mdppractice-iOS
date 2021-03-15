@@ -17,7 +17,7 @@ class TreatmentManager: APIManager {
     }
     
     var TreatmentList : [TreatmentDetails] = []
-    
+    var ProcedureList: [ProcedureDetail] = []
     func TreatmentList(completionHandler: ((Bool, _ user: TreatmentModel?, _ error: NSError?)->())?) {
 
         var params: JSONDictionary = [:]
@@ -63,6 +63,32 @@ class TreatmentManager: APIManager {
                 return
             }
             completionHandler?(false, nil, error)
+        }
+    }
+    
+    
+    func ProcedureList(treatmentID: Int,completionHandler: ((Bool, _ user: [ProcedureDetail], _ error: NSError?)->())?) {
+
+        var params: JSONDictionary = [:]
+        params["action"]    = "getprocedures"
+        params["treatmentid"] = treatmentID
+        params["providerid"] = providerID
+        params["searchphrase"] = ""
+        params["page"] = 0
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.procedureList), action: .post, params: params) { (successful, response, error) in
+                        
+            if successful {
+                self.ProcedureList.removeAll()
+                if let array = response["proclist"].arrayObject {
+                    for item in array {
+                        self.ProcedureList.append(ProcedureDetail(item as! JSONDictionary))
+                    }
+                    completionHandler?(true, self.ProcedureList, error)
+                }
+                return
+            }
+            completionHandler?(false, [], error)
         }
     }
 }

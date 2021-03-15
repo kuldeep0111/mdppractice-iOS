@@ -89,6 +89,7 @@ class TreatmentDetailVC: UIViewController {
     
     @IBAction func didTapOnAddNewBtn(_ sender: UIButton){
         let vc = mdpStoryBoard.instantiateViewController(identifier: "ProcedureVC") as! ProcedureVC
+        vc.treatmentID = treatmentID!
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

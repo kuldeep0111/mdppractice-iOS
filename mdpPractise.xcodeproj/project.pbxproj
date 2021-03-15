@@ -430,7 +430,6 @@
 				2C3E670A25CA6076000DDA32 /* Drawer */,
 				1822288025C849B60032BE30 /* Home */,
 				1822288425C849B60032BE30 /* Onboard */,
-				2C3E672225CA833A000DDA32 /* ProcedureVC.swift */,
 				2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */,
 				2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */,
 				2C42210825D13620000C41FB /* PaymentDetailVC.swift */,
@@ -576,6 +575,7 @@
 			children = (
 				2C3E671325CA6770000DDA32 /* TreatmentVC.swift */,
 				2C3E671825CA6CB2000DDA32 /* TreatmentDetailVC.swift */,
+				2C3E672225CA833A000DDA32 /* ProcedureVC.swift */,
 			);
 			path = Treatment;
 			sourceTree = "<group>";
