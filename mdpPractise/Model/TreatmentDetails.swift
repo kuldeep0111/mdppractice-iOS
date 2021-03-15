@@ -10,16 +10,6 @@ import Foundation
 import Sugar
 import Tailor
 
-
-//maxcount = 0;
-//next = 1;
-//page = 0;
-//prev = 1;
-//result = success;
-//runningcount = 0;
-//treatmentcount = 0;
-
-
 class TreatmentModel: NSObject, Mappable {
     
     var result: String = ""
@@ -64,7 +54,7 @@ class TreatmentDetails: NSObject,Mappable{
     var doctorID: String = ""
     var totalTreatmentCost: Int?
     var treatment: String = ""
-    var treatmentID: String = ""
+    var treatmentID: Int?
     var treatmentDate: Date = Date()
     required convenience init(_ map: JSONDictionary) {
         self.init()

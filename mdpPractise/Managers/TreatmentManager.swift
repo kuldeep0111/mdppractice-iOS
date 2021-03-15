@@ -45,5 +45,25 @@ class TreatmentManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
+    
+    func TreatmentDetail(treatmentID: Int,completionHandler: ((Bool, _ user: TreatmentInfoModel?, _ error: NSError?)->())?) {
+
+        var params: JSONDictionary = [:]
+        params["action"]    = "gettreatment"
+        params["treatmentid"] = treatmentID
+    
+        let _ =  makeRequest(apiURL(APIEndPoint.TreatmentList), action: .post, params: params) { (successful, response, error) in
+            
+            if successful {
+                if let dict = response.dictionaryObject {
+                    print(dict)
+                    let data : TreatmentInfoModel = TreatmentInfoModel(dict)
+                    completionHandler?(true, data, error)
+                }
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 }
 

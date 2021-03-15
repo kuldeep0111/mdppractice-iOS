@@ -93,8 +93,17 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentCell", for: indexPath) as! TreatmentCell
         cell.treatmentNo.text = treatmentList[indexPath.row].treatment
         cell.doctorName.text = treatmentList[indexPath.row].docName
-        cell.date.text = "\(treatmentList[indexPath.row].treatmentDate)"
+        cell.date.text = "\(treatmentList[indexPath.row].treatmentDate.day)/\(treatmentList[indexPath.row].treatmentDate.month)/\(treatmentList[indexPath.row].treatmentDate.year)"
         cell.statusView.layer.cornerRadius = 5
+        if(treatmentList[indexPath.row].status == "Started"){
+            cell.statusView.backgroundColor = UIColor(rgb: 0x27AE60)
+            cell.status.text = "Started"
+        }else{
+            cell.statusView.backgroundColor = UIColor(rgb: 0x0173B7)
+            cell.status.text = "Pending"
+        }
+        
+        
         cell.phoneBtn.addTarget(self, action: #selector(didTapOnCall(_:)), for: .touchUpInside)
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
@@ -106,6 +115,7 @@ extension TreatmentVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "TreatmentDetailVC") as! TreatmentDetailVC
+        vc.treatmentID = treatmentList[indexPath.row].treatmentID
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

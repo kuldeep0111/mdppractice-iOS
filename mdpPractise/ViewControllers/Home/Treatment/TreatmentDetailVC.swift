@@ -69,23 +69,22 @@ class TreatmentDetailVC: UIViewController {
             paymentDetailView.layer.borderColor = UIColor(rgb: 0xBDBDBD).cgColor
         }
     }
+    @IBOutlet weak var totalCost : UILabel!
+    @IBOutlet weak var insurancePay : UILabel!
+    @IBOutlet weak var paidByPatient : UILabel!
+    @IBOutlet weak var amountDue : UILabel!
 
+    var treatmentID: Int?
+    var ProcedureList: [ProcedureDetail] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTreatmentDetails()
         self.title = "Treatment Details"
         
         let buttonTitleStr = NSMutableAttributedString(string:"Add New", attributes:attrs)
         attributedString.append(buttonTitleStr)
         addNewBtn.setAttributedTitle(attributedString, for: .normal)
-
-        
-        var tableviewHeight: CGFloat {
-            tableView.layoutIfNeeded()
-            return tableView.contentSize.height
-        }
-        tableViewHeight.constant = 10 * 184
-        self.view.layoutIfNeeded()
     }
     
     @IBAction func didTapOnAddNewBtn(_ sender: UIButton){
@@ -97,18 +96,25 @@ class TreatmentDetailVC: UIViewController {
 
 extension TreatmentDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ProcedureList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentDetailCell", for: indexPath) as! TreatmentDetailCell
-        cell.procedureCode.text = "G3094"
-        cell.toothNumber.text = "5"
-        cell.descriptionText.text = "asdf asdfa asdf  asdf"
-        cell.insurancePay.text = "Rs 400"
-        cell.quadrant.text = "2"
-        cell.patientPay.text = "Rs 200"
-        cell.treatmentFee.text = "Rs 500"
+        cell.procedureCode.text = "\(String(describing: ProcedureList[indexPath.row].procedureCode))"
+        cell.toothNumber.text = "\(String(describing: ProcedureList[indexPath.row].tooth))"
+        cell.descriptionText.text = "\(ProcedureList[indexPath.row].authDescription)"
+        cell.insurancePay.text = "Rs \(String(describing: ProcedureList[indexPath.row].inspays!))"
+        cell.quadrant.text = "\(String(describing: ProcedureList[indexPath.row].quadrant))"
+        cell.patientPay.text = "Rs \(String(describing: ProcedureList[indexPath.row].copay!))"
+        cell.treatmentFee.text = "Rs \(String(describing: ProcedureList[indexPath.row].procedureFee!))"
+        if(ProcedureList[indexPath.row].status == "Started"){
+            cell.statusView.backgroundColor = UIColor(rgb: 0x27AE60)
+            cell.status.text = "Started"
+        }else{
+            cell.statusView.backgroundColor = UIColor(rgb: 0x0173B7)
+            cell.status.text = "Pending"
+        }
         cell.statusView.layer.cornerRadius = 5
         cell.cointainerView.layer.cornerRadius = 10
         cell.cointainerView.layer.borderWidth = 1
@@ -155,5 +161,52 @@ extension TreatmentDetailVC {
         
     }
 
+    
+}
+
+
+//MARK: API Call
+extension TreatmentDetailVC {
+    
+    func loadTreatmentDetails(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        TreatmentManager.sharedInstance.TreatmentDetail(treatmentID: treatmentID!, completionHandler: {
+                        (success,data,error) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+                }
+            if(success){
+                self.treatmentNumber.text = data!.treatment
+                self.treatmentDate.text = "\(data!.treatmentDate.day)/\(data!.treatmentDate.month)/\(data!.treatmentDate.year)"
+                self.treatingBy.text = data!.docName
+                self.clinicName.text = data!.clinicName
+                self.ProcedureList = data!.ProcedureList
+                self.totalCost.text = "Rs \(String(describing: data!.totalTreatmentCost!))"
+                self.insurancePay.text = "Rs \(String(describing: data!.totalInsPay!))"
+                self.paidByPatient.text = "Rs _"
+                self.amountDue.text = "Rs \(String(describing: data!.totalDue!))"
+                
+                var tableviewHeight: CGFloat {
+                    self.tableView.layoutIfNeeded()
+                    return self.tableView.contentSize.height
+                }
+                self.tableViewHeight.constant = CGFloat(self.ProcedureList.count * 184)
+                self.view.layoutIfNeeded()
+                
+                self.tableView.reloadData()
+                
+            }else{
+
+            }
+        })
+    }
+    
     
 }

@@ -15,6 +15,7 @@ class TreatmentCell: UITableViewCell {
     @IBOutlet weak var menuBtn : UIButton!
     @IBOutlet weak var phoneBtn : UIButton!
     @IBOutlet weak var statusView : UIView!
+    @IBOutlet weak var status : UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

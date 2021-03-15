@@ -10,6 +10,7 @@ import UIKit
 class TreatmentDetailCell: UITableViewCell {
 
     @IBOutlet weak var statusView : UIView!
+    @IBOutlet weak var status : UILabel!
     @IBOutlet weak var cointainerView : UIView!
     @IBOutlet weak var procedureCode : UILabel!
     @IBOutlet weak var treatmentFee : UILabel!
