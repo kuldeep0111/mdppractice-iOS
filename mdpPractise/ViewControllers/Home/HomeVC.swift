@@ -227,6 +227,7 @@ extension HomeVC {
     
     @IBAction func didTapOnAddBtn(_ sender: UIButton){
         let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewAppointmentVC") as! NewAppointmentVC
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -258,8 +259,15 @@ extension HomeVC : AppointmentBlockViewDelegate {
     
     func didTabOnAddNewAppointment() {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "NewAppointmentVC") as! NewAppointmentVC
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
         
+    }
+}
+
+extension HomeVC : NewAppointmentVCDelegate {
+    func loadData() {
+        getAppointment()
     }
 }
 

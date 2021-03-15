@@ -8,7 +8,13 @@
 import UIKit
 import TTGSnackbar
 
+protocol NewAppointmentVCDelegate {
+    func loadData()
+}
+
 class NewAppointmentVC: UIViewController, UITextFieldDelegate {
+    
+    var delegate: NewAppointmentVCDelegate?
     
     @IBOutlet weak var nameTextField : MDPTextField!
     @IBOutlet weak var GenderTextField : MDPTextField!
@@ -253,6 +259,7 @@ extension NewAppointmentVC {
 extension NewAppointmentVC : SorryViewDelegate {
     func didTapOnOK() {
         self.navigationController?.popViewController(animated: true)
+        self.delegate?.loadData()
     }
 }
 

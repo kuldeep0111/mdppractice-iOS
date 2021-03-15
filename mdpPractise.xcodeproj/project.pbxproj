@@ -33,6 +33,8 @@
 		1822289B25C849B60032BE30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822288D25C849B60032BE30 /* SceneDelegate.swift */; };
 		1822289C25C849B60032BE30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1822288E25C849B60032BE30 /* LaunchScreen.storyboard */; };
 		1822289D25C849B60032BE30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1822288F25C849B60032BE30 /* Assets.xcassets */; };
+		2C0F1C2525FF25F9006900E4 /* TreatmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0F1C2425FF25F9006900E4 /* TreatmentManager.swift */; };
+		2C0F1C2A25FF263A006900E4 /* TreatmentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0F1C2925FF263A006900E4 /* TreatmentDetails.swift */; };
 		2C0FED4125CD2AEF00E94B8A /* BlockDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */; };
 		2C0FED4A25CD3BA000E94B8A /* ConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */; };
 		2C0FED4F25CD50B600E94B8A /* NewConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */; };
@@ -170,6 +172,8 @@
 		1822288D25C849B60032BE30 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1822288E25C849B60032BE30 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1822288F25C849B60032BE30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C0F1C2425FF25F9006900E4 /* TreatmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentManager.swift; sourceTree = "<group>"; };
+		2C0F1C2925FF263A006900E4 /* TreatmentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentDetails.swift; sourceTree = "<group>"; };
 		2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDateVC.swift; sourceTree = "<group>"; };
 		2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentFormView.swift; sourceTree = "<group>"; };
 		2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsentFormView.swift; sourceTree = "<group>"; };
@@ -534,6 +538,7 @@
 				2C630D6025F1EB8B006A0990 /* AuthenticationManager.swift */,
 				2C630D6A25F213F9006A0990 /* ClinicManager.swift */,
 				2C630D7725F5EE81006A0990 /* AppointmentManager.swift */,
+				2C0F1C2425FF25F9006900E4 /* TreatmentManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */,
 				2C38FC7125F7518400959663 /* AppointmentByMonth.swift */,
 				2CCAF6B625F9FD1F00C37654 /* AppointmentByDayModel.swift */,
+				2C0F1C2925FF263A006900E4 /* TreatmentDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1001,6 +1007,7 @@
 				1822285E25C849570032BE30 /* TimeSlotCell.swift in Sources */,
 				1822289725C849B60032BE30 /* SetupClinicVC.swift in Sources */,
 				2C4CBD7A25CC181A0060CAE1 /* DentalChartVC.swift in Sources */,
+				2C0F1C2A25FF263A006900E4 /* TreatmentDetails.swift in Sources */,
 				2C630D7825F5EE81006A0990 /* AppointmentManager.swift in Sources */,
 				2C3E671E25CA756B000DDA32 /* TreatmentDetailCell.swift in Sources */,
 				2C0FED5425CD640400E94B8A /* DentalProcedureView.swift in Sources */,
@@ -1019,6 +1026,7 @@
 				2C4CBD6C25CC0F350060CAE1 /* NotificaitonVC.swift in Sources */,
 				2C6F207B25CD12EE00CD0E8E /* ViewHistoryVC.swift in Sources */,
 				2C4CBD2B25CBB4050060CAE1 /* DentalImagesVC.swift in Sources */,
+				2C0F1C2525FF25F9006900E4 /* TreatmentManager.swift in Sources */,
 				2C59F73E25EF5EF80006DAFF /* PrescriptionListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
