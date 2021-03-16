@@ -89,6 +89,7 @@ extension PatientListVC {
     @objc func didTapOnAdd(){
         if(isMDPMember){
             let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewPatientVC") as! NewPatientVC
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             
@@ -120,6 +121,12 @@ extension PatientListVC : UITableViewDelegate, UITableViewDataSource {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "NewPatientVC") as NewPatientVC
         vc.patientModel = patientList[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension PatientListVC : NewPatientVCDelegate {
+    func updatePatientList() {
+        loadPatientList()
     }
 }
 

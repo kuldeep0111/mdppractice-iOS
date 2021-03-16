@@ -51,7 +51,7 @@ class SorryView: UIViewController {
     }
     
     @IBAction func didTapOnConfirm(_ sender: UIButton!){
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         delegate?.didTapOnOK()
     }
     
@@ -64,7 +64,7 @@ class SorryView: UIViewController {
         popupViewController.boxTitleText = boxTitle
         popupViewController.subText = subText
         popupViewController.buttonTitle = buttonText
-        parentVC.present(popupViewController, animated: true)
+        parentVC.present(popupViewController, animated: false)
       }
    }
 }

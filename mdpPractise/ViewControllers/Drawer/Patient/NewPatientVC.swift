@@ -8,8 +8,13 @@
 import UIKit
 import TTGSnackbar
 
+protocol NewPatientVCDelegate {
+    func updatePatientList()
+}
+
 class NewPatientVC: UIViewController {
     
+    var delegate : NewPatientVCDelegate?
     @IBOutlet weak var nameTextField : MDPTextField!
     @IBOutlet weak var GenderTextField : MDPTextField!
     @IBOutlet weak var DOBTextField : MDPTextField!
@@ -227,6 +232,7 @@ extension NewPatientVC {
 extension NewPatientVC: SorryViewDelegate {
     func didTapOnOK() {
         navigationController?.popViewController(animated: true)
+        self.delegate?.updatePatientList()
     }
 }
 
@@ -266,10 +272,10 @@ extension NewPatientVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         PatientManager.sharedInstance.NewPatient(name: nameTextField.text!, DOB: DOBTextField.text!, gender: GenderTextField.text!, email: emailTextField.text!, phoneNo: mobileTextField.text!, completionHandler: {(success,data,error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(success){
                 SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new patient.", buttonText: "OK")
             }else{
