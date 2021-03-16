@@ -215,13 +215,11 @@ extension TreatmentVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         TreatmentManager.sharedInstance.TreatmentList(completionHandler: {
                         (success,data,error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alert.dismiss(animated: true, completion: nil)
-                }
+                alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.treatmentList = data!.treatmentList
                 self.tableView.reloadData()

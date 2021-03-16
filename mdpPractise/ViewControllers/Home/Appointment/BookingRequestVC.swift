@@ -95,10 +95,10 @@ extension BookingRequestVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         AppointmentManager.sharedInstance.AcceptAppointment(appointmentID: appointmentID, completionHandler: {(success,data,error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(success){
                 self.AppointmentList()
             }else{
@@ -117,10 +117,10 @@ extension BookingRequestVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         AppointmentManager.sharedInstance.RejectAppointment(appointmentID: appointmentID, completionHandler: {(success,data,error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(success){
                 self.AppointmentList()
             }else{
@@ -139,10 +139,10 @@ extension BookingRequestVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         AppointmentManager.sharedInstance.AppointmentList(completionHandler: { (success,list,error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(success){
                 self.BookingList = list!
                 self.tableView.reloadData()

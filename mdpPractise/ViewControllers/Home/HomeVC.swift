@@ -286,11 +286,11 @@ extension HomeVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.ClinicListList(completionHandler: {
             (success,list,error) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.clinicList = list
                 self.clinicName.text = self.clinicList[0].clinicName
@@ -307,19 +307,16 @@ extension HomeVC {
     func getAppointment(){
         
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         AppointmentManager.sharedInstance.AppointmentByMonth(month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
             (success,data,error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alert.dismiss(animated: true, completion: nil)
-                }
+                alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.aptDateByMonthList = data!
                 self.calendar.reloadData()

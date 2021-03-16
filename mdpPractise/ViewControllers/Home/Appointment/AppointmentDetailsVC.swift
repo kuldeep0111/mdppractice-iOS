@@ -179,13 +179,11 @@ extension AppointmentDetailsVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         AppointmentManager.sharedInstance.AppointmentByDay(day: date?.day, month: date?.month, year: date?.year, clinicID: selectedClinic?.clinicID, completionHandler: {
                         (success,data,error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alert.dismiss(animated: true, completion: nil)
-                }
+                alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.appointmentList = data!
                 self.tableViewHeight.constant = CGFloat(self.appointmentList.count * 111)

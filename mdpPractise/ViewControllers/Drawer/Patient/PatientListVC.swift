@@ -183,10 +183,10 @@ extension PatientListVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         PatientManager.sharedInstance.PatientList(completionHandler: {(success,data,error)in
-            self.dismiss(animated: true , completion: nil)
+            self.dismiss(animated: false , completion: nil)
             if(success){
                 self.patientList = data!
                 self.tableView.reloadData()

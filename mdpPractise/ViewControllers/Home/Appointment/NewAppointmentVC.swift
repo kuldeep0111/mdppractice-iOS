@@ -446,13 +446,13 @@ extension NewAppointmentVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         let first5 = String((timing.text!).prefix(5))
         let tim = dateTextField.text! + " \(first5)"
         
         AppointmentManager.sharedInstance.NewAppointment(patientID: patientID.text!, appointmentStart: tim, name: nameTextField.text!, reason: reasonOfAppointment.text, doctorID: "\(drNameList[selectedDoctor!].doctorID!)", completionHandler: {(success,data,error)in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             
             if(success){
                 SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new Appointment.",buttonText: "OK")

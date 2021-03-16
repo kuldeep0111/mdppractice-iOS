@@ -510,11 +510,11 @@ extension SetupClinicVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         
         ClinicManager.sharedInstance.AddNewClinic(prospectedID: prospectedID, mobileNo: mobileNo, name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email") {(successful, user, error) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(successful){
                  print("Success")
                 if(self.prospectedID != ""){
@@ -525,9 +525,7 @@ extension SetupClinicVC {
 
                 }else{
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")
-                        }
 //                    SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a clinic.", buttonText: "OK")
                 }
             }else{
@@ -569,10 +567,10 @@ extension SetupClinicVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.getState() {(successful, user, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(successful){
                 self.stateList = user
                  print("Success")

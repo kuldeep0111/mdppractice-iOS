@@ -273,12 +273,12 @@ extension SignUpVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         
         AuthenticationManager.sharedInstance.signUP(mobileNo, name: nameTextfield.text!, email: emailTextfield.text!, gender: GenderTextfield.text!, dob: DOBTextfield.text!){
             (successful, response, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(successful){
                 UserDefaults.standard.setValue(3, forKey: "userType")
                 let story : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)

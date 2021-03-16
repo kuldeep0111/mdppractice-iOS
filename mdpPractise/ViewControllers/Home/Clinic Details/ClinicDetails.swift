@@ -462,10 +462,10 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.getCity() {(successful, user, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(successful){
                 self.cityList = user
                 self.getStates()
@@ -485,10 +485,10 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.getState() { [self](successful, user, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(successful){
                 self.stateList = user
                  print("Success")
@@ -508,11 +508,11 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.ClinicDetail(clinicID: clinicID!, completionHandler: {
            (success,data,error) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.clinicDetail = data!
                 
@@ -541,11 +541,11 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         
         ClinicManager.sharedInstance.UpdateClinic(clinicID: clinicID!, mobileNo: "", name: clinicName.text!, address1: address1TextField.text!, address2: address2TextField.text!, city: cityTextField.text!, state: stateTextField.text!, pin: pincodeTextField.text!, email: "email", status: (clinicDetail?.status)!) {(successful, user, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             if(successful){
                  print("Success")
                 self.loadClinicList()
@@ -564,13 +564,11 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         ClinicManager.sharedInstance.DeleteClinic(clinicID: clinicID!, completionHandler: {
            (success,data,error) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alert.dismiss(animated: true, completion: nil)
-                }
+                alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.loadClinicList()
             }else{
@@ -589,11 +587,11 @@ extension ClinicDetails {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         ClinicManager.sharedInstance.ClinicListList(completionHandler: {
             (success,list,error) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.navigationController?.popViewController(animated: true)
             }else{

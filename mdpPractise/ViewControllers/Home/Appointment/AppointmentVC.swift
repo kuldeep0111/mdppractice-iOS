@@ -92,10 +92,10 @@ extension AppointmentVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
 
         AppointmentManager.sharedInstance.AppointmentList(completionHandler: {(success,list,error) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.PageMenu()
             }else{

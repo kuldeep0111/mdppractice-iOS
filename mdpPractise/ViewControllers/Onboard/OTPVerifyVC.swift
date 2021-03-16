@@ -161,11 +161,11 @@ extension OTPVerifyVC {
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: false, completion: nil)
         
         
         AuthenticationManager.sharedInstance.login(String(mobileno)) { (successful, response, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             
             if successful{
                 print("SUCCESS")
