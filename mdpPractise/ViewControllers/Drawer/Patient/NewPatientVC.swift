@@ -131,7 +131,7 @@ extension NewPatientVC {
     
     @IBAction func didTapOnCreatePatient(_ sender: UIButton){
         if(validateName() && validateGender() && validateEmail() && validatePhone() && validateDate()){
-            
+            AddNewPatient()
         }
     }
     
@@ -211,5 +211,26 @@ extension NewPatientVC {
             }
             DOBTextField?.text = "\(day)/\(month)/\(datePicker.date.year)"
         }
+    }
+}
+
+extension NewPatientVC: SorryViewDelegate {
+    func didTapOnOK() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: API CALL
+extension NewPatientVC {
+    
+    func AddNewPatient(){
+        
+        PatientManager.sharedInstance.NewPatient(name: nameTextField.text!, DOB: DOBTextField.text!, gender: GenderTextField.text!, email: emailTextField.text!, phoneNo: mobileTextField.text!, completionHandler: {(success,data,error) in
+            if(success){
+                SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new patient.", buttonText: "OK")
+            }else{
+                
+            }
+        })
     }
 }
