@@ -45,6 +45,7 @@
 		2C20BCCC25F09FDE00EFDD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */; };
 		2C20BCDE25F0A30000EFDD7B /* UserDefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */; };
 		2C20BCE325F0A63B00EFDD7B /* NSObject + MDPObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCE225F0A63B00EFDD7B /* NSObject + MDPObject.swift */; };
+		2C2D7678260083E100EB892C /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D7677260083E100EB892C /* PatientModel.swift */; };
 		2C38FC6D25F73CD900959663 /* ClinicDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */; };
 		2C38FC7225F7518400959663 /* AppointmentByMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38FC7125F7518400959663 /* AppointmentByMonth.swift */; };
 		2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */; };
@@ -187,6 +188,7 @@
 		2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultDataManager.swift; sourceTree = "<group>"; };
 		2C20BCE225F0A63B00EFDD7B /* NSObject + MDPObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + MDPObject.swift"; sourceTree = "<group>"; };
+		2C2D7677260083E100EB892C /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		2C38FC6C25F73CD900959663 /* ClinicDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicDetailModel.swift; sourceTree = "<group>"; };
 		2C38FC7125F7518400959663 /* AppointmentByMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentByMonth.swift; sourceTree = "<group>"; };
 		2C3E670E25CA6630000DDA32 /* TreatmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentCell.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				2CCAF6B625F9FD1F00C37654 /* AppointmentByDayModel.swift */,
 				2C0F1C2925FF263A006900E4 /* TreatmentDetails.swift */,
 				2CFED58025FF6DB100D1DD67 /* TreatmentInfoModel.swift */,
+				2C2D7677260083E100EB892C /* PatientModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				2C0F1C2525FF25F9006900E4 /* TreatmentManager.swift in Sources */,
 				2C59F73E25EF5EF80006DAFF /* PrescriptionListVC.swift in Sources */,
 				2CFED58125FF6DB100D1DD67 /* TreatmentInfoModel.swift in Sources */,
+				2C2D7678260083E100EB892C /* PatientModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

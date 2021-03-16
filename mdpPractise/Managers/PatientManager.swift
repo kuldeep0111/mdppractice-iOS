@@ -46,5 +46,27 @@ class PatientManager: APIManager {
         }
     }
     
+    func PatientDetail(patientID: Int,completionHandler: ((Bool, _ user: PatientDetails?, _ error: NSError?)->())?) {
+
+        var params: JSONDictionary = [:]
+        params["action"]    = "getpatient"
+        params["providerid"] = "\(String(describing: providerID!))"
+        params["patientID"] = patientID
+        params["memberid"] = 19334
+    
+        let _ =  makeRequest(apiURL(APIEndPoint.TreatmentList), action: .post, params: params) { (successful, response, error) in
+            
+            if successful {
+                if let dict = response.dictionaryObject {
+                    print(dict)
+                    let data : PatientDetails = PatientDetails(dict)
+                    completionHandler?(true, data, error)
+                }
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
+    
 
 }

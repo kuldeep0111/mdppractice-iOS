@@ -53,21 +53,6 @@ class TreatmentInfoModel: NSObject,Mappable{
     }
 }
 
-//altshortdescription = "Root Canal-Anterior (excluding final restoration)     ";
-//copay = 4050;
-//inspays = 0;
-//procedurecode = G3210;
-//procedurefee = 4050;
-//quadrant = 2;
-//relgrproc = 0;
-//relgrprocdesc = "";
-//relgrtransaction = 0;
-//remarks = "";
-//status = "Sent for Authorization";
-//tooth = 2;
-
-
-
 class ProcedureDetail: NSObject,Mappable{
     var status: String = ""
     var copay: Int?

@@ -25,8 +25,9 @@ class NewPatientVC: UIViewController {
     var genderPicker =  UIPickerView()
     var datePicker = UIDatePicker()
     var pickerToolbar: UIToolbar?
-    
     var genderList = ["Male","Female","Other"]
+    
+    var patientId : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,13 +224,30 @@ extension NewPatientVC: SorryViewDelegate {
 //MARK: API CALL
 extension NewPatientVC {
     
+    func getPatientDetail(){
+        
+        PatientManager.sharedInstance.PatientDetail(patientID: patientId!, completionHandler: {(success,data,error) in
+            if(success){
+                self.nameTextField.text = data!.profile?.name
+                self.GenderTextField.text = data!.profile?.gender
+                self.DOBTextField.text = data!.profile?.dob
+                self.emailTextField.text = data!.contacts?.email
+                self.mobileTextField.text = data!.contacts?.phoneNo
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+    
     func AddNewPatient(){
         
         PatientManager.sharedInstance.NewPatient(name: nameTextField.text!, DOB: DOBTextField.text!, gender: GenderTextField.text!, email: emailTextField.text!, phoneNo: mobileTextField.text!, completionHandler: {(success,data,error) in
             if(success){
                 SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new patient.", buttonText: "OK")
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }
