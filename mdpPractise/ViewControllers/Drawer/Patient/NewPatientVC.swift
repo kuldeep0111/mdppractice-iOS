@@ -27,11 +27,20 @@ class NewPatientVC: UIViewController {
     var pickerToolbar: UIToolbar?
     var genderList = ["Male","Female","Other"]
     
-    var patientId : Int?
+    var patientModel: PatientListModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Add Patient"
+        self.title = patientModel == nil ? "Add Patient" : ""
+        if(patientModel != nil){
+            self.nameTextField.isUserInteractionEnabled = false
+            self.GenderTextField.isUserInteractionEnabled = false
+            self.DOBTextField.isUserInteractionEnabled = false
+            self.emailTextField.isUserInteractionEnabled = false
+            self.mobileTextField.isUserInteractionEnabled = false
+            self.createBtn.isHidden = true
+            getPatientDetail()
+        }
         createUIToolBar()
         genderPicker = UIPickerView()
         genderPicker.dataSource = self
@@ -225,8 +234,17 @@ extension NewPatientVC: SorryViewDelegate {
 extension NewPatientVC {
     
     func getPatientDetail(){
+
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: false, completion: nil)
         
-        PatientManager.sharedInstance.PatientDetail(patientID: patientId!, completionHandler: {(success,data,error) in
+        PatientManager.sharedInstance.PatientDetail(patientID: (patientModel?.patientID!)!, memberID: (patientModel?.memberID!)!, completionHandler: {(success,data,error) in
+            self.dismiss(animated: false, completion: nil)
             if(success){
                 self.nameTextField.text = data!.profile?.name
                 self.GenderTextField.text = data!.profile?.gender
@@ -242,7 +260,16 @@ extension NewPatientVC {
     
     func AddNewPatient(){
         
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
         PatientManager.sharedInstance.NewPatient(name: nameTextField.text!, DOB: DOBTextField.text!, gender: GenderTextField.text!, email: emailTextField.text!, phoneNo: mobileTextField.text!, completionHandler: {(success,data,error) in
+            self.dismiss(animated: true, completion: nil)
             if(success){
                 SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new patient.", buttonText: "OK")
             }else{
