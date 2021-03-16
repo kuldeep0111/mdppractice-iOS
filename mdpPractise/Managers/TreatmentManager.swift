@@ -19,25 +19,20 @@ class TreatmentManager: APIManager {
     var TreatmentList : [TreatmentDetails] = []
     var ProcedureList: [ProcedureDetail] = []
     func TreatmentList(completionHandler: ((Bool, _ user: TreatmentModel?, _ error: NSError?)->())?) {
-
+        
         var params: JSONDictionary = [:]
         params["action"]    = "gettreatments"
         params["providerid"] = 1011
         params["clinicid"] = 5
         params["memberid"] = 13916
         params["patientid"] = 13916
-    
+        
         let _ =  makeRequest(apiURL(APIEndPoint.TreatmentList), action: .post, params: params) { (successful, response, error) in
             
             if successful {
-              self.TreatmentList.removeAll()
+                self.TreatmentList.removeAll()
                 if let dict = response.dictionaryObject {
-                    print(dict)
                     let data : TreatmentModel = TreatmentModel(dict)
-                    
-                    print(data.next)
-                    
-                    
                     completionHandler?(true, data, error)
                 }
                 return
@@ -47,16 +42,15 @@ class TreatmentManager: APIManager {
     }
     
     func TreatmentDetail(treatmentID: Int,completionHandler: ((Bool, _ user: TreatmentInfoModel?, _ error: NSError?)->())?) {
-
+        
         var params: JSONDictionary = [:]
         params["action"]    = "gettreatment"
         params["treatmentid"] = treatmentID
-    
+        
         let _ =  makeRequest(apiURL(APIEndPoint.TreatmentList), action: .post, params: params) { (successful, response, error) in
             
             if successful {
                 if let dict = response.dictionaryObject {
-                    print(dict)
                     let data : TreatmentInfoModel = TreatmentInfoModel(dict)
                     completionHandler?(true, data, error)
                 }
@@ -68,7 +62,7 @@ class TreatmentManager: APIManager {
     
     
     func ProcedureList(treatmentID: Int,completionHandler: ((Bool, _ user: [ProcedureDetail], _ error: NSError?)->())?) {
-
+        
         var params: JSONDictionary = [:]
         params["action"]    = "getprocedures"
         params["treatmentid"] = treatmentID
@@ -77,7 +71,7 @@ class TreatmentManager: APIManager {
         params["page"] = 0
         
         let _ =  makeRequest(apiURL(APIEndPoint.procedureList), action: .post, params: params) { (successful, response, error) in
-                        
+            
             if successful {
                 self.ProcedureList.removeAll()
                 if let array = response["proclist"].arrayObject {
@@ -91,5 +85,29 @@ class TreatmentManager: APIManager {
             completionHandler?(false, [], error)
         }
     }
+    
+    func AddProcedureToTreatments(tooth: String,quadrent: String, remarks: String,plan: String,procedureCode: String,treatmentID: Int,completionHandler: ((Bool, _ user: [ProcedureDetail], _ error: NSError?)->())?) {
+        
+        var params: JSONDictionary = [:]
+        params["action"]    = "addproceduretotreatment"
+        params["treatmentid"] = treatmentID
+        params["procedurecode"] = procedureCode
+        params["providerid"] = providerID
+        params["plan"] = plan
+        params["tooth"] = tooth
+        params["quadrant"] = quadrent
+        params["remarks"] = remarks
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.addProcedureToTreatments), action: .post, params: params) { (successful, response, error) in
+            
+            if successful {
+                completionHandler?(true, self.ProcedureList, error)
+                return
+            }
+            completionHandler?(false, [], error)
+        }
+    }
+    
+    
 }
 

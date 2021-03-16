@@ -3431,25 +3431,25 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drug Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efU-ay-eYl">
-                                                            <rect key="frame" x="21.999999999999996" y="15" width="62.666666666666657" height="13"/>
+                                                            <rect key="frame" x="22.000000000000004" y="15" width="59.333333333333343" height="13"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crocin kid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-56-27G">
-                                                            <rect key="frame" x="22" y="33" width="67.666666666666671" height="17"/>
+                                                            <rect key="frame" x="21.999999999999996" y="33" width="63.666666666666657" height="17"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strength" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-7e-GKz">
-                                                            <rect key="frame" x="316" y="15" width="46" height="13"/>
+                                                            <rect key="frame" x="320" y="15" width="42" height="13"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 mg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRB-yU-H5s">
-                                                            <rect key="frame" x="313" y="33" width="49" height="17"/>
+                                                            <rect key="frame" x="314.66666666666669" y="33" width="47.333333333333314" height="17"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -5639,6 +5639,7 @@
                                                                         <constraint firstItem="b2Y-wT-NjF" firstAttribute="trailing" secondItem="Vye-n1-fBB" secondAttribute="trailing" id="NDA-sm-cKQ"/>
                                                                         <constraint firstItem="a0a-Xo-kTp" firstAttribute="centerY" secondItem="44S-Va-yN9" secondAttribute="centerY" id="Q6T-zv-zEB"/>
                                                                         <constraint firstItem="JUA-v0-kvY" firstAttribute="top" secondItem="sNM-F6-ACI" secondAttribute="top" constant="14" id="Ri3-h8-WeW"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="NGK-rU-EKj" secondAttribute="bottom" constant="12" id="WZa-mL-idC"/>
                                                                         <constraint firstAttribute="trailing" secondItem="5S7-GE-kS8" secondAttribute="trailing" constant="10" id="XOO-e2-mcf"/>
                                                                         <constraint firstItem="ifj-kB-FPr" firstAttribute="leading" secondItem="8Um-d4-0qI" secondAttribute="trailing" constant="12" id="Xgh-a2-deJ"/>
                                                                         <constraint firstItem="ifj-kB-FPr" firstAttribute="centerY" secondItem="8Um-d4-0qI" secondAttribute="centerY" id="XzX-nv-3gP"/>

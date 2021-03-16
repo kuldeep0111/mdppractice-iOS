@@ -65,6 +65,7 @@ class ProcedureDetail: NSObject,Mappable{
     var relgrtransaction: Int?
     var tooth: String = ""
     var authDescription: String = ""
+    var plan: String = ""
     required convenience init(_ map: JSONDictionary) {
         self.init()
         status        <- map.property("status")
@@ -77,8 +78,8 @@ class ProcedureDetail: NSObject,Mappable{
         relgrprocdesc  <- map.property("relgrprocdesc")
         relgrtransaction      <- map.property("relgrtransaction")
         tooth     <- map.property("tooth")
-        print(tooth)
         authDescription <- map.property("altshortdescription")
+        plan <- map.property("plan")
         //        dateString <- map.property(doctorModelKey.dateKey)
     }
     override init() {

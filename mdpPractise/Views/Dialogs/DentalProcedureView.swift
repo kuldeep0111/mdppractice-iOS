@@ -9,7 +9,7 @@ import UIKit
 import TTGSnackbar
 
 protocol DentalProcedureViewDelegate {
-    func didTapOnSave()
+    func didTapOnSave(tooth: String, quadrent: String, remarks: String)
 }
 
 class DentalProcedureView: UIViewController {
@@ -85,7 +85,7 @@ extension DentalProcedureView {
         
         if(validatePatientName() && validateProcedure()){
             self.dismiss(animated: true, completion: nil)
-            self.delegate?.didTapOnSave()
+            self.delegate?.didTapOnSave(tooth: toothNo.text!, quadrent: quadrant.text!, remarks: reasonOfAppointment.text!)
         }
     }
     

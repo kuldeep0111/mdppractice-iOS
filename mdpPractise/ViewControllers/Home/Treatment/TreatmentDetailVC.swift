@@ -16,7 +16,12 @@ class TreatmentDetailVC: UIViewController {
     @IBOutlet weak var treatingBy : UILabel!
     @IBOutlet weak var clinicName : UILabel!
     @IBOutlet weak var addNewBtn : UIButton!
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 600
+        }
+    }
     @IBOutlet weak var treatmentNumView : UIView!{
         didSet{
             treatmentNumView.layer.cornerRadius = 8.0
@@ -91,6 +96,7 @@ class TreatmentDetailVC: UIViewController {
     @IBAction func didTapOnAddNewBtn(_ sender: UIButton){
         let vc = mdpStoryBoard.instantiateViewController(identifier: "ProcedureVC") as! ProcedureVC
         vc.treatmentID = treatmentID!
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -124,12 +130,14 @@ extension TreatmentDetailVC : UITableViewDelegate, UITableViewDataSource {
         cell.menuBtn.addTarget(self, action: #selector(didTapOnMenuButton(_:)), for: .touchUpInside)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 184
-    }
 }
 
+
+extension TreatmentDetailVC : ProcedureVCDelegate {
+    func UpdateTreatmentDetails() {
+        loadTreatmentDetails()
+    }
+}
 
 extension TreatmentDetailVC {
     
@@ -197,10 +205,16 @@ extension TreatmentDetailVC {
                     self.tableView.layoutIfNeeded()
                     return self.tableView.contentSize.height
                 }
-                self.tableViewHeight.constant = CGFloat(self.ProcedureList.count * 184)
-                self.view.layoutIfNeeded()
-                
                 self.tableView.reloadData()
+                
+                var tableViewHeight: CGFloat {
+                    self.tableView.layoutIfNeeded()
+
+                    return self.tableView.contentSize.height
+                }
+                
+                self.tableViewHeight.constant = CGFloat((self.ProcedureList.count * 184) + 50)
+                self.view.layoutIfNeeded()
                 
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)

@@ -7,8 +7,16 @@
 
 import UIKit
 import TTGSnackbar
-class ProcedureVC: UIViewController {
 
+protocol ProcedureVCDelegate {
+    func UpdateTreatmentDetails()
+}
+
+
+class ProcedureVC: UIViewController {
+    
+    var delegate: ProcedureVCDelegate?
+    
     @IBOutlet weak var searchTextFiels : UITextField!{
         didSet{
             searchTextFiels.setLeftPaddingPoints(50)
@@ -27,9 +35,10 @@ class ProcedureVC: UIViewController {
             tableView.estimatedRowHeight = 600
         }
     }
-
+    
     var treatmentID: Int?
     var procedureList: [ProcedureDetail] = []
+    var selectedIndex: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getProcedure()
@@ -50,21 +59,26 @@ extension ProcedureVC : UITableViewDelegate, UITableViewDataSource {
         cell.aboutProcedure.text = procedureList[indexPath.row].authDescription
         return cell
     }
-        
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
         DentalProcedureView.showPopup(parentVC: self)
     }
 }
 
 extension ProcedureVC : DentalProcedureViewDelegate {
-    func didTapOnSave() {
-        SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a dental procedure.",buttonText: "OK")
+    func didTapOnSave(tooth: String, quadrent: String, remarks: String) {
+        AddProcedure(tooth: tooth, quadrent: quadrent, remarks: remarks)
     }
+//    func didTapOnSave() {
+//        SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a dental procedure.",buttonText: "OK")
+//    }
 }
 
 extension ProcedureVC : SorryViewDelegate {
     func didTapOnOK() {
-        
+        self.navigationController?.popViewController(animated: false)
+        self.delegate?.UpdateTreatmentDetails()
     }
 }
 
@@ -75,12 +89,12 @@ extension ProcedureVC : UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-
+        
         let searchText  = textField.text! + string
-
+        
         if searchText.count > 0 {
             tableView.isHidden = false
-
+            
             procedureList = TreatmentManager.sharedInstance.ProcedureList.filter({ (result) -> Bool in
                 return result.procedureCode.range(of: searchText, options: .caseInsensitive) != nil
             })
@@ -89,7 +103,7 @@ extension ProcedureVC : UITextFieldDelegate {
             procedureList = TreatmentManager.sharedInstance.ProcedureList
         }
         tableView.reloadData()
-
+        
         return true
     }
     
@@ -102,7 +116,7 @@ extension ProcedureVC : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         procedureList = TreatmentManager.sharedInstance.ProcedureList
-            tableView.reloadData()
+        tableView.reloadData()
     }
     
 }
@@ -120,11 +134,33 @@ extension ProcedureVC {
         present(alert, animated: false, completion: nil)
         
         TreatmentManager.sharedInstance.ProcedureList(treatmentID: treatmentID!, completionHandler: {
-                        (success,data,error) in
-                alert.dismiss(animated: false, completion: nil)
+            (success,data,error) in
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.procedureList = data
                 self.tableView.reloadData()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+    
+    func AddProcedure(tooth: String, quadrent: String, remarks: String){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: false, completion: nil)
+        
+        TreatmentManager.sharedInstance.AddProcedureToTreatments(tooth: tooth, quadrent: quadrent, remarks: remarks, plan: procedureList[selectedIndex!].plan, procedureCode: procedureList[selectedIndex!].procedureCode, treatmentID: treatmentID!, completionHandler: {
+            (success,data,error) in
+            alert.dismiss(animated: false, completion: nil)
+            if(success){
+                SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a dental procedure.",buttonText: "OK")
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
                 snackbar.show()
