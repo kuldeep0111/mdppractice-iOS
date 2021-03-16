@@ -39,6 +39,7 @@
 		2C0FED4A25CD3BA000E94B8A /* ConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */; };
 		2C0FED4F25CD50B600E94B8A /* NewConsentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */; };
 		2C0FED5425CD640400E94B8A /* DentalProcedureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */; };
+		2C178DC22600753E00188DC6 /* NewPatientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C178DC12600753E00188DC6 /* NewPatientVC.swift */; };
 		2C20BC9625EF990E00EFDD7B /* AddNewDrugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BC9525EF990E00EFDD7B /* AddNewDrugView.swift */; };
 		2C20BCCC25F09FDE00EFDD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */; };
 		2C20BCDE25F0A30000EFDD7B /* UserDefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */; };
@@ -179,6 +180,7 @@
 		2C0FED4925CD3BA000E94B8A /* ConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentFormView.swift; sourceTree = "<group>"; };
 		2C0FED4E25CD50B600E94B8A /* NewConsentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsentFormView.swift; sourceTree = "<group>"; };
 		2C0FED5325CD640400E94B8A /* DentalProcedureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DentalProcedureView.swift; sourceTree = "<group>"; };
+		2C178DC12600753E00188DC6 /* NewPatientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatientVC.swift; sourceTree = "<group>"; };
 		2C20BC9525EF990E00EFDD7B /* AddNewDrugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDrugView.swift; sourceTree = "<group>"; };
 		2C20BCCB25F09FDE00EFDD7B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		2C20BCDD25F0A30000EFDD7B /* UserDefaultDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultDataManager.swift; sourceTree = "<group>"; };
@@ -487,14 +489,23 @@
 			path = Dialogs;
 			sourceTree = "<group>";
 		};
+		2C178DC02600751C00188DC6 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				1822288225C849B60032BE30 /* PatientListVC.swift */,
+				2C178DC12600753E00188DC6 /* NewPatientVC.swift */,
+			);
+			path = Patient;
+			sourceTree = "<group>";
+		};
 		2C3E670A25CA6076000DDA32 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
+				2C178DC02600751C00188DC6 /* Patient */,
 				2C6F206C25CD127E00CD0E8E /* Patient Plan */,
 				2C6F205125CD043200CD0E8E /* Consent Form */,
 				2C4CBD6125CC00490060CAE1 /* Holidays */,
 				2C4CBD6025CC002C0060CAE1 /* Staff Member */,
-				1822288225C849B60032BE30 /* PatientListVC.swift */,
 				2C3E674625CA8FAB000DDA32 /* SideVC.swift */,
 				2C4CBD2A25CBB4050060CAE1 /* DentalImagesVC.swift */,
 			);
@@ -944,6 +955,7 @@
 				2C59F75025EF81310006DAFF /* DrugCell.swift in Sources */,
 				2C3E671925CA6CB2000DDA32 /* TreatmentDetailVC.swift in Sources */,
 				2C3E671425CA6770000DDA32 /* TreatmentVC.swift in Sources */,
+				2C178DC22600753E00188DC6 /* NewPatientVC.swift in Sources */,
 				2C630D6125F1EB8B006A0990 /* AuthenticationManager.swift in Sources */,
 				2C3E670F25CA6630000DDA32 /* TreatmentCell.swift in Sources */,
 				2C59F73325EF52210006DAFF /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,

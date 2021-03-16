@@ -37,15 +37,18 @@ class PatientListVC: UIViewController {
 extension PatientListVC {
     func setupNavigationBar(){
         self.navigationController?.navigationBar.isHidden = false
-        if(isMDPMember == false){
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
             style: .plain, target: self, action: #selector(didTapOnAdd))
-        }
     }
         
     @objc func didTapOnAdd(){
-        
+        if(isMDPMember){
+            let vc = mdpStoryBoard.instantiateViewController(withIdentifier: "NewPatientVC") as! NewPatientVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            
+        }
     }
 }
 
