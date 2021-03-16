@@ -525,7 +525,8 @@ extension ClinicDetails {
                 self.pincodeTextField.text = self.clinicDetail?.pinCode
                 
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }
@@ -573,7 +574,8 @@ extension ClinicDetails {
             if(success){
                 self.loadClinicList()
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

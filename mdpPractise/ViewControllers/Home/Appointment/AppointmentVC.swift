@@ -101,7 +101,6 @@ extension AppointmentVC {
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
                 snackbar.show()
-
             }
         })
     }

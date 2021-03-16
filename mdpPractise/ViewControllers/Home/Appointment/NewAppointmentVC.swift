@@ -457,7 +457,8 @@ extension NewAppointmentVC {
             if(success){
                 SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully added a new Appointment.",buttonText: "OK")
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }
@@ -481,7 +482,8 @@ extension NewAppointmentVC {
             if(success){
                 self.drNameList = data!
             }else{
-                 
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

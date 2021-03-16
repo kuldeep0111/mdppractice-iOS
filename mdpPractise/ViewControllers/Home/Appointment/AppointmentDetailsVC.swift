@@ -7,7 +7,7 @@
 
 import UIKit
 import DropDown
-
+import TTGSnackbar
 class AppointmentDetailsVC: UIViewController {
     
     //@IBOutlet weak var containerViewHeight: NSLayoutConstraint!
@@ -193,7 +193,8 @@ extension AppointmentDetailsVC {
                 self.tableView.reloadData()
                 self.view.layoutIfNeeded()
             }else{
-
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

@@ -324,7 +324,8 @@ extension HomeVC {
                 self.aptDateByMonthList = data!
                 self.calendar.reloadData()
             }else{
-                
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

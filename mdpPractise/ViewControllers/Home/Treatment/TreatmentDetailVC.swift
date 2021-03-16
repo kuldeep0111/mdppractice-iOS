@@ -7,6 +7,7 @@
 
 import UIKit
 import DropDown
+import TTGSnackbar
 class TreatmentDetailVC: UIViewController {
 
     var dropDown = DropDown()
@@ -204,7 +205,8 @@ extension TreatmentDetailVC {
                 self.tableView.reloadData()
                 
             }else{
-
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }

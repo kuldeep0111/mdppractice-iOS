@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import TTGSnackbar
 class ProcedureVC: UIViewController {
 
     @IBOutlet weak var searchTextFiels : UITextField!{
@@ -128,7 +128,8 @@ extension ProcedureVC {
                 self.procedureList = data
                 self.tableView.reloadData()
             }else{
-
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
             }
         })
     }
