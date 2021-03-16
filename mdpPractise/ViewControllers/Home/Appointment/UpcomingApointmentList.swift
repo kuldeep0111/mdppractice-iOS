@@ -10,7 +10,12 @@ import DropDown
 class UpcomingApointmentList: UIViewController {
     
     var dropDown = DropDown()
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 600
+        }
+    }
     
     var UpcomiongList : [AppointmentListModel] = AppointmentManager.sharedInstance.UpcomingAppointmentList
     
@@ -34,9 +39,9 @@ extension UpcomingApointmentList : UITableViewDelegate, UITableViewDataSource {
         return UpcomiongList.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 106
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell

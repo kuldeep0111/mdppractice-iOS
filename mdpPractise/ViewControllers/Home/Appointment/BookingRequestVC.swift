@@ -10,7 +10,12 @@ import TTGSnackbar
 
 class BookingRequestVC: UIViewController {
 
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+            didSet{
+                tableView.rowHeight = UITableView.automaticDimension
+                tableView.estimatedRowHeight = 600
+            }
+       }
     
     var selectedIndex : Int?
     
