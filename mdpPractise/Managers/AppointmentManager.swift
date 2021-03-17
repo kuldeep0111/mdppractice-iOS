@@ -140,7 +140,7 @@ class AppointmentManager: APIManager {
         }
     }
     
-    func AppointmentByMonth(month: Int?,year: Int?,clinicID: Int?,completionHandler: ((Bool, _ user: [AppointmentByMonthModel]?, _ error: NSError?)->())?) {
+    func AppointmentByMonth(block: Bool,month: Int?,year: Int?,clinicID: Int?,completionHandler: ((Bool, _ user: [AppointmentByMonthModel]?, _ error: NSError?)->())?) {
         var params: JSONDictionary = [:]
         
         params["action"]  = "list_appointment_count_bymonth"
@@ -148,6 +148,9 @@ class AppointmentManager: APIManager {
         params["year"] = year
         params["providerid"] = providerID
         params["clinicid"] = clinicID
+        if(block == true){
+          params["block"] = block
+        }
         print(params)
         let _ =  makeRequest(apiURL(APIEndPoint.AppointmentByMonth), action: .post, params: params) {(successful, response, error) in
             

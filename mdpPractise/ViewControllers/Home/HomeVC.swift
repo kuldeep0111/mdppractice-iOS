@@ -33,14 +33,14 @@ class HomeVC: UIViewController, UINavigationBarDelegate {
     }()
     
     private var currentPage: Date?
-
+    
     private lazy var today: Date = {
         return Date()
     }()
     
     var clinicList : [ClinicListModel] = []
     var aptDateByMonthList : [AppointmentByMonthModel] = []
-    
+    var BlockDates : [AppointmentByMonthModel] = []
     var todayDate = Date()
     var currentMonth : Int?
     var currentYear : Int?
@@ -106,7 +106,7 @@ extension HomeVC {
 }
 
 //MARK: DataSource
-extension HomeVC : FSCalendarDataSource, FSCalendarDelegate {
+extension HomeVC : FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
@@ -152,12 +152,42 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate {
             print(dateFormatter.string(from: date))
             AppointmentBlockView.showPopup(parentVC: self, date: date)
         }
-        
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool
+    {
+        let dateString = self.formatter.string(from: date)
+        let isBlock = self.BlockDates.contains{ (amcData) -> Bool in
+            return amcData.dateString == dateString
+        }
+        if(isBlock)
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
         self.view.layoutIfNeeded()
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        
+        let dateString = self.formatter.string(from: date)
+        let faf = self.BlockDates.contains{ (amcData) -> Bool in
+            return amcData.dateString == dateString
+        }
+        
+        if faf {
+            return .gray
+        } else {
+            return nil
+        }
     }
 }
 
@@ -166,17 +196,17 @@ extension HomeVC {
     
     
     @IBAction func monthForthButtonPressed(_ sender: Any) {
-            
+        
         self.moveCurrentPage(moveUp: true)
     }
-        
+    
     @IBAction func monthBackButtonPressed(_ sender: Any) {
-            
+        
         self.moveCurrentPage(moveUp: false)
     }
-
+    
     private func moveCurrentPage(moveUp: Bool) {
-            
+        
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.month = moveUp ? 1 : -1
@@ -281,7 +311,7 @@ extension HomeVC : AppointmentBlockViewDelegate {
         vc.delegate = self
         vc.selectedDate = "\(date.day)/\(date.month)/\(date.year)"
         self.navigationController?.pushViewController(vc, animated: true)
-
+        
     }
     
     func didTapOnBlockDate() {
@@ -337,11 +367,34 @@ extension HomeVC {
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: false, completion: nil)
         
-        AppointmentManager.sharedInstance.AppointmentByMonth(month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
+        AppointmentManager.sharedInstance.AppointmentByMonth(block: false, month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
             (success,data,error) in
-                alert.dismiss(animated: false, completion: nil)
+            alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.aptDateByMonthList = data!
+                self.getBlockDates()
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+    
+    func getBlockDates(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: false, completion: nil)
+        
+        AppointmentManager.sharedInstance.AppointmentByMonth(block: true, month: currentMonth, year: currentYear, clinicID: selectedClinic?.clinicID, completionHandler: {
+            (success,data,error) in
+            alert.dismiss(animated: false, completion: nil)
+            if(success){
+                self.BlockDates = data!
                 self.calendar.reloadData()
             }else{
                 let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
