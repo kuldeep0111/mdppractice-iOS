@@ -33,6 +33,9 @@ class SignUpVC: UIViewController {
             attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 42, length: 14))
             attributedString.addAttribute(.foregroundColor, value: UIColor(rgb: 0x0173B7), range: NSRange(location: 42, length: 14))
             termsLabel.attributedText = attributedString
+            termsLabel.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(showTermsPopup))
+            termsLabel.addGestureRecognizer(tap)
         }
     }
     
@@ -80,6 +83,11 @@ extension SignUpVC {
 
 //MARK: Helping Method
 extension SignUpVC {
+    
+    @objc func showTermsPopup(){
+        SorryView.showPopup(parentVC: self, boxTitle: "Terms & Privacy Policy", subText: "By clicking continue, you agree to our Terms and Privacy Policy. We use a service that’s pre-installed on your device to auto-update apps. You can turn off the service at any time. Learn more.", buttonText: "Continue")
+    }
+    
     func setupUI(){
         submitBtn.layer.cornerRadius = 25
         containerView.roundCorners(corners: [.topLeft, .topRight], radius: 30.0)
