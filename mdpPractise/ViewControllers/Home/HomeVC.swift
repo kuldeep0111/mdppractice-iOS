@@ -257,6 +257,7 @@ extension HomeVC: SideMenuNavigationControllerDelegate {
     func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
         print("SideMenu Appearing! (animated: \(animated))")
         self.view.alpha = 0.5;
+        self.tabBarController?.tabBar.alpha = 0.5
     }
     
     func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
@@ -266,6 +267,7 @@ extension HomeVC: SideMenuNavigationControllerDelegate {
     func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
         print("SideMenu Disappearing! (animated: \(animated))")
         self.view.alpha = 1;
+        self.tabBarController?.tabBar.alpha = 1
     }
     
     func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {

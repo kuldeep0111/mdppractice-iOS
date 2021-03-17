@@ -209,11 +209,11 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrowWhite" translatesAutoresizingMaskIntoConstraints="NO" id="mm5-y5-Ovh">
-                                                <rect key="frame" x="380" y="76.666666666666671" width="14" height="10"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarrow-1" translatesAutoresizingMaskIntoConstraints="NO" id="mm5-y5-Ovh">
+                                                <rect key="frame" x="380" y="75.666666666666671" width="14" height="12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="14" id="P8V-p2-kSQ"/>
-                                                    <constraint firstAttribute="height" constant="10" id="j55-CY-BYb"/>
+                                                    <constraint firstAttribute="height" constant="12" id="j55-CY-BYb"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -8070,6 +8070,7 @@
         <image name="phoneIcon" width="50" height="50"/>
         <image name="phoneVld" width="22" height="22"/>
         <image name="rightArrow" width="11" height="19"/>
+        <image name="rightarrow-1" width="42.666667938232422" height="42.666667938232422"/>
         <image name="search" width="20" height="20"/>
         <image name="selectCheck" width="42.666667938232422" height="42.666667938232422"/>
         <image name="selectCircle" width="16" height="16"/>
