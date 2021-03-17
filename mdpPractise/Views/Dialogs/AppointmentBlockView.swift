@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AppointmentBlockViewDelegate {
-    func didTapOnBlockDate()
+    func didTapOnBlockDate(date: Date)
     func didTabOnAddNewAppointment(date: Date)
 }
 
@@ -64,7 +64,7 @@ extension AppointmentBlockView {
     
     @IBAction func didTapOnBlockDate(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)
-        delegate?.didTapOnBlockDate()
+        delegate?.didTapOnBlockDate(date: date!)
     }
     
     static func showPopup(parentVC: UIViewController,date: Date){

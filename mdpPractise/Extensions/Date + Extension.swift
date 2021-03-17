@@ -26,6 +26,15 @@ func currentDate() -> String {
     return formatedDate
 }
 
+extension Date {
+    
+    static func dateFromFormatDDMMYYYY(_ date: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter.date(from: date)
+    }
+}
+
 
 extension String {
     func toDate(dateFormat: String) -> Date? {
@@ -35,5 +44,16 @@ extension String {
         
         let date: Date? = dateFormatter.date(from: self)
         return date
+    }
+    
+    func timeFormate24Hrs() -> String{
+        let dateAsString = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let date = dateFormatter.date(from: dateAsString)
+
+        dateFormatter.dateFormat = "HH:mm"
+        let date24 = dateFormatter.string(from: date!)
+        return date24
     }
 }

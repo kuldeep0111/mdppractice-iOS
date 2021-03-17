@@ -7565,7 +7565,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="Br0-Gu-59w"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowdown" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-vg-JOI">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowdown" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-vg-JOI">
                                                 <rect key="frame" x="368" y="75.666666666666671" width="14" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="rZd-5g-snA"/>

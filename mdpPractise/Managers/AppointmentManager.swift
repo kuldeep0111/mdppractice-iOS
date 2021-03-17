@@ -198,4 +198,24 @@ class AppointmentManager: APIManager {
             completionHandler?(false, nil, error)
         }
     }
+    
+    func BlockDates(startDate: String?,endDate: String?,clinicID: Int?,completionHandler: ((Bool, _ user: Any?, _ error: NSError?)->())?) {
+        
+        var params: JSONDictionary = [:]
+        params["action"]  = "add_block"
+        params["providerid"] = providerID
+        params["clinicid"] = clinicID
+        params["block_start"] = startDate
+        params["block_end"] = endDate
+        params["notes"] = ""
+        
+        let _ =  makeRequest(apiURL(APIEndPoint.blockAppointmentDate), action: .post, params: params) {(successful, response, error) in
+                        
+            if successful {
+                completionHandler?(true, nil, error)
+                return
+            }
+            completionHandler?(false, nil, error)
+        }
+    }
 }

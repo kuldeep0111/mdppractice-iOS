@@ -439,7 +439,6 @@
 				1822288025C849B60032BE30 /* Home */,
 				1822288425C849B60032BE30 /* Onboard */,
 				2C4CBD6B25CC0F350060CAE1 /* NotificaitonVC.swift */,
-				2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */,
 				2C42210825D13620000C41FB /* PaymentDetailVC.swift */,
 			);
 			path = ViewControllers;
@@ -539,6 +538,7 @@
 		2C4CBD6225CC01F00060CAE1 /* Appointment */ = {
 			isa = PBXGroup;
 			children = (
+				2C0FED4025CD2AEF00E94B8A /* BlockDateVC.swift */,
 				1822288125C849B60032BE30 /* AppointmentDetailsVC.swift */,
 				1822288A25C849B60032BE30 /* NewAppointmentVC.swift */,
 				2CC7AA0C25D14D9600FB6769 /* AppointmentVC.swift */,

@@ -314,13 +314,21 @@ extension HomeVC : AppointmentBlockViewDelegate {
         
     }
     
-    func didTapOnBlockDate() {
+    func didTapOnBlockDate(date: Date) {
         let vc = mdpStoryBoard.instantiateViewController(identifier: "BlockDateVC") as! BlockDateVC
+        vc.clinicId = selectedClinic?.clinicID
+        vc.delegate = self
+        vc.startDate = date
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension HomeVC : NewAppointmentVCDelegate {
+extension HomeVC : NewAppointmentVCDelegate, BlockDateVCDelegate {
+    
+    func updateCalender() {
+        getAppointment()
+    }
+    
     func loadData() {
         getAppointment()
     }

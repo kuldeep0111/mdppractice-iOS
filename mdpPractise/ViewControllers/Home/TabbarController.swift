@@ -13,6 +13,7 @@ class TabbarControllerVC: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.selectedIndex = 2
         print("Working")
+        self.tabBar.backgroundColor = UIColor(rgb: 0xFAFAFA)
                // }
     }
     

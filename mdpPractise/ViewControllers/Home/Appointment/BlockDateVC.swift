@@ -8,9 +8,19 @@
 import UIKit
 import TTGSnackbar
 
+protocol BlockDateVCDelegate {
+    func updateCalender()
+}
+
 class BlockDateVC: UIViewController {
 
-    @IBOutlet weak var clinicNameTFD : MDPTextField!
+    
+    var delegate: BlockDateVCDelegate?
+    @IBOutlet weak var clinicNameTFD : MDPTextField!{
+        didSet{
+            clinicNameTFD.isUserInteractionEnabled = false
+        }
+    }
     @IBOutlet weak var startDateTFD : MDPTextField!
     @IBOutlet weak var endDateTFD : MDPTextField!
     @IBOutlet weak var startTimeTFD : MDPTextField!
@@ -27,7 +37,7 @@ class BlockDateVC: UIViewController {
     var clinicNamePickerView = UIPickerView()
     var pickerToolbar: UIToolbar?
     
-    var clinicList = ["Raghav Clinic","Rajiv Clinic"]
+    var clinicList : [ClinicListModel] = []
     
     var startDatePicker = UIDatePicker()
     var endDatePicker = UIDatePicker()
@@ -35,6 +45,14 @@ class BlockDateVC: UIViewController {
     var endTimePicker = UIDatePicker()
     
     var key : Int?
+    var clinicId : Int?
+    var startDate: Date = Date()
+    
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
 }
 
 //MARK: LifeCycle
@@ -42,6 +60,7 @@ extension BlockDateVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clinicList = ClinicManager.sharedInstance.clinicArray
         self.title = "Block Date"
         self.navigationController?.navigationBar.isHidden = false
         clinicNamePickerView.dataSource = self
@@ -49,6 +68,8 @@ extension BlockDateVC {
         clinicNameTFD.inputAccessoryView = pickerToolbar
         clinicNameTFD.inputView = clinicNamePickerView
         clinicNameTFD.delegate = self
+        clinicNameTFD.text = selectedClinic?.clinicName
+        
         startTimeTFD.delegate = self
         endDateTFD.delegate = self
         startDateTFD.delegate = self
@@ -60,6 +81,11 @@ extension BlockDateVC {
         startDateTFD?.inputAccessoryView = pickerToolbar
         startDateTFD?.inputView = startDatePicker
         startDateTFD.delegate = self
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        startDateTFD.text = dateFormatter.string(from: startDate)
         
         endDatePicker.datePickerMode = .date
         endDatePicker.preferredDatePickerStyle = .wheels
@@ -92,6 +118,13 @@ extension BlockDateVC {
     }
 }
 
+extension BlockDateVC: SorryViewDelegate {
+    func didTapOnOK() {
+        self.navigationController?.popViewController(animated: true)
+        delegate?.updateCalender()
+    }
+}
+
 //MARK: Keyboard Events
 extension BlockDateVC {
     
@@ -117,10 +150,14 @@ extension BlockDateVC {
     
     @IBAction func didTapOnSave(_ sender: UIButton){
         
-        if(validateClinic() && validateStartDate() && validateEndDate() && validateStartTime() && validateEndTime()){
-            
-        }else{
-            
+        if(validateClinic() && validateStartDate() && validateEndDate()){
+            if(checkBtn.isSelected){
+                blockDate()
+            }else{
+                if(validateStartTime() && validateEndTime()) {
+                    blockDate()
+                }
+            }
         }
     }
 }
@@ -148,7 +185,17 @@ extension BlockDateVC {
     }
    
     func validateEndDate() -> Bool{
+
         if(endDateTFD.text?.count != 0){
+            
+            let dat = formatter.date(from: startDateTFD.text!)
+            let dat1 = formatter.date(from: endDateTFD.text!)
+            if(dat! > dat1!){
+                let snackbar = TTGSnackbar(message: "End date will be not greater than start date", duration: .middle)
+                snackbar.show()
+                return false
+            }
+            
             return true
         }else{
             let snackbar = TTGSnackbar(message: "Please enter end date", duration: .short)
@@ -169,6 +216,18 @@ extension BlockDateVC {
    
     func validateEndTime() -> Bool{
         if(endTimeTFD.text?.count != 0){
+            
+            let starttime = ((startTimeTFD.text!).timeFormate24Hrs()).replace(":", with: "")
+            let t1 = Int(starttime)
+
+            let endtime = ((endTimeTFD.text!).timeFormate24Hrs()).replace(":", with: "")
+            let t2 = Int(endtime)
+//            if(t1! > t2!){
+//                let snackbar = TTGSnackbar(message: "start time will be not greater than end time", duration: .middle)
+//                snackbar.show()
+//                return false
+//            }
+            
             return true
         }else{
             let snackbar = TTGSnackbar(message: "Please enter end time", duration: .short)
@@ -218,12 +277,11 @@ extension BlockDateVC : UIPickerViewDelegate , UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
       
-            return clinicList[row]
+        return clinicList[row].clinicName
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-            clinicNameTFD.text = clinicList[row]
-        self.view.endEditing(true)
+        clinicNameTFD.text = clinicList[row].clinicName
     }
 }
 
@@ -254,6 +312,7 @@ extension BlockDateVC {
         }
         
         @objc func cancelBtnClicked(_ button: UIBarButtonItem?) {
+            clinicNameTFD.resignFirstResponder()
             startDateTFD?.resignFirstResponder()
             endDateTFD.resignFirstResponder()
             startTimeTFD.resignFirstResponder()
@@ -265,11 +324,13 @@ extension BlockDateVC {
                 startDateTFD?.resignFirstResponder()
                 let formatter = DateFormatter()
                 formatter.dateStyle = .short
+                formatter.dateFormat = "dd/MM/yyyy"
                 startDateTFD?.text = formatter.string(from: startDatePicker.date)
             }else if(endDateTFD.isFirstResponder){
                 endDateTFD?.resignFirstResponder()
                 let formatter = DateFormatter()
                 formatter.dateStyle = .short
+                formatter.dateFormat = "dd/MM/yyyy"
                 endDateTFD?.text = formatter.string(from: endDatePicker.date)
             }else if(startTimeTFD.isFirstResponder){
                 startTimeTFD?.resignFirstResponder()
@@ -282,6 +343,41 @@ extension BlockDateVC {
                 formatter.timeStyle = .short
                 endTimeTFD?.text = formatter.string(from: endTimePicker.date)
 
+            }else{
+                clinicNameTFD.resignFirstResponder()
             }
         }
     }
+
+
+//MARK: API Call
+extension BlockDateVC {
+    
+    func blockDate(){
+        
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: false, completion: nil)
+        
+        let selectStarttime = checkBtn.isSelected ? " 00:00" : " \((startTimeTFD.text!).timeFormate24Hrs())"
+        let selectEndtime = checkBtn.isSelected ? " 00:00" : " \((endTimeTFD.text!).timeFormate24Hrs())"
+        
+        let startdate = startDateTFD.text! + selectStarttime
+        let enddate = endDateTFD.text! + selectEndtime
+        
+        AppointmentManager.sharedInstance.BlockDates(startDate: startdate, endDate: enddate, clinicID: clinicId!, completionHandler: {
+                        (success,data,error) in
+                alert.dismiss(animated: false, completion: nil)
+            if(success){
+                SorryView.showPopup(parentVC: self, boxTitle: "Success!", subText: "You have successfully block the date.", buttonText: "OK")
+            }else{
+                let snackbar = TTGSnackbar(message: error?.domain ?? "Something went wrong", duration: .long)
+                snackbar.show()
+            }
+        })
+    }
+}
