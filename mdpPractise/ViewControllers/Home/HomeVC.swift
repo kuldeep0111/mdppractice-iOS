@@ -189,7 +189,7 @@ extension HomeVC {
     @IBAction func didTapOnMenuBtn(_ sender: UIButton){
         // SJSwiftSideMenuController.toggleLeftSideMenu()
         let menu = storyboard!.instantiateViewController(withIdentifier: "SideMenuNavigationController") as! SideMenuNavigationController
-        menu.settings.blurEffectStyle = .dark
+        menu.settings.blurEffectStyle = .none
         menu.settings.menuWidth = screenWidth - 50
         menu.settings.presentationStyle = .menuSlideIn
         menu.settings.statusBarEndAlpha = 0
@@ -249,6 +249,27 @@ extension HomeVC {
             }
         }
         getAppointment()
+    }
+}
+
+extension HomeVC: SideMenuNavigationControllerDelegate {
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appearing! (animated: \(animated))")
+        self.view.alpha = 0.5;
+    }
+    
+    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appeared! (animated: \(animated))")
+    }
+    
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappearing! (animated: \(animated))")
+        self.view.alpha = 1;
+    }
+    
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappeared! (animated: \(animated))")
     }
 }
 
