@@ -40,11 +40,9 @@ class TreatmentVC: UIViewController {
         //addSearchBar()
         
         
-        searchButton = UIBarButtonItem(
-            image: UIImage(named: "search")!.withRenderingMode(.alwaysTemplate),
-            style: .plain, target: self, action: #selector(addSearchBar))
-        
-        navigationItem.rightBarButtonItem = searchButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "addAppointment")!.withRenderingMode(.alwaysTemplate),
+            style: .plain, target: self, action: #selector(addNewTreatment))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -152,6 +150,12 @@ extension TreatmentVC : UISearchResultsUpdating{
 
 //MARK: Actions
 extension TreatmentVC {
+    
+    @objc func addNewTreatment(){
+        let vc = mdpStoryBoard.instantiateViewController(identifier: "NewTreatmentVC") as NewTreatmentVC
+        //vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func didTapOnCall(_ sender: UIButton){
         
