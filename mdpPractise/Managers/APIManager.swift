@@ -39,6 +39,7 @@ enum APIEndPoint: String {
     case getPatientList         = "mdpapi/searchpatient"
     case addProcedureToTreatments = "mdpapi/addproceduretotreatment"
     case blockAppointmentDate   = "appointmentAPI/add_block"
+    case uploadImage            = "mediaAPI/upload_media"
 }
 
 func apiURL(_ endPoint: APIEndPoint) -> String {

@@ -303,6 +303,21 @@ extension SetupClinicVC : UINavigationControllerDelegate, UIImagePickerControlle
             print("No image found")
             return
         }
+        var format = ""
+        let assetPath = info[UIImagePickerController.InfoKey.referenceURL] as! NSURL
+            if (assetPath.absoluteString?.hasSuffix("JPG"))! {
+                print("JPG")
+                format = "JPG"
+            }
+            else if (assetPath.absoluteString?.hasSuffix("PNG"))! {
+                format = "PNG"
+            }
+            else if (assetPath.absoluteString?.hasSuffix("GIF"))! {
+                print("GIF")
+            }
+            else {
+                print("Unknown")
+            }
         
         guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
         
@@ -320,7 +335,11 @@ extension SetupClinicVC : UINavigationControllerDelegate, UIImagePickerControlle
             break
         }
            picker.dismiss(animated: true)
-    }}
+        
+        uploadMedia(img: image, formate: format)
+        
+    }
+}
 
 //MARK: Helping Method
 
@@ -580,5 +599,17 @@ extension SetupClinicVC {
                 snackbar.show()
             }
         }
+    }
+    
+    func uploadMedia(img: UIImage,formate: String){
+        
+        MediaManager.sharedInstance.UploadImage(img: img, mediaFormat: formate, completionHandler: {(success,data,error)in
+            if(success){
+                
+            }else{
+                
+            }
+        })
+        
     }
 }
