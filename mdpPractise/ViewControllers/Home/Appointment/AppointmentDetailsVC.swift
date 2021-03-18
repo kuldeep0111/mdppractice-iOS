@@ -12,7 +12,12 @@ class AppointmentDetailsVC: UIViewController {
     
     //@IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView : UICollectionView!
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 600
+        }
+    }
     @IBOutlet weak var collectionViewHeight : NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight : NSLayoutConstraint!
     @IBOutlet weak var appointmerntDate : UILabel!
@@ -143,10 +148,6 @@ extension AppointmentDetailsVC : UITableViewDelegate, UITableViewDataSource {
         return appointmentList.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
         //cell.img.image = UIImage.init(named: "")
@@ -186,7 +187,7 @@ extension AppointmentDetailsVC {
                 alert.dismiss(animated: false, completion: nil)
             if(success){
                 self.appointmentList = data!
-                self.tableViewHeight.constant = CGFloat(self.appointmentList.count * 111)
+                self.tableViewHeight.constant = CGFloat((self.appointmentList.count * 111) + 50 )
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
                 self.view.layoutIfNeeded()
