@@ -162,8 +162,14 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateA
             return amcData.dateString == dateString
         }
         
-        if(isBlock || (date.day < Date().day))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+                
+        if(isBlock || (date < Date()))
         {
+            if(date.day == Date().day){
+                return true
+            }
             return false
         }
         else
@@ -184,7 +190,10 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateA
             return amcData.dateString == dateString
         }
         
-        if (faf || (date.day < Date().day)) {
+        if (faf || (date < Date())) {
+            if(date.day == Date().day){
+                return nil
+            }
             return .gray
         } else {
             return nil
