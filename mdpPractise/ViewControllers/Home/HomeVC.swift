@@ -161,7 +161,8 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateA
         let isBlock = self.BlockDates.contains{ (amcData) -> Bool in
             return amcData.dateString == dateString
         }
-        if(isBlock)
+        
+        if(isBlock || (date.day < Date().day))
         {
             return false
         }
@@ -183,7 +184,7 @@ extension HomeVC : FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateA
             return amcData.dateString == dateString
         }
         
-        if faf {
+        if (faf || (date.day < Date().day)) {
             return .gray
         } else {
             return nil
